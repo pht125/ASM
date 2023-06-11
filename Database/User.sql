@@ -1,6 +1,8 @@
+--DROP TABLE customer
+
 CREATE TABLE customer(
 	customer_id int NOT NULL identity(1,1),
-	[name] varchar(50) NOT NULL,
+	[name] nvarchar(50) NOT NULL,
 	username varchar(50) NOT NULL,
 	email varchar(50) NOT NULL,
 	phone varchar(15) NOT NULL,

@@ -1,5 +1,9 @@
-CREATE TABLE IF NOT EXISTS 'category'(
-	'id' int(255) NOT NULL AUTO_INCREMENT,
-	'name' varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-	'description' varchar(500) COLLATE utf8_unicode_ci NOT NULL
+--DROP TABLE category
+
+CREATE TABLE category(
+	cate_id int NOT NULL identity(1,1),
+	[name] varchar(50) NOT NULL,
+	[description] nvarchar(700) NOT NULL,
+	PRIMARY KEY(cate_id)
 )
+
