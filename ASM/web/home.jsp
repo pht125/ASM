@@ -11,87 +11,211 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <style>
-        nav {
-            margin: 25px;
-            background: #f9f9f9;
-            padding: 16px;
-            .menuItems {
-                list-style: none;
-                display: flex;
 
-                li {
-                    margin: 50px;
-
-                    a {
-                        text-decoration: none;
-                        color: #8f8f8f;
-                        font-size: 24px;
-                        font-weight: 400;
-
-                        position: relative;
-                        text-transform: uppercase;
-
-                        &::before {
-                            content: attr(data-item);
-
-                            color: #8254ff;
-                            position: absolute;
-                            top: 0;
-                            bottom: 0;
-                            left: 0;
-                            right: 0;
-                            width: 0;
-                            overflow: hidden;
-                        }
-
-                        &:hover {
-                            &::before {
-                                width: 100%;
-                            }
-                        }
-                    }
-                }
-            }
+        /*------------------------------------------------------------------------------------------*/
+        .slider{
+            width: 100%;
+            height: auto;
+            /*border-radius: 10px;*/
+            overflow: hidden;
         }
+
+        .slides{
+            width: 500%;
+            height: 500px;
+            display: flex;
+        }
+
+        .slides input{
+            display: none;
+        }
+
+        .slide{
+            width: 20%;
+            transition: 1s;
+        }
+
+        .slide img{
+            width: 100%;
+            height: auto;
+        }
+        
+
+        /*css for manual slide navigation*/
+
+        .navigation-manual{
+            position: absolute;
+            width: 100%;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .manual-btn{
+            border: 2px solid #40D3DC;
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+
+        .manual-btn:not(:last-child){
+            margin-right: 40px;
+        }
+
+        .manual-btn:hover{
+            background: #40D3DC;
+        }
+
+        #radio1:checked ~ .first{
+            margin-left: 0;
+        }
+
+        #radio2:checked ~ .first{
+            margin-left: -20%;
+        }
+
+        #radio3:checked ~ .first{
+            margin-left: -40%;
+        }
+
+        #radio4:checked ~ .first{
+            margin-left: -60%;
+        }
+
+        /*------------------------------------------------------------------------------------------*/
+
+        /*------------------------------------------------------------------------------------------*/
+        .header{
+            border: 1px solid black;
+            background-color: #252525;
+            display: flex;
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 130px;
+        }
+
+        .header_logo{
+            border: 1px solid black;
+            width: calc((100%/12)*3);
+            margin: 20px;
+        }
+
+        .header_logo img{
+            width: 80%;
+            height: auto;
+        }
+
+        .header_search{
+            border: 1px solid black;
+            display: flex;
+            width: calc((100%/12)*6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header_search form{
+            width: 80%;
+        }
+
+        .header_search form input{
+            width: calc((100%/12)*10);
+            border-radius: 30px;
+            border: none;
+            height: 3rem;
+            padding: 0 20px 0;
+        }
+
+        .header_search form button{
+            flex:1;
+            /*            position: fixed;
+                        left: 10px;*/
+            margin-left: -3px;
+            border-radius: 50%;
+            border: none;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .header_search form button i{
+            font-size: larger;
+        }
+        .header_tile{
+            border: 1px solid black;
+            width: calc((100%/12)*3);
+        }
+
+        /*------------------------------------------------------------------------------------------*/
+
     </style>
     <body>
 
         <div class="header">
-            <div class="header__tile">
+
+            <div class="header_logo">
+                <img src="images/white_mk_title_logo.png">
             </div>
-            <div class="header__logo">
-                <img src="">
-            </div>
-            <div class="header__search">
+            <div class="header_search">
                 <form>
-                    <input type="text" placeholder="Search in website">
-                    <button type="submit">Search</button>
+                    <div>
+                        <input type="text" placeholder=" Search in website">
+                        <button type="submit"><i class='bx bx-search'></i></button>
+                    </div>
+
                 </form>
             </div>
-        </div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="images/image.png" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="images/image1.png" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="images/image(3.png" alt="Third slide">
-                </div>
+            <div class="header_tile">
+
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only"></span>
-            </a>
         </div>
+        <!----------------------------------------------------------------------------------------------->
+        <!--image slider start-->
+        <div class="slider">
+            <div class="slides">
+                <!--radio buttons start-->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!--radio buttons end-->
+                <!--slide images start-->
+                <div class="slide first">
+                    <img src="images/slider_mouse.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="images/slider_keeb.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="images/slider_pad.png" alt="">
+                </div>
+                <div class="slide">
+                    <img src="images/slider_switch.png" alt="">
+                </div>
+                <!--slide images end-->
+                <!--automatic navigation start-->
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                </div>
+                <!--automatic navigation end-->
+            </div>
+            <!--manual navigation start-->
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+            <!--manual navigation end-->
+        </div>
+        <!--image slider end-->
 
         <!----------------------------------------------------------------------------------------------->
 
@@ -99,14 +223,25 @@
 
             <nav>
                 <ul class="menuItems">
-                    <li><a href='#' data-item='Home'>Home</a></li>
-                    <li><a href='#' data-item='About'>About</a></li>
-                    <li><a href='#' data-item='Projects'>Projects</a></li>
-                    <li><a href='#' data-item='Blog'>Blog</a></li>
-                    <li><a href='#' data-item='Contact'>Contact</a></li>
+                    <li><a href='#' data-item='Bàn phím'>Bàn phím</a></li>
+                    <li><a href='#' data-item='Chuột'>Chuột</a></li>
+                    <li><a href='#' data-item='Lót chuột'>Lót chuột</a></li>
+                    <li><a href='#' data-item='Switch'>Switch</a></li>
+
                 </ul>
             </nav>
 
         </section>
+
+        <script type="text/javascript">
+            var counter = 1;
+            setInterval(function () {
+                document.getElementById('radio' + counter).checked = true;
+                counter++;
+                if (counter > 4) {
+                    counter = 1;
+                }
+            }, 5000);
+        </script>
     </body>
 </html>
