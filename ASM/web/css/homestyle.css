@@ -1,0 +1,192 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 12, 2023, 9:23:35 AM
+    Author     : Admin
+/*------------------------------------------------------------------------------------------*/
+        .slider{
+            width: 100%;
+            height: auto;
+            /*border-radius: 10px;*/
+            overflow: hidden;
+        }
+
+        .slides{
+            width: 500%;
+            height: 500px;
+            display: flex;
+        }
+
+        .slides input{
+            display: none;
+        }
+
+        .slide{
+            width: 20%;
+            transition: 1s;
+        }
+
+        .slide img{
+            width: 100%;
+            height: auto;
+        }
+
+
+        /*css for manual slide navigation*/
+
+        .navigation-manual{
+            position: absolute;
+            width: 100%;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .manual-btn{
+            border: 2px solid #cc2f21;
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+
+        .manual-btn:not(:last-child){
+            margin-right: 40px;
+        }
+
+        .manual-btn:hover{
+            background: #e39c96;
+        }
+
+        #radio1:checked ~ .first{
+            margin-left: 0;
+        }
+
+        #radio2:checked ~ .first{
+            margin-left: -20%;
+        }
+
+        #radio3:checked ~ .first{
+            margin-left: -40%;
+        }
+
+        #radio4:checked ~ .first{
+            margin-left: -60%;
+        }
+
+        /*------------------------------------------------------------------------------------------*/
+
+        /*------------------------------------------------------------------------------------------*/
+        .header{
+            border: 1px solid black;
+            background-color: #252525;
+            display: flex;
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 130px;
+        }
+
+        .header_logo{
+            border: 1px solid black;
+            width: calc((100%/12)*3);
+            margin: 20px;
+        }
+
+        .header_logo img{
+            width: 80%;
+            height: auto;
+        }
+
+        .header_search{
+            border: 1px solid black;
+            display: flex;
+            width: calc((100%/12)*6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header_search form{
+            width: 80%;
+        }
+
+        .header_search form input{
+            width: calc((100%/12)*10);
+            border-radius: 30px;
+            border: none;
+            height: 3rem;
+            padding: 0 20px 0;
+        }
+
+        .header_search form button{
+            flex:1;
+            /*            position: fixed;
+                        left: 10px;*/
+            margin-left: -3px;
+            border-radius: 50%;
+            border: none;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .header_search form button i{
+            font-size: larger;
+        }
+        .header_tile{
+            border: 1px solid black;
+            width: calc((100%/12)*3);
+        }
+
+        /*------------------------------------------------------------------------------------------*/
+
+        /*------------------------------------------------------------------------------------------*/
+        .menuItems{
+            width: 100%;
+            position: absolute;  
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            justify-content: space-evenly;
+        }
+        
+        .menuItems li{
+            list-style: none;
+            
+        }
+        
+        .menuItems li div{
+            text-decoration: none;
+        }
+        
+        .menuItems_image{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .menuItems_name{
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .menuItems_info a{
+            text-decoration: none;
+            top: 50%;
+        }
+        
+        .menuItems_info a:hover{
+            text-decoration: none;
+            color: black;
+        }
+        
+        .menuItems img{
+            width: 80%;
+        }
+        /*------------------------------------------------------------------------------------------*/
+

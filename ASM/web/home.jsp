@@ -12,146 +12,12 @@
         <title>JSP Page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/homestyle.css"/>
     </head>
     <style>
 
-        /*------------------------------------------------------------------------------------------*/
-        .slider{
-            width: 100%;
-            height: auto;
-            /*border-radius: 10px;*/
-            overflow: hidden;
-        }
-
-        .slides{
-            width: 500%;
-            height: 500px;
-            display: flex;
-        }
-
-        .slides input{
-            display: none;
-        }
-
-        .slide{
-            width: 20%;
-            transition: 1s;
-        }
-
-        .slide img{
-            width: 100%;
-            height: auto;
-        }
         
-
-        /*css for manual slide navigation*/
-
-        .navigation-manual{
-            position: absolute;
-            width: 100%;
-            margin-top: -40px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .manual-btn{
-            border: 2px solid #40D3DC;
-            padding: 5px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 1s;
-        }
-
-        .manual-btn:not(:last-child){
-            margin-right: 40px;
-        }
-
-        .manual-btn:hover{
-            background: #40D3DC;
-        }
-
-        #radio1:checked ~ .first{
-            margin-left: 0;
-        }
-
-        #radio2:checked ~ .first{
-            margin-left: -20%;
-        }
-
-        #radio3:checked ~ .first{
-            margin-left: -40%;
-        }
-
-        #radio4:checked ~ .first{
-            margin-left: -60%;
-        }
-
-        /*------------------------------------------------------------------------------------------*/
-
-        /*------------------------------------------------------------------------------------------*/
-        .header{
-            border: 1px solid black;
-            background-color: #252525;
-            display: flex;
-            position: -webkit-sticky; /* Safari */
-            position: sticky;
-            top: 0;
-            width: 100%;
-            height: 130px;
-        }
-
-        .header_logo{
-            border: 1px solid black;
-            width: calc((100%/12)*3);
-            margin: 20px;
-        }
-
-        .header_logo img{
-            width: 80%;
-            height: auto;
-        }
-
-        .header_search{
-            border: 1px solid black;
-            display: flex;
-            width: calc((100%/12)*6);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .header_search form{
-            width: 80%;
-        }
-
-        .header_search form input{
-            width: calc((100%/12)*10);
-            border-radius: 30px;
-            border: none;
-            height: 3rem;
-            padding: 0 20px 0;
-        }
-
-        .header_search form button{
-            flex:1;
-            /*            position: fixed;
-                        left: 10px;*/
-            margin-left: -3px;
-            border-radius: 50%;
-            border: none;
-            width: 3rem;
-            height: 3rem;
-        }
-
-        .header_search form button i{
-            font-size: larger;
-        }
-        .header_tile{
-            border: 1px solid black;
-            width: calc((100%/12)*3);
-        }
-
-        /*------------------------------------------------------------------------------------------*/
-
     </style>
     <body>
 
@@ -223,11 +89,46 @@
 
             <nav>
                 <ul class="menuItems">
-                    <li><a href='#' data-item='Bàn phím'>Bàn phím</a></li>
-                    <li><a href='#' data-item='Chuột'>Chuột</a></li>
-                    <li><a href='#' data-item='Lót chuột'>Lót chuột</a></li>
-                    <li><a href='#' data-item='Switch'>Switch</a></li>
-
+                    <li class="col-md-2 menuItems_info">
+                        <a href="#">
+                            <div>
+                                <div class="menuItems_image">
+                                    <img src="images/menu_icon_keeb.png" alt="alt" />
+                                </div>
+                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Bàn phím</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-md-2 menuItems_info">
+                        <a href="#">
+                            <div>
+                                <div class="menuItems_image">
+                                    <img src="images/menu_icon_mouse.png" alt="alt" />
+                                </div>
+                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Chuột</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-md-2 menuItems_info">
+                        <a href="#">
+                            <div>
+                                <div class="menuItems_image">
+                                    <img src="images/menu_icon_pad.png" alt="alt" />
+                                </div>
+                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Lót chuột</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="col-md-2 menuItems_info">
+                        <a class="underline_text" href="#">
+                            <div>
+                                <div class="menuItems_image">
+                                    <img src="images/menu_icon_switch.png" alt="alt" />
+                                </div>
+                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Switch</div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
