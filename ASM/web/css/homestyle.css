@@ -166,6 +166,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         .menuItems_image{
             display: flex;
             justify-content: space-evenly;
+            overflow: hidden;
+        }
+        
+        .menuItems_image img{
+            object-fit: cover;
+            transition: transform 0.4s;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .menuItems_image:hover img{
+            transform: scale(1.2);
         }
         
         .menuItems_name{
@@ -176,13 +188,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
         }
         
         .menuItems_info a{
+            color: black;
             text-decoration: none;
             top: 50%;
         }
         
         .menuItems_info a:hover{
             text-decoration: none;
-            color: black;
+            color: #4996e3;
         }
         
         .menuItems img{

@@ -89,7 +89,7 @@
 
             <nav>
                 <ul class="menuItems">
-                    <li class="col-md-2 menuItems_info">
+                    <li class="col-lg-2 col-md-5 menuItems_info">
                         <a href="#">
                             <div>
                                 <div class="menuItems_image">
@@ -99,7 +99,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="col-md-2 menuItems_info">
+                    <li class="col-lg-2 col-md-5 menuItems_info">
                         <a href="#">
                             <div>
                                 <div class="menuItems_image">
@@ -109,7 +109,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="col-md-2 menuItems_info">
+                    <li class="col-lg-2 col-md-5 menuItems_info">
                         <a href="#">
                             <div>
                                 <div class="menuItems_image">
@@ -119,7 +119,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="col-md-2 menuItems_info">
+                    <li class="col-lg-2 col-md-5 menuItems_info">
                         <a class="underline_text" href="#">
                             <div>
                                 <div class="menuItems_image">

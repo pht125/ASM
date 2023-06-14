@@ -21,10 +21,10 @@ CREATE TABLE product (
 	product_id varchar(50) PRIMARY KEY,
 	product_name nvarchar(100),
 	brand varchar(50),
-	size char(2),
 	price money,
+	sale_price money,
 	quantity int,
-	img varchar(255),
+	img varchar(max),
 	[description] nvarchar(max)
 
 )
@@ -58,7 +58,7 @@ CREATE TABLE payment(
 )
 
 CREATE TABLE bill(
-	bill_id varchar(50) PRIMARY KEY,
+	bill_id int PRIMARY KEY identity(1,1),
 	payment_id int REFERENCES payment(payment_id),
 	customer_id int REFERENCES customer(customer_id),
 	customer_name varchar(50),
@@ -69,7 +69,7 @@ CREATE TABLE bill(
 )
 
 CREATE TABLE bill_info(
-	bill_id varchar(50),
+	bill_id int,
 	product_id varchar(50),
 	quantity int,
 	price money,
