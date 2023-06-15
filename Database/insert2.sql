@@ -1,9 +1,16 @@
-﻿INSERT INTO category
+﻿INSERT INTO account
+VALUES
+('admin','123','admin','','',1),
+('thai125','123','thsi','0123456789','Viet Nam',2)
+
+
+INSERT INTO category
 VALUES
 (N'Bàn Phím',''),
 (N'Chuột',''),
 (N'Lót Chuột',''),
 (N'Switch','')
+
 
 INSERT INTO product
 VALUES
@@ -39,3 +46,12 @@ VALUES
 (4,'SW004',N'Gateron Raw Switch', 'GETARON',11000,11000,1000,'',''),
 (4,'SW005',N'Cream Soda switch', 'PUNKSHOO',17000,17000,1000,'',''),
 (4,'SW006',N'Blue Bubblegum V2 Switch', 'KEEBHUT',17000,17000,1000,'','')
+
+
+INSERT INTO bill
+VALUES
+(2,'2023-5-10',2500000)
+
+INSERT INTO bill_info
+VALUES
+(1,'MS002',1,2500000)

@@ -1,19 +1,9 @@
 
---DROP TABLE category
---DROP TABLE product
---DROP TABLE role_account
---DROP TABLE account
---DROP TABLE customer
---DROP TABLE payment
---DROP TABLE bill
---DROP TABLE bill_info
-
-
 
 CREATE TABLE category(
 	cate_id int PRIMARY KEY identity(1,1),
-	[name] nvarchar(50),
-	[description] nvarchar(max)
+	name nvarchar(50),
+	description nvarchar(max)
 )
 
 CREATE TABLE product (
@@ -25,47 +15,27 @@ CREATE TABLE product (
 	sale_price money,
 	quantity int,
 	img varchar(max),
-	[description] nvarchar(max)
+	description nvarchar(max)
 
-)
-
-CREATE TABLE role_account(
-	id_role int PRIMARY KEY
-	
 )
 
 CREATE TABLE account(
-	username varchar(50) PRIMARY KEY,
-	[password] varchar(50),
-	id_role int REFERENCES role_account(id_role)
-
+	account_id int PRIMARY KEY IDENTITY(1,1),
+    email varchar(50) NOT NULL UNIQUE,
+    password varchar(50) NOT NULL,
+    name varchar(50) NOT NULL,
+    phone varchar(12) NOT NULL,
+    address varchar(50),
+    role int NOT NULL
 )
 
-CREATE TABLE customer(
-	customer_id int PRIMARY KEY identity(1,1),
-	username varchar(50),
-	customer_mail varchar(50),
-	customer_phone char(10),
-	customer_address nvarchar(255),
-	[password] varchar(50),
-	id_role int REFERENCES role_account(id_role)
-
-)
-
-CREATE TABLE payment(
-	payment_id int PRIMARY KEY identity(1,1),
-	payment_method varchar(50)
-)
 
 CREATE TABLE bill(
 	bill_id int PRIMARY KEY identity(1,1),
-	payment_id int REFERENCES payment(payment_id),
-	customer_id int REFERENCES customer(customer_id),
-	customer_name varchar(50),
-	customer_address varchar(50),
-	customer_phone varchar(50),
-	customer_mail varchar(50),
-	order_date datetime
+	account_id int,
+	order_date datetime,
+	total_price money,
+	FOREIGN KEY(account_id) REFERENCES account(account_id)
 )
 
 CREATE TABLE bill_info(

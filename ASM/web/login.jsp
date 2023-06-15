@@ -113,7 +113,7 @@
     <body class="text-center">
         <img class="mb-4" src="images/black_mk_logo.png" alt="" width="210" height="100">
         <div class="outline_signin">
-            <form class="form-signin">
+            <form action="" class="form-signin">
 
                 <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
                 <!--            <label for="inputEmail" class="sr-only">Email address</label>
