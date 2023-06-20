@@ -1,4 +1,8 @@
-
+--drop table bill_info
+--drop table bill
+--drop table account
+--drop table product
+--drop table category
 
 CREATE TABLE category(
 	cate_id int PRIMARY KEY identity(1,1),
@@ -11,8 +15,8 @@ CREATE TABLE product (
 	product_id varchar(50) PRIMARY KEY,
 	product_name nvarchar(100),
 	brand varchar(50),
-	price money,
-	sale_price money,
+	price int,
+	sale_price int,
 	quantity int,
 	img varchar(max),
 	description nvarchar(max)
@@ -25,7 +29,7 @@ CREATE TABLE account(
     password varchar(50) NOT NULL,
     name varchar(50) NOT NULL,
     phone varchar(12) NOT NULL,
-    address varchar(50),
+    address varchar(255),
     role int NOT NULL
 )
 
@@ -34,7 +38,7 @@ CREATE TABLE bill(
 	bill_id int PRIMARY KEY identity(1,1),
 	account_id int,
 	order_date datetime,
-	total_price money,
+	total_price int,
 	FOREIGN KEY(account_id) REFERENCES account(account_id)
 )
 
@@ -42,7 +46,7 @@ CREATE TABLE bill_info(
 	bill_id int,
 	product_id varchar(50),
 	quantity int,
-	price money,
+	price int,
 	PRIMARY KEY(bill_id,product_id),
 	FOREIGN KEY(product_id) REFERENCES product(product_id),
 	FOREIGN KEY(bill_id) REFERENCES bill(bill_id)

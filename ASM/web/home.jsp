@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,34 +12,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/homestyle.css"/>
     </head>
-    <style>
 
-        
-    </style>
     <body>
-
-        <div class="header">
-
-            <div class="header_logo">
-                <img src="images/white_mk_title_logo.png">
-            </div>
-            <div class="header_search">
-                <form>
-                    <div>
-                        <input type="text" placeholder=" Search in website">
-                        <button type="submit"><i class='bx bx-search'></i></button>
-                    </div>
-
-                </form>
-            </div>
-            <div class="header_tile">
-
-            </div>
+        <div>
+            <%@include file="header.jsp" %>
         </div>
+
         <!----------------------------------------------------------------------------------------------->
         <!--image slider start-->
         <div class="slider">
@@ -51,16 +33,16 @@
                 <!--radio buttons end-->
                 <!--slide images start-->
                 <div class="slide first">
-                    <img src="images/slider_mouse.png" alt="">
+                    <img src="images/slider_img/slider_mouse.png" alt="">
                 </div>
                 <div class="slide">
-                    <img src="images/slider_keeb.png" alt="">
+                    <img src="images/slider_img/slider_keeb.png" alt="">
                 </div>
                 <div class="slide">
-                    <img src="images/slider_pad.png" alt="">
+                    <img src="images/slider_img/slider_pad.png" alt="">
                 </div>
                 <div class="slide">
-                    <img src="images/slider_switch.png" alt="">
+                    <img src="images/slider_img/slider_switch.png" alt="">
                 </div>
                 <!--slide images end-->
                 <!--automatic navigation start-->
@@ -95,7 +77,7 @@
                                 <div class="menuItems_image">
                                     <img src="images/menu_icon_keeb.png" alt="alt" />
                                 </div>
-                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Bàn phím</div>
+                                <div class="menuItems_name" href='keeb_home.jsp' data-item='Bàn phím'>Bàn phím</div>
                             </div>
                         </a>
                     </li>
@@ -133,6 +115,10 @@
             </nav>
 
         </section>
+
+
+
+
 
         <script type="text/javascript">
             var counter = 1;

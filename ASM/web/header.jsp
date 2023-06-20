@@ -1,0 +1,101 @@
+<%-- 
+    Document   : header
+    Created on : Jun 18, 2023, 11:11:19 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        
+    </head>
+    <style>
+        .header{
+            /*border: 1px solid black;*/
+            background-color: #252525;
+            display: flex;
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+            width: 100%;
+            height: 130px;
+        }
+
+        .header_logo{
+            /*border: 1px solid black;*/
+            width: calc((100%/12)*3);
+            
+        }
+
+        .header_logo img{
+            position:relative;
+            width: 50%;
+            height: auto;
+            margin-left: 15%;
+            top:10%;
+        }
+
+        .header_search{
+            /*border: 1px solid black;*/
+            display: flex;
+            width: calc((100%/12)*6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header_search form{
+            width: 80%;
+        }
+
+        .header_search form input{
+            width: calc((100%/12)*10);
+            border-radius: 30px;
+            border: none;
+            height: 3rem;
+            padding: 0 20px 0;
+        }
+
+        .header_search form button{
+            flex:1;
+            /*            position: fixed;
+                        left: 10px;*/
+            margin-left: -3px;
+            border-radius: 50%;
+            border: none;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .header_search form button i{
+            font-size: larger;
+        }
+        .header_tile{
+            /*border: 1px solid black;*/
+            width: calc((100%/12)*3);
+        }
+
+    </style>
+    <body>
+        <div class="header">
+
+            <div class="header_logo">
+                <img src="images/web_logo.png">
+            </div>
+            <div class="header_search">
+                <form>
+                    <div>
+                        <input type="text" placeholder=" Search in website">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="header_tile">
+
+            </div>
+        </div>
+    </body>
+</html>

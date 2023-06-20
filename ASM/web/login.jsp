@@ -113,7 +113,7 @@
     <body class="text-center">
         <img class="mb-4" src="images/black_mk_logo.png" alt="" width="210" height="100">
         <div class="outline_signin">
-            <form action="" class="form-signin">
+            <form action="login" method="post" class="form-signin">
 
                 <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
                 <!--            <label for="inputEmail" class="sr-only">Email address</label>
@@ -122,15 +122,15 @@
                             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>-->
                 <table>
 
-                    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required>
+                    <input name="email" type="text" id="inputUsername" class="form-control" placeholder="Username" required>
 
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
                 </table>
 
                 <div class="checkbox mb-3">
                     <label>
-                        <input type="checkbox" value="remember-me"> Lưu tài khoản
+                        <input name="check" type="checkbox" value="remember-me"> Lưu tài khoản
                     </label>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>

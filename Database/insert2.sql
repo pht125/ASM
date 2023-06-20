@@ -14,16 +14,15 @@ VALUES
 
 INSERT INTO product
 VALUES
-(1,'KB001',N'Bàn phím KBDfans TOFU60 2.0', 'KBDfans',4900000,4900000,30,'',''),
-(1,'KB002',N'Bàn phím KBDfans TOFU65 2.0', 'KBDfans',5300000,5300000,30,'',''),
-(1,'KB003',N'Bàn phím Glorious GMMK PRO', 'Glorious',4500000,4500000,30,'',''),
-(1,'KB004',N'Bàn phím Glorious GMMK 2 Compact 65%', 'Glorious',2100000,2100000,30,'',''),
-(1,'KB005',N'Bàn phím Filco Majestouch Minila-R Convertible', 'Filco',4100000,4100000,30,'',''),
-(1,'KB006',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,3800000,30,'',''),
-
-
+(1,'KB001',N'Bàn phím KBDfans TOFU60 2.0', 'KBDfans',4900000,4900000,30,'images/product_img/keeb/tofu60.jpg',''),
+(1,'KB002',N'Bàn phím KBDfans TOFU65 2.0', 'KBDfans',5300000,5300000,30,'images/product_img/keeb/tofu65.jpg',''),
+(1,'KB003',N'Bàn phím Glorious GMMK PRO', 'Glorious',4500000,4500000,30,'images/product_img/keeb/gmmk_pro.jpg',''),
+(1,'KB004',N'Bàn phím Glorious GMMK 2 Compact 65%', 'Glorious',2100000,2100000,30,'images/product_img/keeb/gmmk_compact_65.jpg',''),
+(1,'KB005',N'Bàn phím Filco Majestouch Minila-R Convertible', 'Filco',4100000,4100000,30,'images/product_img/keeb/minila_r.jpg',''),
+(1,'KB006',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,3800000,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+      
 (2,'MS001',N'Chuột Lamzu Atlantis OG V2', 'Lamzu',2500000,2500000,30,'',''),
-(2,'MS002',N'Chuột Pulsar X2 Wireless X RandomfrankP', 'Pulsar',2500000,2500000,30,'',''),
+(2,'MS002',N'Chuột Pulsar X2 Wireless X RandomfrankP', 'Pulsar',2500000,2500000,30,'',''), 
 (2,'MS003',N'Chuột Pulsar Xlite Wireless v2', 'Pulsar',2500000,2500000,30,'',''),
 (2,'MS004',N'Chuột Ninjutso Sora', 'Ninjutso',2500000,2500000,30,'',''),
 (2,'MS005',N'Chuột Logitech G PRO X Superlight Wireless', 'Logitech',2800000,2800000,30,'',''),

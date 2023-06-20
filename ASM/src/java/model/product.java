@@ -13,8 +13,8 @@ public class product {
     private String product_id;
     private String product_name;
     private String brand;
-    private double price;
-    private double sale_price;
+    private int price;
+    private int sale_price;
     private int quantity;
     private String img;
     private String description;
@@ -22,7 +22,7 @@ public class product {
     public product() {
     }
 
-    public product(int cate_id, String product_id, String product_name, String brand, double price, double sale_price, int quantity, String img, String description) {
+    public product(int cate_id, String product_id, String product_name, String brand, int price, int sale_price, int quantity, String img, String description) {
         this.cate_id = cate_id;
         this.product_id = product_id;
         this.product_name = product_name;
@@ -66,19 +66,19 @@ public class product {
         this.brand = brand;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public double getSale_price() {
+    public int getSale_price() {
         return sale_price;
     }
 
-    public void setSale_price(double sale_price) {
+    public void setSale_price(int sale_price) {
         this.sale_price = sale_price;
     }
 
