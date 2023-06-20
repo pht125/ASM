@@ -15,22 +15,55 @@ import model.product;
  */
 public class productDAO extends BaseDAO{
     
-    public List<product> getProduct(){
+//    public List<product> getProductByCate(int cate_id){
+//        List<product> list = new ArrayList();
+//        String sql ="select * from product where cate_id = ?";
+//        try {
+//            PreparedStatement statement = connection.prepareStatement(sql);
+//            ResultSet rs = statement.executeQuery();
+//            while(rs.next()){
+//                product p = new product();
+//                p.setCate_id(rs.getInt("cate_id"));
+//                p.setProduct_id(rs.getString("product_id"));
+//                p.setProduct_name(rs.getString("product_name"));
+//                p.setBrand(rs.getString("brand"));
+//                p.setPrice(rs.getInt("price"));
+//                p.setSale_price(rs.getInt("sale_price"));
+//                p.setQuantity(rs.getInt("quantity"));
+//                p.setImg(rs.getString("img"));
+//                p.setDescription(rs.getString("description"));
+//                list.add(p);
+//                
+//            }
+//        } catch (Exception e) {
+//        }
+//        
+//       
+//        return list;
+//    }
+    
+    
+    public productDAO(){
+    }
+
+    public List<product> getProductKeeb() {
         List<product> list = new ArrayList();
-        String sql ="select * from product";
+        String sql ="select * from product where cate_id = 1";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                list.add(new product(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7),
-                        rs.getString(8),
-                        rs.getString(9)));
+                product p = new product();
+                p.setCate_id(rs.getInt("cate_id"));
+                p.setProduct_id(rs.getString("product_id"));
+                p.setProduct_name(rs.getString("product_name"));
+                p.setBrand(rs.getString("brand"));
+                p.setPrice(rs.getInt("price"));
+                p.setSale_price(rs.getInt("sale_price"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setImg(rs.getString("img"));
+                p.setDescription(rs.getString("description"));
+                list.add(p);
                 
             }
         } catch (Exception e) {
@@ -41,9 +74,10 @@ public class productDAO extends BaseDAO{
     }
     public static void main(String[] args) {
         productDAO pdao = new productDAO();
-        List<product> list = pdao.getProduct(); 
-        for (product object : list) {
-            System.out.println(object);
+        List<product> list = pdao.getProductKeeb(); 
+        for (product product : list) {
+            System.out.println(product);
         }
     }
+    
 }

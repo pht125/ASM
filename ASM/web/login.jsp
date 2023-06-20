@@ -111,7 +111,7 @@
         </style>
     </head>
     <body class="text-center">
-        <img class="mb-4" src="images/black_mk_logo.png" alt="" width="210" height="100">
+        <img class="mb-4" src="images/web_logo.png" alt="" width="210" height="100">
         <div class="outline_signin">
             <form action="login" method="post" class="form-signin">
 

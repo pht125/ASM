@@ -15,6 +15,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>controller.LogoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>keebServlet</servlet-name>
+        <servlet-class>controller.keebServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -26,6 +30,10 @@
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>keebServlet</servlet-name>
+        <url-pattern>/keeb</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

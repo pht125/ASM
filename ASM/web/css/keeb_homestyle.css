@@ -6,73 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Jun 18, 2023, 10:18:19 PM
     Author     : Admin
 */
-.header{
-    border: 1px solid black;
-    background-color: #252525;
-    display: flex;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 130px;
-}
 
-.header_logo{
-    border: 1px solid black;
-    width: calc((100%/12)*3);
-    margin: 20px;
-}
-
-.header_logo img{
-    width: 80%;
-    height: auto;
-}
-
-.header_search{
-    border: 1px solid black;
-    display: flex;
-    width: calc((100%/12)*6);
-    justify-content: center;
-    align-items: center;
-}
-
-.header_search form{
-    width: 80%;
-}
-
-.header_search form input{
-    width: calc((100%/12)*10);
-    border-radius: 30px;
-    border: none;
-    height: 3rem;
-    padding: 0 20px 0;
-}
-
-.header_search form button{
-    flex:1;
-    /*            position: fixed;
-                left: 10px;*/
-    margin-left: -3px;
-    border-radius: 50%;
-    border: none;
-    width: 3rem;
-    height: 3rem;
-}
-
-.header_search form button i{
-    font-size: larger;
-}
-.header_tile{
-    border: 1px solid black;
-    width: calc((100%/12)*3);
-}
 
 /*END HEADER*/
 /*START BANNER*/
-.banner{
-    width: 100%;
-}
-
-.banner img{
-    width: 100%;
-}

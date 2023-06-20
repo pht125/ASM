@@ -14,6 +14,41 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
     </head>
+    <style>
+        .banner{
+            width: 100%;
+        }
+
+        .banner img{
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .banner_desc_info{
+            background: rgba(29, 29, 29, 0.7);
+            position: relative;
+            top: -300px;
+            left: 50px;
+            width: 50%;
+            height: auto;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .banner_desc_info h1{
+            color: white;
+            margin-left: 10px;
+        }
+        .banner_desc_info p{
+            width: 90%;
+            color: white;
+            margin: 10px;
+
+        }
+    </style>
     <body>
         <!--START HEADER-->
         <div>
@@ -22,11 +57,11 @@
         <!--END HEADER-->
         <!--START DESCRIPTION BANNER-->
         <div class="banner">
-            <<img class="banner_img" src="https://cdn.shopify.com/s/files/1/0636/9044/0949/collections/Ban-phim-co.png?v=1676875156&width=1000" alt="alt"/>
+            <img class="banner_img" src="https://cdn.shopify.com/s/files/1/0636/9044/0949/collections/Ban-phim-co.png?v=1676875156&width=1000" alt="alt"/>
             <div class="banner_desc_info">
-                <h3>
+                <h1>
                     Bàn Phím
-                </h3>
+                </h1>
                 <p>
                     Bàn phím thoải mái cho lập trình viên hoặc game thử giảm mệt mỏi khi sử dụng máy tính lâu dài.
                 </p>
@@ -37,73 +72,47 @@
         </div>
         <!--END DESCRIPTION BANNER-->
         <!--START COLLECTION-->
-        <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+        <div class="page-content">
+            <div class="container">
+                <div class="product-content flex-row" style="justify-content: left">
+                    <c:forEach items="${requestScope.listKeeb}" var="product">
+                        <div class="item-product">
+                            <div class="item-product-content">
+                                
+                                <a href="detail?id=${product.product_id}" class="flex-col">
+                                    <div class="box-img">
+                                        <div class="prd-img">
+                                            <img width="300" height="300" src="img/product/${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                        </div>
+                                        <c:if test="${product.product_name == 'Bóng Đèn Rọi Spotlight Tapo L630 RGB Chuôi GU10'}">
+                                            <div class="out-of-stock-label">Hết hàng</div>
+                                        </c:if>
+                                    </div>
+                                    <div class="box-text">
+                                        <div style="height: 50px">
+                                            <h5 class="product-name">${product.product_name}</h5>
+                                        </div>
 
-            <!-- First Photo Grid-->
-            <div class="w3-row-padding w3-padding-16 w3-center row-product" id="food">
-                <!-- <div class="product w3-center" id="food"></div> -->
-                <c:forEach items="${data}" var="item" varStatus="loop">
-                    <c:if test="${loop.index < 4}">
-                        <div class="w3-quarter session-product">
-                            <img class="img" src="${item.image}" alt="" style="width:100%">
-                            <div>
-                                <h3>${item.name}</h3>
-                                <c:if test="${item.description == ''}">
-                                    <p style="margin-top: 0px;">No description</p>
-                                </c:if>
-                                <p style="margin-top: 0px;"> ${item.description}</p>
-                            </div>
-                            <div class="price-addtocart">
-                                <p class="text">${item.price}.000 ₫</p>
-                                <form action="addtocart" method="post">
-                                    <input name="productID" hidden value="${item.productID}"></input>
-                                    <input type="submit" name="add" value="Add to cart"
-                                           class="btn btn-addtocart">
-                                </form>
+                                        <div class="price-wrapper">
+                                            <span class="price">
+                                                
+                                                <span class="woocommerce-Price-amount amount">
+                                                    <bdi><fmt:formatNumber type = "number" 
+                                                                           maxFractionDigits = "0" value = "${(product.price * (100 - product.promopercent) / 100)}" />
+                                                        <span class="woocommerce-Price-currencySymbol">
+                                                            ₫
+                                                        </span>
+                                                    </bdi>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
-                    </c:if>
-                </c:forEach>
-            </div>
-
-            <!-- Second Photo Grid-->
-            <div class="w3-row-padding w3-padding-16 w3-center row-product" id="food">
-                <!-- <div class="product w3-center" id="food"></div> -->
-                <c:forEach items="${data}" var="item" varStatus="loop">
-                    <c:if test="${loop.index >= 4 && loop.index < 9}">
-                        <div class="w3-quarter session-product">
-                            <img class="img" src="${item.image}" alt="" style="width:100%">
-                            <div>
-                                <h3>${item.name}</h3>
-                                <c:if test="${item.description == ''}">
-                                    <p style="margin-top: 0px;">No description</p>
-                                </c:if>
-                                <p style="margin-top: 0px;"> ${item.description}</p>
-                            </div>
-                            <div class="price-addtocart">
-                                <p class="text">${item.price}.000 ₫</p>
-                                <form action="addtocart" method="post">
-                                    <input name="productID" hidden value="${item.productID}"></input>
-                                    <input type="submit" name="add" value="Add to cart"
-                                           class="btn btn-addtocart">
-                                </form>
-                            </div>
-                        </div>
-                    </c:if>
-                </c:forEach>
-            </div>
-
-            <!-- Pagination -->
-            <div class="w3-center w3-padding-32">
-                <div class="w3-bar">
-                    <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-                    <a href="home?page=1" class="w3-bar-item w3-black w3-button">1</a>
-                    <a href="home?page=2" class="w3-bar-item w3-button w3-hover-black">2</a>
-                    <a href="home?page=3" class="w3-bar-item w3-button w3-hover-black">3</a>
-                    <a href="home?page=4" class="w3-bar-item w3-button w3-hover-black">4</a>
-                    <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+                    </c:forEach>
                 </div>
             </div>
-            <!--END COLLECTION-->
+        </div>
     </body>
 </html>
