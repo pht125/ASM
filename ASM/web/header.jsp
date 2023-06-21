@@ -96,7 +96,7 @@
                 </form>
             </div>
             <div class="header_tile">
-
+                <a href="logout">Log out</a>
             </div>
         </div>
     </body>

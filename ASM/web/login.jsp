@@ -115,14 +115,14 @@
         <div class="outline_signin">
             <form action="login" method="post" class="form-signin">
 
-                <h1 class="h3 mb-3 font-weight-normal">Đăng nhập</h1>
+                <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
                 <!--            <label for="inputEmail" class="sr-only">Email address</label>
                             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                             <label for="inputPassword" class="sr-only">Password</label>
                             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>-->
                 <table>
 
-                    <input name="email" type="text" id="inputUsername" class="form-control" placeholder="Username" required>
+                    <input name="email" type="text" id="inputUsername" class="form-control" placeholder="Email" required>
 
                     <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
@@ -130,12 +130,12 @@
 
                 <div class="checkbox mb-3">
                     <label>
-                        <input name="check" type="checkbox" value="remember-me"> Lưu tài khoản
+                        <input name="check" type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Đăng nhập</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
                 <div>
-                    <a href="#" class="signup">Đăng ký ngay</a>
+                    <a href="signup.jsp" class="signup">Sign up</a>
                 </div>
                 <p class="mt-5 mb-3 text-muted">&copy; 2022-2023</p>
             </form>
