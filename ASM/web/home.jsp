@@ -72,12 +72,12 @@
             <nav>
                 <ul class="menuItems">
                     <li class="col-lg-2 col-md-5 menuItems_info">
-                        <a href="#">
+                        <a href="keeb">
                             <div>
                                 <div class="menuItems_image">
                                     <img src="images/menu_icon_keeb.png" alt="alt" />
                                 </div>
-                                <div class="menuItems_name" href='keeb_home.jsp' data-item='Bàn phím'>Bàn phím</div>
+                                <div class="menuItems_name" href='keeb' data-item='Bàn phím'>Bàn phím</div>
                             </div>
                         </a>
                     </li>

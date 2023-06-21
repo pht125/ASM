@@ -27,7 +27,7 @@
         .header_logo{
             /*border: 1px solid black;*/
             width: calc((100%/12)*3);
-            
+            cursor: pointer;
         }
 
         .header_logo img{
@@ -82,7 +82,9 @@
         <div class="header">
 
             <div class="header_logo">
-                <img src="images/web_logo.png">
+                <a href="home">
+                    <img src="images/web_logo_white.png">
+                </a>
             </div>
             <div class="header_search">
                 <form>

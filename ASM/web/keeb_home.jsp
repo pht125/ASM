@@ -3,7 +3,7 @@
     Created on : Jun 18, 2023, 10:05:00 PM
     Author     : Admin
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -82,11 +82,9 @@
                                 <a href="detail?id=${product.product_id}" class="flex-col">
                                     <div class="box-img">
                                         <div class="prd-img">
-                                            <img width="300" height="300" src="img/product/${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                            <img width="300" height="300" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
-                                        <c:if test="${product.product_name == 'Bóng Đèn Rọi Spotlight Tapo L630 RGB Chuôi GU10'}">
-                                            <div class="out-of-stock-label">Hết hàng</div>
-                                        </c:if>
+                                        
                                     </div>
                                     <div class="box-text">
                                         <div style="height: 50px">
@@ -96,14 +94,7 @@
                                         <div class="price-wrapper">
                                             <span class="price">
                                                 
-                                                <span class="woocommerce-Price-amount amount">
-                                                    <bdi><fmt:formatNumber type = "number" 
-                                                                           maxFractionDigits = "0" value = "${(product.price * (100 - product.promopercent) / 100)}" />
-                                                        <span class="woocommerce-Price-currencySymbol">
-                                                            ₫
-                                                        </span>
-                                                    </bdi>
-                                                </span>
+                                                
                                             </span>
                                         </div>
                                     </div>

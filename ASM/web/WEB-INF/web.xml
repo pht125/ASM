@@ -19,6 +19,18 @@
         <servlet-name>keebServlet</servlet-name>
         <servlet-class>controller.keebServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>mouseServlet</servlet-name>
+        <servlet-class>controller.mouseServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>padServlet</servlet-name>
+        <servlet-class>controller.padServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>switchServlet</servlet-name>
+        <servlet-class>controller.switchServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -34,6 +46,18 @@
     <servlet-mapping>
         <servlet-name>keebServlet</servlet-name>
         <url-pattern>/keeb</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mouseServlet</servlet-name>
+        <url-pattern>/mouse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>padServlet</servlet-name>
+        <url-pattern>/pad</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>switchServlet</servlet-name>
+        <url-pattern>/switch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
