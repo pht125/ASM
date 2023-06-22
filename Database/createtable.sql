@@ -3,7 +3,7 @@
 --drop table account
 --drop table product
 --drop table category
-
+z	
 CREATE TABLE category(
 	cate_id int PRIMARY KEY identity(1,1),
 	name nvarchar(50),
@@ -16,7 +16,7 @@ CREATE TABLE product (
 	product_name nvarchar(100),
 	brand varchar(50),
 	price int,
-	sale_price int,
+	sale_percent int,
 	quantity int,
 	img varchar(max),
 	description nvarchar(max)

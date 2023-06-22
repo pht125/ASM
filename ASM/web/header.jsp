@@ -75,6 +75,29 @@
         .header_tile{
             /*border: 1px solid black;*/
             width: calc((100%/12)*3);
+            display: flex;
+        }
+        
+        .header_tile a{
+            text-decoration: none;
+        }
+        
+        .user_account{
+            width: 10%;
+            height: 100%;
+            /*border: 1px solid black;*/
+            display: flex;
+            margin-left: 100px;
+            align-items: center;
+        }
+        
+        .shopping_cart{
+            width: 10%;
+            height: 100%;
+            /*border: 1px solid black;*/
+            display: flex;
+            
+            align-items: center;
         }
 
     </style>
@@ -96,7 +119,8 @@
                 </form>
             </div>
             <div class="header_tile">
-                <a href="logout">Log out</a>
+                <a class="user_account" href="logout"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                <a class="shopping_cart" href="#"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
             </div>
         </div>
     </body>

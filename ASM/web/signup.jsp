@@ -10,47 +10,80 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-
+        <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
         <style>
-            html,
-            body {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                min-height: 100vh;
-                font-family: Hack, monospace;
+
+
+
+            /*--------------------------*/
+            body{
+                margin: 0;
+
             }
 
-            body {
-                display: -ms-flexbox;
-                display: -webkit-box;
+            .outline_signup_form{
                 display: flex;
-                -ms-flex-align: center;
-                -ms-flex-pack: center;
-                -webkit-box-align: center;
-                align-items: center;
-                -webkit-box-pack: center;
                 justify-content: center;
-                padding-top: 40px;
-                padding-bottom: 40px;
-                background-color: #f5f5f5;
+                align-items: center;
+                flex-wrap: wrap;
             }
 
-            .outline_signin{
+            .outline_signup{
                 background-color: rgba(227, 227, 227, 0.59);
-                margin-top: 30px;
+                margin-top: 80px;
+                padding: 30px 0px;
+                width: 40%;
+                height: auto;
+                border-radius: 20px;
             }
-            .form-signin {
+
+            .outline_signup h1{
+                display: flex;
+                justify-content: center;
+            }
+
+            .signup_form_input{
                 width: 100%;
-                max-width: 330px;
+
+            }
+
+            .inputName{
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .inputName_half{
+                width: 40%;
+            }
+
+
+
+            .inputName div input{
+                border-radius: 30px;
+                border: none;
+                height: 3rem;
+                padding: 0 20px 0;
+                margin: 10px;
+            }
+
+            .inputBox input{
+                width: calc((100%/12)*10);
+                border-radius: 30px;
+                border: none;
+                height: 3rem;
+                padding: 0 20px 0;
+                margin: 10px;
+
+            }
+
+            .form-signup {
+                width: 100%;
+                max-width: 400px;
                 padding: 15px;
                 margin: 0 auto;
                 text-align: center;
             }
-            .form-signin .checkbox {
+            .form-signup .checkbox {
                 font-weight: 400;
             }
 
@@ -58,7 +91,7 @@
                 text-align: match-parent;
                 margin: 10px 0 20px;
             }
-            .form-signin .form-control {
+            .form-signup .form-control {
                 position: relative;
                 box-sizing: border-box;
                 height: auto;
@@ -66,18 +99,7 @@
                 font-size: 16px;
             }
 
-            .form-signin input[type="email"] {
-                margin-bottom: -1px;
-                border-bottom-right-radius: 0;
-                border-bottom-left-radius: 0;
-            }
-            .form-signin input[type="password"] {
-                margin-bottom: 10px;
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-            }
-
-            .form-signin button {
+            .signup_button{
                 width: 10rem;
                 height: 2rem;
                 border-radius: 30px;
@@ -90,10 +112,11 @@
                 font-weight: bold;
             }
 
-            .form-signin button:hover{
+
+            .signup_button:hover{
                 background-color: white;
                 color: black;
-                
+
             }
 
             .signup{
@@ -104,35 +127,53 @@
             .signup:hover{
                 color: red;
             }
-            
-            #inputUsername{
-                margin: 0 0 20px;
-            }
         </style>
     </head>
     <body class="text-center">
-        <img class="mb-4" src="images/web_logo.png" alt="" width="210" height="100">
-        <div class="outline_signin">
-            <form action="signup" method="post" class="form-signin">
+        <div>
+            <%@include file="header.jsp" %>
+        </div>
 
-                <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+        <div class="outline_signup_form">
+            <div class="outline_signup">
+                <h1>Sign up</h1>
                 <!--            <label for="inputEmail" class="sr-only">Email address</label>
                             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                             <label for="inputPassword" class="sr-only">Password</label>
                             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>-->
-                <table>
+                <form action="signup" method="post" class="form-signup">
 
-                    <input name="name" type="text" id="inputUsername" class="form-control" placeholder="User name" required>
-                    
-                    <input name="email" type="text" id="inputUsername" class="form-control" placeholder="Email" required>
-                    
-                    <input name="phone" type="text" id="inputUsername" class="form-control" placeholder="Phone number" required>
-                    
-                    <input name="address" type="text" id="inputUsername" class="form-control" placeholder="Address" required>
 
-                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    
-                    <input name="repassword" type="password" id="inputPassword" class="form-control" placeholder="Re-Password" required>
+                    <div class="signup_form_input">
+                        <div class="inputBox" style="display: flex;">
+                            <div class="inputName_half" style="margin-right: 10%">
+                                <input name="firstname" type="text" placeholder="First name" required autofocus>
+                            </div>
+                            <div class="inputName_half">
+                                <input name="lastname" type="text" placeholder="Last name" required >
+                            </div>
+                        </div>
+                        <div class="inputBox">
+                            <input name="email" type="text" placeholder="Email" required autofocus>
+                        </div>
+                        <div class="inputBox">
+                            <input name="phone" type="text" placeholder="Phone number" required >
+                        </div>
+                        <div class="inputBox">
+                            <input name="address" type="text" placeholder="Address" required >
+                        </div>
+                        <div class="inputBox">
+                            <input name="password" type="password" placeholder="Password" required>
+                        </div>
+                        <div class="inputBox">
+                            <input name="repassword" type="password" placeholder="Re-Password" required>
+                        </div>
+                    </div>
+                    <button class="signup_button" type="submit">Sign up</button>
+                    <h3 style="color: red; text-align: center;">${error}</h3>
+                    <div>
+                        <a href="login.jsp" class="signup">Already have account</a>
+                    </div>
                     <div class="d-flex mb-5 align-items-center" style="color: white;">
                         <label class="control control--checkbox mb-0">
                             <span class="caption">I agree all statements in <a href="#!">Terms of service</a></span>
@@ -140,16 +181,12 @@
                             <div class="control__indicator"></div>
                         </label>
                     </div>
-                </table>
-
-                
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-                <h3 style="color: red; text-align: center;">${error}</h3>
-                <div>
-                    <a href="login.jsp" class="signup">Already have account</a>
-                </div>
-                <p class="mt-5 mb-3 text-muted">&copy; 2022-2023</p>
-            </form>
+                    <p class="mt-5 mb-3 text-muted">&copy; 2022-2023</p>
+                </form>
+            </div>
+        </div>
+        <div>
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>
