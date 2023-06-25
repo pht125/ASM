@@ -105,6 +105,8 @@
                 color: red;
             }
 
+            
+            
         </style>
     </head>
 
@@ -137,7 +139,7 @@
                 </form>
             </div>
         </div>
-        <div>
+        <div >
             <%@include file="footer.jsp" %>
         </div>
     </body>

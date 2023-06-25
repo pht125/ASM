@@ -15,9 +15,15 @@
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/homestyle.css"/>
     </head>
+    <style>
+        /*        .cate_menu{
+                    margin-bottom: 400px;
+                }*/
 
+    </style>
     <body>
-        <div>
+
+        <div class="header_home" >
             <%@include file="header.jsp" %>
         </div>
 
@@ -67,60 +73,53 @@
 
         <!----------------------------------------------------------------------------------------------->
 
-        <section>
-
-            <nav>
-                <ul class="menuItems">
-                    <li class="col-lg-2 col-md-5 menuItems_info">
-                        <a href="keeb">
-                            <div>
-                                <div class="menuItems_image">
-                                    <img src="images/menu_icon_keeb.png" alt="alt" />
-                                </div>
-                                <div class="menuItems_name" href='keeb' data-item='Bàn phím'>Bàn phím</div>
+        <div class="cate_menu">
+            <ul class="menuItems" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; position: unset;">
+                <li class="col-lg-2 col-md-5 menuItems_info">
+                    <a href="keeb">
+                        <div>
+                            <div class="menuItems_image">
+                                <img src="images/menu_icon_keeb.png" alt="alt" />
                             </div>
-                        </a>
-                    </li>
-                    <li class="col-lg-2 col-md-5 menuItems_info">
-                        <a href="#">
-                            <div>
-                                <div class="menuItems_image">
-                                    <img src="images/menu_icon_mouse.png" alt="alt" />
-                                </div>
-                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Chuột</div>
+                            <div class="menuItems_name" href='keeb' data-item='Bàn phím'>Bàn phím</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-lg-2 col-md-5 menuItems_info">
+                    <a href="#">
+                        <div>
+                            <div class="menuItems_image">
+                                <img src="images/menu_icon_mouse.png" alt="alt" />
                             </div>
-                        </a>
-                    </li>
-                    <li class="col-lg-2 col-md-5 menuItems_info">
-                        <a href="#">
-                            <div>
-                                <div class="menuItems_image">
-                                    <img src="images/menu_icon_pad.png" alt="alt" />
-                                </div>
-                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Lót chuột</div>
+                            <div class="menuItems_name" href='#' data-item='Bàn phím'>Chuột</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-lg-2 col-md-5 menuItems_info">
+                    <a href="#">
+                        <div>
+                            <div class="menuItems_image">
+                                <img src="images/menu_icon_pad.png" alt="alt" />
                             </div>
-                        </a>
-                    </li>
-                    <li class="col-lg-2 col-md-5 menuItems_info">
-                        <a class="underline_text" href="#">
-                            <div>
-                                <div class="menuItems_image">
-                                    <img src="images/menu_icon_switch.png" alt="alt" />
-                                </div>
-                                <div class="menuItems_name" href='#' data-item='Bàn phím'>Switch</div>
+                            <div class="menuItems_name" href='#' data-item='Bàn phím'>Lót chuột</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-lg-2 col-md-5 menuItems_info">
+                    <a class="underline_text" href="#">
+                        <div>
+                            <div class="menuItems_image">
+                                <img src="images/menu_icon_switch.png" alt="alt" />
                             </div>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-        </section>
-
-        <div>
+                            <div class="menuItems_name" href='#' data-item='Bàn phím'>Switch</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer_home">
             <%@include file="footer.jsp" %>
         </div>
-
-
 
         <script type="text/javascript">
             var counter = 1;

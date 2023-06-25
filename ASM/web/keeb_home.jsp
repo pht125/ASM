@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix = "fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link rel="stylesheet" href="css/keeb_homestyle.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
     </head>
@@ -48,6 +50,31 @@
             margin: 10px;
 
         }
+
+        .product-content{
+            display: flex;
+            justify-content: left;
+        }
+
+        .item-product{
+            padding-left: calc(var(--bs-gutter-x) * 2);
+            padding-right: calc(var(--bs-gutter-x) * 5);
+        }
+        
+        .box_image{
+            overflow: hidden;
+        }
+        
+        .product_image img{
+            object-fit: cover;
+            transition: transform 0.8s;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .product_image:hover{
+            transform: scale(1.05);
+        }
     </style>
     <body>
         <!--START HEADER-->
@@ -74,28 +101,41 @@
         <!--START COLLECTION-->
         <div class="page-content">
             <div class="container">
-                <div class="product-content flex-row" style="justify-content: left">
+                <div class="product-content row" style="display: flex; justify-content: space-around;justify-content: left;">
                     <c:forEach items="${requestScope.listKeeb}" var="product">
-                        <div class="item-product">
-                            <div class="item-product-content">
-                                
-                                <a href="detail?id=${product.product_id}" class="flex-col">
-                                    <div class="box-img">
-                                        <div class="prd-img">
-                                            <img width="300" height="300" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                        <div class=" col-md-2" style=" margin: 20px;">
+                            <div class="item-product-content" style="padding: 10px;margin-bottom: 20px">
+                                <a href="detail?id=${product.product_id}" style="text-decoration: none; ">
+                                    <div class="box_image">
+
+                                        <div class="product_image">
+                                            <c:if test="${product.sale_percent != 0}">
+                                                <div class="badge text-white " style="top: 0.5rem; right: 0.5rem; margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
+                                            </c:if>
+                                            <img width="100%" height="auto" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="box-text">
                                         <div style="height: 50px">
-                                            <h5 class="product-name">${product.product_name}</h5>
+                                            <h5 class="product_name" style="color:rgba(21, 21, 21, 1);" >${product.product_name}</h5>
                                         </div>
 
                                         <div class="price-wrapper">
-                                            <span class="price">
-                                                
-                                                
-                                            </span>
+                                            <c:if test="${product.sale_percent == 0}">
+                                                <span class="price">
+                                                    <h5 style="color: rgba(90, 90, 90, 1);"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                </span>
+                                            </c:if>
+                                            <c:if test="${product.sale_percent != 0}">
+                                                <div class="price" style="display: flex;">
+                                                    <h5 style="color: rgba(255, 60, 60, 1)"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" />&nbsp&nbsp</h5>
+                                                    <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </a>
@@ -106,4 +146,5 @@
             </div>
         </div>
     </body>
+
 </html>

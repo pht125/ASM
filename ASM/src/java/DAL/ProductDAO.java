@@ -28,7 +28,7 @@ public class ProductDAO extends BaseDAO{
 //                p.setProduct_name(rs.getString("product_name"));
 //                p.setBrand(rs.getString("brand"));
 //                p.setPrice(rs.getInt("price"));
-//                p.setSale_price(rs.getInt("sale_price"));
+//                p.setSale_percent(rs.getInt("sale_percent"));
 //                p.setQuantity(rs.getInt("quantity"));
 //                p.setImg(rs.getString("img"));
 //                p.setDescription(rs.getString("description"));
@@ -59,7 +59,7 @@ public class ProductDAO extends BaseDAO{
                 p.setProduct_name(rs.getString("product_name"));
                 p.setBrand(rs.getString("brand"));
                 p.setPrice(rs.getInt("price"));
-                p.setSale_price(rs.getInt("sale_price"));
+                p.setSale_percent(rs.getInt("sale_percent"));
                 p.setQuantity(rs.getInt("quantity"));
                 p.setImg(rs.getString("img"));
                 p.setDescription(rs.getString("description"));
@@ -84,7 +84,7 @@ public class ProductDAO extends BaseDAO{
                 p.setProduct_name(rs.getString("product_name"));
                 p.setBrand(rs.getString("brand"));
                 p.setPrice(rs.getInt("price"));
-                p.setSale_price(rs.getInt("sale_price"));
+                p.setSale_percent(rs.getInt("sale_percent"));
                 p.setQuantity(rs.getInt("quantity"));
                 p.setImg(rs.getString("img"));
                 p.setDescription(rs.getString("description"));
@@ -109,7 +109,7 @@ public class ProductDAO extends BaseDAO{
                 p.setProduct_name(rs.getString("product_name"));
                 p.setBrand(rs.getString("brand"));
                 p.setPrice(rs.getInt("price"));
-                p.setSale_price(rs.getInt("sale_price"));
+                p.setSale_percent(rs.getInt("sale_percent"));
                 p.setQuantity(rs.getInt("quantity"));
                 p.setImg(rs.getString("img"));
                 p.setDescription(rs.getString("description"));
@@ -134,7 +134,7 @@ public class ProductDAO extends BaseDAO{
                 p.setProduct_name(rs.getString("product_name"));
                 p.setBrand(rs.getString("brand"));
                 p.setPrice(rs.getInt("price"));
-                p.setSale_price(rs.getInt("sale_price"));
+                p.setSale_percent(rs.getInt("sale_percent"));
                 p.setQuantity(rs.getInt("quantity"));
                 p.setImg(rs.getString("img"));
                 p.setDescription(rs.getString("description"));

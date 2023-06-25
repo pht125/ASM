@@ -14,7 +14,7 @@ public class product {
     private String product_name;
     private String brand;
     private int price;
-    private int sale_price;
+    private int sale_percent;
     private int quantity;
     private String img;
     private String description;
@@ -22,13 +22,13 @@ public class product {
     public product() {
     }
 
-    public product(int cate_id, String product_id, String product_name, String brand, int price, int sale_price, int quantity, String img, String description) {
+    public product(int cate_id, String product_id, String product_name, String brand, int price, int sale_percent, int quantity, String img, String description) {
         this.cate_id = cate_id;
         this.product_id = product_id;
         this.product_name = product_name;
         this.brand = brand;
         this.price = price;
-        this.sale_price = sale_price;
+        this.sale_percent = sale_percent;
         this.quantity = quantity;
         this.img = img;
         this.description = description;
@@ -74,12 +74,12 @@ public class product {
         this.price = price;
     }
 
-    public int getSale_price() {
-        return sale_price;
+    public int getSale_percent() {
+        return sale_percent;
     }
 
-    public void setSale_price(int sale_price) {
-        this.sale_price = sale_price;
+    public void setSale_percent(int sale_percent) {
+        this.sale_percent = sale_percent;
     }
 
     public int getQuantity() {
@@ -108,7 +108,7 @@ public class product {
 
     @Override
     public String toString() {
-        return "product{" + "cate_id=" + cate_id + ", product_id=" + product_id + ", product_name=" + product_name + ", brand=" + brand + ", price=" + price + ", sale_price=" + sale_price + ", quantity=" + quantity + ", img=" + img + ", description=" + description + '}';
+        return "product{" + "cate_id=" + cate_id + ", product_id=" + product_id + ", product_name=" + product_name + ", brand=" + brand + ", price=" + price + ", sale_percent=" + sale_percent + ", quantity=" + quantity + ", img=" + img + ", description=" + description + '}';
     }
     
 }
