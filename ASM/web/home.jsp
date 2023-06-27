@@ -117,6 +117,52 @@
                 </li>
             </ul>
         </div>
+
+        <div class="page-content">
+            <div class="container">
+                <div class="product-content row" style="display: flex; justify-content: left;">
+                    <c:forEach items="${requestScope.listFeatured}" var="product">
+                        <div class="col-lg-3 col-md-4 col-sm-6" style="position: relative">
+                            <div class="item-product-content" style="padding: 10px;margin-bottom: 20px">
+                                <a href="detail?id=${product.product_id}" style="text-decoration: none; ">
+                                    <div class="box_image">
+                                        <div class="product_image">
+                                            <c:if test="${product.sale_percent > 0}">
+                                                <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
+                                            </c:if>
+                                            <img width="100%" height="auto" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                        </div>
+                                    </div>
+                                    <div class="box-text">
+                                        <div style="height: 50px">
+                                            <h5 class="product_name" style="color:rgba(21, 21, 21, 1);" >${product.product_name}</h5>
+                                        </div>
+
+                                        <div class="price-wrapper">
+                                            <c:if test="${product.sale_percent == 0}">
+                                                <span class="price">
+                                                    <h5 style="color: rgba(90, 90, 90, 1);"><fmt:formatNumber type = "number" 
+                                                                                                              maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                </span>
+                                            </c:if>
+                                            <c:if test="${product.sale_percent >     0}">
+                                                <div class="price" style="display: flex;">
+                                                    <h5 style="color: rgba(255, 60, 60, 1)"><fmt:formatNumber type = "number" 
+                                                                                                              maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" />&nbsp&nbsp</h5>
+                                                    <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
+                                                                                                                                               maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                </div>
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
+
         <div class="footer_home">
             <%@include file="footer.jsp" %>
         </div>
