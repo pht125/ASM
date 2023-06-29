@@ -112,7 +112,7 @@
             <div class="header_search">
                 <form action="search" method="post">
                     
-                        <input name="name" type="text" placeholder=" Search in website">
+                    <input value="${nameSearch}" name="name" type="text" placeholder=" Search in website">
                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     
                 </form>

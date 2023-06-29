@@ -32,11 +32,13 @@ public class SearchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         ProductDAO pdao = new ProductDAO();
         List<product> list = pdao.getProductByName(name);
         if (list != null) {
             request.setAttribute("listSearch", list);
+            request.setAttribute("nameSearch", name);
             request.getRequestDispatcher("search.jsp").forward(request, response);
         } else {
             response.sendRedirect("home.jsp");
