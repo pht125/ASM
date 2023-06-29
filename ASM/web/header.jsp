@@ -4,13 +4,14 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
+
     </head>
     <style>
         .header{
@@ -73,31 +74,35 @@
             font-size: larger;
         }
         .header_tile{
-            /*border: 1px solid black;*/
+            /*border: 1px solid white;*/
             width: calc((100%/12)*3);
             display: flex;
         }
-        
+
         .header_tile a{
             text-decoration: none;
         }
-        
-        .user_account{
-            width: 10%;
-            height: 100%;
-            /*border: 1px solid black;*/
-            display: flex;
-            margin-left: 100px;
-            align-items: center;
+
+        .header_title_row{
+            width: calc((100%/12)*4);
         }
-        
-        .shopping_cart{
-            width: 10%;
-            height: 100%;
-            /*border: 1px solid black;*/
+
+        .header_title_row a{
+            /*border: 1px solid red;*/
+            margin: auto;
             display: flex;
-            
+            margin-top: 50%;
             align-items: center;
+            justify-content: center;
+        }
+        .header_title_row h5{
+            /*border: 1px solid red;*/
+            color: white;
+            margin: auto;
+            display: flex;
+            margin-top: 42%;
+            align-items: center;
+            justify-content: center;
         }
 
     </style>
@@ -111,15 +116,33 @@
             </div>
             <div class="header_search">
                 <form action="search" method="post">
-                    
+
                     <input value="${nameSearch}" name="name" type="text" placeholder=" Search in website">
-                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    
+                    <button style="margin-left: 4px" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+
                 </form>
             </div>
             <div class="header_tile">
-                <a class="user_account" href="logout"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
-                <a class="shopping_cart" href="#"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
+                <c:if test="${sessionScope.acc == null}">
+                    <div class="header_title_row" style="display: flex;">
+                        <h5>${sessionScope.acc.name}</h5>
+                        <a href="login"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.acc != null}">
+                    <div class="header_title_row" style="display: flex;">
+                        <h5>${sessionScope.acc.name}</h5>
+                        <a href="info"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                    </div>
+                </c:if>
+                <div class="header_title_row">
+                    <a href="#"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
+                </div>
+                <c:if test="${sessionScope.acc != null}">
+                    <div class="header_title_row">
+                        <a href="logout"><i class="fa-solid fa-right-from-bracket fa-lg" style="color: #ffffff;"></i></a>
+                    </div>
+                </c:if>
             </div>
         </div>
     </body>

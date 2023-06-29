@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
+
         <style>
             body{
                 margin: 0;
@@ -122,7 +123,7 @@
 
                     <div class="login_form_input">
                         <div class="inputBox">
-                            <input name="email" type="text" placeholder="Email" required >
+                            <input name="email" type="email" placeholder="Email" required >
                         </div>
                         <div class="inputBox">
                             <input name="password" type="password" placeholder="Password" required>
@@ -134,6 +135,9 @@
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
                     <div>
                         <a href="signup.jsp" class="signup">Sign up</a>
+                    </div>
+                    <div style="color: red">
+                        <h5>${error}</h5>
                     </div>
                     <p class="mt-5 mb-3 text-muted">&copy; 2022-2023</p>
                 </form>

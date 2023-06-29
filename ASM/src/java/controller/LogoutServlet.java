@@ -35,7 +35,8 @@ public class LogoutServlet extends HttpServlet {
         session.removeAttribute("role");
         session.removeAttribute("username");
         session.removeAttribute("password");
-        response.sendRedirect("login.jsp");
+        session.removeAttribute("acc");
+        response.sendRedirect("home");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
