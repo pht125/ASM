@@ -16,10 +16,24 @@ INSERT INTO product
 VALUES
 (1,'KB001',N'Bàn phím KBDfans TOFU60 2.0', 'KBDfans',4900000,0,30,'images/product_img/keeb/tofu60.jpg',''),
 (1,'KB002',N'Bàn phím KBDfans TOFU65 2.0', 'KBDfans',5300000,0,30,'images/product_img/keeb/tofu65.jpg',''),
-(1,'KB003',N'Bàn phím Glorious GMMK PRO', 'Glorious',4500000,2,30,'images/product_img/keeb/gmmk_pro.jpg',''),
+(1,'KB003',N'Bàn phím Glorious GMMK PRO', 'Glorious',4500000,10,30,'images/product_img/keeb/gmmk_pro.jpg',''),
 (1,'KB004',N'Bàn phím Glorious GMMK 2 Compact 65%', 'Glorious',2100000,0,30,'images/product_img/keeb/gmmk_compact_65.jpg',''),
 (1,'KB005',N'Bàn phím Filco Majestouch Minila-R Convertible', 'Filco',4100000,0,30,'images/product_img/keeb/minila_r.jpg',''),
 (1,'KB006',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+
+
+(1,'KB007',N'Bàn phím Keychron K8 Pro', 'Keychron',2600000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB008',N'Bàn phím Filco Majestouch Minila-R Convertible Strawberry', 'Filco',4950000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB009',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB010',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB011',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB012',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB013',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB014',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB015',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB016',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB017',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
+(1,'KB018',N'Bàn phím Filco Majestouch 2SC - Tenkeyless', 'Filco',3800000,0,30,'images/product_img/keeb/2sc_tkl.jpg',''),
       
 (2,'MS001',N'Chuột Lamzu Atlantis OG V2', 'Lamzu',2500000,0,30,'',''),
 (2,'MS002',N'Chuột Pulsar X2 Wireless X RandomfrankP', 'Pulsar',2500000,0,30,'',''), 

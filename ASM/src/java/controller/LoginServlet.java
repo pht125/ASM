@@ -86,7 +86,7 @@ public class LoginServlet extends HttpServlet {
 
         // check account
         AccountDAO accountDAO = new AccountDAO();
-        account account = accountDAO.checkAccount(mail, pass);        
+        account account = accountDAO.checkAccount(mail, pass);
         // set session
         if (account != null) {
             if (account.getRole() == UserRole.ADMIN.getValue()) {

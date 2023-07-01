@@ -222,13 +222,24 @@ public class ProductDAO extends BaseDAO {
         }
         return list;
     }
+    
+    public int getNumberOfKeeb(){
+        try {
+            String sql ="select count(*) from product where cate_id = 1";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 
     public static void main(String[] args) {
         ProductDAO pdao = new ProductDAO();
-        List<product> list = pdao.getProductKeeb();
-        for (product product : list) {
-            System.out.println(product);
-        }
+        int list = pdao.getNumberOfKeeb();
+        
     }
 
 }

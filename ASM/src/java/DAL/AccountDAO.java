@@ -93,6 +93,10 @@ public class AccountDAO extends BaseDAO {
             System.out.println(ex);
         }
     }
+    
+//    public void updateAccount(account account){
+//        String sql = 
+//    }
 
     public static void main(String[] args) {
 

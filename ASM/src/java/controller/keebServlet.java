@@ -33,6 +33,22 @@ public class keebServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ProductDAO pdao = new ProductDAO();
+        int page = 12;
+        int index = 1;
+        int num = pdao.getNumberOfKeeb();
+        int numpage = num / page;
+        int num2 = num % page;
+        
+        if(num!= 0 && num2!=0){
+            numpage++;
+        }
+        
+        try {
+            index = Integer.parseInt(request.getParameter("index"));
+        } catch (NumberFormatException e) {
+            System.out.println("error");
+        }
+        
         List<product> list = pdao.getProductKeeb();
         if (list != null) {
             request.setAttribute("listKeeb", list);

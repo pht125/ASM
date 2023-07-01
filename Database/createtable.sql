@@ -3,7 +3,7 @@
 --drop table account
 --drop table product
 --drop table category
-z	
+
 CREATE TABLE category(
 	cate_id int PRIMARY KEY identity(1,1),
 	name nvarchar(50),
@@ -11,6 +11,7 @@ CREATE TABLE category(
 )
 
 CREATE TABLE product (
+	id int identity(1,1),
 	cate_id int REFERENCES category (cate_id),
 	product_id varchar(50) PRIMARY KEY,
 	product_name nvarchar(100),
