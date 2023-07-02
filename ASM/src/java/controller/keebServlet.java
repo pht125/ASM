@@ -5,6 +5,7 @@
 package controller;
 
 import DAL.ProductDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -33,29 +34,36 @@ public class keebServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ProductDAO pdao = new ProductDAO();
-        int page = 12;
-        int index = 1;
-        int num = pdao.getNumberOfKeeb();
-        int numpage = num / page;
-        int num2 = num % page;
-        
-        if(num!= 0 && num2!=0){
-            numpage++;
+        int recordsPerPage = 4;
+        int page = 1;
+        if (request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
         }
-        
-        try {
-            index = Integer.parseInt(request.getParameter("index"));
-        } catch (NumberFormatException e) {
-            System.out.println("error");
-        }
-        
-        List<product> list = pdao.getProductKeeb();
-        if (list != null) {
-            request.setAttribute("listKeeb", list);
-            request.getRequestDispatcher("keeb_home.jsp").forward(request, response);
+        List<product> list = pdao.pagingKeeb(page, recordsPerPage);
+        if (list == null) {
+            response.sendRedirect("index.html");
         } else {
-            response.sendRedirect("home.jsp");
+            int noOfRecords = pdao.countKeeb();
+            int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+            request.setAttribute("listKeeb", list);
+            request.setAttribute("noOfPages", noOfPages);
+            request.setAttribute("currentPage", page);
+            request.getRequestDispatcher("keeb_home.jsp").forward(request, response);
         }
+
+//        try {
+//            index = Integer.parseInt(request.getParameter("index"));
+//        } catch (NumberFormatException e) {
+//            System.out.println("error");
+//        }
+//        
+////        List<product> list = pdao.getProductKeeb();
+//        if (list != null) {
+//            request.setAttribute("listKeeb", list);
+//            request.getRequestDispatcher("keeb_home.jsp").forward(request, response);
+//        } else {
+//            response.sendRedirect("home.jsp");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

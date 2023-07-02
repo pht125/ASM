@@ -6,7 +6,10 @@ package DAL;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.product;
 
 /**
@@ -195,14 +198,14 @@ public class ProductDAO extends BaseDAO {
         }
         return null;
     }
-    
+
     public List<product> getProductByName(String name) {
         List<product> list = new ArrayList();
         String sql = "select * from product where product_name like ?";
-        
+
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,"%" +name+"%");
+            statement.setString(1, "%" + name + "%");
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 product p = new product();
@@ -222,24 +225,61 @@ public class ProductDAO extends BaseDAO {
         }
         return list;
     }
-    
-    public int getNumberOfKeeb(){
+
+    public List<product> pagingKeeb(int page, int recordsPerPage) {
+        List<product> list = new ArrayList();
         try {
-            String sql ="select count(*) from product where cate_id = 1";
+            String sql = "SELECT cate_id,product_id,product_name,brand,price,sale_percent,quantity,img,description\n"
+                    + "FROM\n"
+                    + "(SELECT ROW_NUMBER() OVER (ORDER BY product_id ASC) as rownum, cate_id, product_id,product_name,brand,price,sale_percent,quantity,img,description FROM product)as tblHuman \n"
+                    + "WHERE\n"
+                    + "cate_id = 1 and \n"
+                    + "rownum >= ((?-1) * ?) + 1 AND rownum <= ? * ?";
             PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, page);
+            statement.setInt(2, recordsPerPage);
+            statement.setInt(3, recordsPerPage);
+            statement.setInt(4, page);
             ResultSet rs = statement.executeQuery();
-            if(rs.next()){
-                return rs.getInt(1);
+            while (rs.next()) {
+                product p = new product();
+                p.setCate_id(rs.getInt("cate_id"));
+                p.setProduct_id(rs.getString("product_id"));
+                p.setProduct_name(rs.getString("product_name"));
+                p.setBrand(rs.getString("brand"));
+                p.setPrice(rs.getInt("price"));
+                p.setSale_percent(rs.getInt("sale_percent"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setImg(rs.getString("img"));
+                p.setDescription(rs.getString("description"));
+                list.add(p);
             }
         } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public int countKeeb() {
+        String sql = "SELECT COUNT(*) as totalrow FROM product where cate_id = 1";
+        PreparedStatement statement;
+        try {
+            statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("totalrow");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BaseDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
 
     public static void main(String[] args) {
         ProductDAO pdao = new ProductDAO();
-        int list = pdao.getNumberOfKeeb();
-        
+        List<product> list = pdao.pagingKeeb(1, 12);
+        for (product object : list) {
+            System.out.println(object);
+        }
     }
 
 }

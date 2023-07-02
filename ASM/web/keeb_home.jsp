@@ -60,18 +60,18 @@
             padding-left: calc(var(--bs-gutter-x) * 2);
             padding-right: calc(var(--bs-gutter-x) * 5);
         }
-        
+
         .box_image{
             overflow: hidden;
         }
-        
+
         .product_image img{
             object-fit: cover;
             transition: transform 0.8s;
             cursor: pointer;
             overflow: hidden;
         }
-        
+
         .product_image:hover{
             transform: scale(1.05);
         }
@@ -143,6 +143,35 @@
                 </div>
             </div>
         </div>
-    </body>
+
+        <%--For displaying Previous link except for the 1st page --%>
+        <c:if test="${currentPage != 1}">
+        <td><a href="keeb?page=${currentPage - 1}">Previous</a></td>
+    </c:if>
+
+    <%--For displaying Page numbers. The when condition does not display
+                a link for the current page--%>
+
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <c:forEach begin="1" end="${noOfPages}" var="i">
+                <c:choose>
+                    <c:when test="${currentPage eq i}">
+                        <td>${i}</td>
+                    </c:when>
+                    <c:otherwise>
+                        <td><a href="keeb?page=${i}">${i}</a></td>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+        </tr>
+    </table>
+
+    <%--For displaying Next link --%>
+
+    <c:if test="${currentPage lt noOfPages}">
+        <td><a href="keeb?page=${currentPage + 1}">Next</a></td>
+    </c:if>
+</body>
 
 </html>
