@@ -34,7 +34,7 @@ public class keebServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ProductDAO pdao = new ProductDAO();
-        int recordsPerPage = 4;
+        int recordsPerPage = 8;
         int page = 1;
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));

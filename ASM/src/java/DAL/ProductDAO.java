@@ -149,7 +149,7 @@ public class ProductDAO extends BaseDAO {
 
     public List<product> getFeaturedProduct() {
         List<product> list = new ArrayList();
-        String sql = "select top 12 percent * from product order by newid()";
+        String sql = "select top 4 percent * from product order by newid()";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();

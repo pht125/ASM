@@ -111,11 +111,11 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
-                                            <img width="100%" height="auto" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>
                                     <div class="box-text">
-                                        <div style="height: 50px">
+                                        <div style="height: 50px;margin-bottom: 25px">
                                             <h5 class="product_name" style="color:rgba(21, 21, 21, 1);" >${product.product_name}</h5>
                                         </div>
 
@@ -144,34 +144,36 @@
             </div>
         </div>
 
-        <%--For displaying Previous link except for the 1st page --%>
-        <c:if test="${currentPage != 1}">
-        <td><a href="keeb?page=${currentPage - 1}">Previous</a></td>
-    </c:if>
+        <div class="paging_menu" style="display: flex;justify-content: center; margin: 20px 0px">
+            <%--For displaying Previous link except for the 1st page --%>
+            <c:if test="${currentPage != 1}">
+                <td><a href="keeb?page=${currentPage - 1}"><i class="fa-solid fa-chevron-left" style="color: #000000;"></i></a></td>
+            </c:if>
 
-    <%--For displaying Page numbers. The when condition does not display
-                a link for the current page--%>
+            <%--For displaying Page numbers. The when condition does not display
+                        a link for the current page--%>
 
-    <table border="1" cellpadding="5" cellspacing="5">
-        <tr>
-            <c:forEach begin="1" end="${noOfPages}" var="i">
-                <c:choose>
-                    <c:when test="${currentPage eq i}">
-                        <td>${i}</td>
-                    </c:when>
-                    <c:otherwise>
-                        <td><a href="keeb?page=${i}">${i}</a></td>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-        </tr>
-    </table>
+            <table style=" margin: 0px 5px 13px">
+                <tr>
+                    <c:forEach begin="1" end="${noOfPages}" var="i">
+                        <c:choose>
+                            <c:when test="${currentPage eq i}">
+                                <td style="margin: 10px 10px">${i}</td>
+                            </c:when>
+                            <c:otherwise>
+                                <td style="background-color: #fffff"><a style="margin: 0px 10px; text-decoration: none;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; " href="keeb?page=${i}">${i}</a></td>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                </tr>
+            </table>
 
-    <%--For displaying Next link --%>
+            <%--For displaying Next link --%>
 
-    <c:if test="${currentPage lt noOfPages}">
-        <td><a href="keeb?page=${currentPage + 1}">Next</a></td>
-    </c:if>
-</body>
+            <c:if test="${currentPage lt noOfPages}">
+                <td><a href="keeb?page=${currentPage + 1}"><i class="fa-solid fa-chevron-right" style="color: #000000;"></i></a></td>
+            </c:if>
+        </div>
+    </body>
 
 </html>

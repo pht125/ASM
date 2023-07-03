@@ -11,7 +11,6 @@ CREATE TABLE category(
 )
 
 CREATE TABLE product (
-	id int identity(1,1),
 	cate_id int REFERENCES category (cate_id),
 	product_id varchar(50) PRIMARY KEY,
 	product_name nvarchar(100),
