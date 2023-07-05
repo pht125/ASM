@@ -432,7 +432,7 @@ public class ProductDAO extends BaseDAO {
         }
         return list;
     }
-
+    
     public static void main(String[] args) {
         ProductDAO pdao = new ProductDAO();
         List<product> list = pdao.pagingMouse(1, 8);

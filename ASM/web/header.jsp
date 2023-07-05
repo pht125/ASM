@@ -3,8 +3,8 @@
     Created on : Jun 18, 2023, 11:11:19 PM
     Author     : Admin
 --%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -152,8 +152,14 @@
 
     </style>
     <body>
+        <c:set var="val" value=""></c:set>
+        <c:forEach var="cookies" items="${cookie}">
+            <c:if test="${cookies.key == 'cart'}">
+                <c:set var="val" value="${cookies.value.value}"></c:set>
+            </c:if>
+            
+        </c:forEach>
         <div class="header">
-
             <div class="header_logo">
                 <a href="home">
                     <img src="images/web_logo_white.png">
@@ -184,8 +190,14 @@
                         </div>
                     </div>
                 </c:if>
-                <div class="header_title_row">
-                    <a href="#"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
+                <div class="header_title_row" style="position: relative">
+                    <c:if test="${val!=''}">
+                        <h6 style="color: #fff;position: absolute ;top: 35px; left: 75px; padding: 3px 5px 4px;background-color: rgba(255, 70, 70, 1);border-radius: 50%;">${fn:length(fn:split(val,"|"))}</h6>
+                    </c:if>
+                        
+                    
+                    
+                    <a href="cart"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
                 </div>
             </div>
         </div>

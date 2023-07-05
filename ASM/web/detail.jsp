@@ -94,16 +94,19 @@
                                     </div> <!-- row.// -->
                                     <hr>
                                     <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-                                    <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i
+<!--                                    <input type="hidden" name="id" value="${detail.product_id}">-->
+                                    <a href="addCart?id=${detail.product_id}" class="btn btn-lg btn-outline-primary text-uppercase"> <i
                                             class="fas fa-shopping-cart"></i> Add to cart </a>
                                 </article> <!-- card-body.// -->
                             </aside> <!-- col.// -->
                         </div> <!-- row.// -->
                     </div> <!-- card.// -->
 
-
                 </div>
             </div>
+        </div>
+        <div class="header_home" >
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>

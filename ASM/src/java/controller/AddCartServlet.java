@@ -4,7 +4,7 @@
  */
 package controller;
 
-import DAL.AccountDAO;
+import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,15 +12,14 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.account;
-import utils.NumberToEnum.UserRole;
+import java.util.List;
+import model.product;
 
 /**
  *
  * @author Admin
  */
-public class LoginServlet extends HttpServlet {
+public class AddCartServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +33,18 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.getRequestDispatcher("login.jsp").forward(request, response);
+        try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AddCartServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AddCartServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,7 +59,36 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ProductDAO pdao = new ProductDAO();
+        if (request.getParameter("id") == null) {
+            response.sendRedirect("cart.jsp");
+        }else{
+            String id = request.getParameter("id");
+            product p = pdao.getDetailById(id);
+            Cookie[] cookies = request.getCookies();
+            String list = null;
+            int flag = 0;
+            for (Cookie cookie : cookies) {
+                if(cookie.getName().equals("cart")){
+                    list = cookie.getValue();
+                    list = list + id + "|";
+                    cookie.setValue(list);
+                    response.addCookie(cookie);
+                    System.out.println(list);
+                    flag = 1;
+                    break;
+                }
+            }
+            if(flag != 1){
+                String val = "";
+                val += id + "|";
+                System.out.println(val);
+                Cookie cart = new Cookie("cart", val);
+                cart.setMaxAge(60*60*24*7);
+                response.addCookie(cart);
+            }
+            response.sendRedirect("detail?id="+id);
+        }
     }
 
     /**
@@ -63,46 +102,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String mail = request.getParameter("email");
-        String pass = request.getParameter("password");
-        String check = request.getParameter("check");
-        
-        HttpSession session = request.getSession();
-
-        
-        
-        // set cookie for email and password
-        Cookie cookie1 = new Cookie("email", mail);
-        cookie1.setMaxAge(60 * 60 * 24);
-        Cookie cookie2 = new Cookie("password", pass);
-        if (check != null) {
-            cookie2.setMaxAge(60 * 60 * 24);
-        } else {
-            cookie2.setMaxAge(0);
-        }
-        response.addCookie(cookie1);
-        response.addCookie(cookie2);
-
-        // check account
-        AccountDAO accountDAO = new AccountDAO();
-        account account = accountDAO.checkAccount(mail, pass);
-        // set session
-        if (account != null) {
-            if (account.getRole() == UserRole.ADMIN.getValue()) {
-                session.setAttribute("role", "admin");
-            }
-            if (account.getRole() == UserRole.USER.getValue()) {
-                session.setAttribute("role", "user");
-            }
-            session.setAttribute("acc", account);
-            session.setAttribute("name", account.getName());
-            response.sendRedirect("home");
-        } else {
-            
-//            session.setAttribute("loginmessage", "Login failed");
-            request.setAttribute("error", "Email or password is incorrect");
-            request.getRequestDispatcher("login.jsp").forward(request, response);            
-        }
+        processRequest(request, response);
     }
 
     /**
