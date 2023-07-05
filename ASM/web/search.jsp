@@ -95,27 +95,30 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
-                                            <img width="100%" height="auto" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>
                                     <div class="box-text">
-                                        <div style="height: 50px">
+                                        <div style="height: 50px;margin-bottom: 25px">
                                             <h5 class="product_name" style="color:rgba(21, 21, 21, 1);" >${product.product_name}</h5>
                                         </div>
 
                                         <div class="price-wrapper">
                                             <c:if test="${product.sale_percent == 0}">
-                                                <span class="price">
-                                                    <h5 style="color: rgba(90, 90, 90, 1);"><fmt:formatNumber type = "number" 
-                                                                                                              maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                <span class="price" style="display: flex;">
+                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${product.price}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6></h5>
+
                                                 </span>
                                             </c:if>
                                             <c:if test="${product.sale_percent >     0}">
                                                 <div class="price" style="display: flex;">
-                                                    <h5 style="color: rgba(255, 60, 60, 1)"><fmt:formatNumber type = "number" 
-                                                                                                              maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" />&nbsp&nbsp</h5>
+                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
+
                                                     <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
-                                                                                                                                               maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                                      maxFractionDigits = "0" value = "${product.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5)"> đ</h6></h5>
+
                                                 </div>
                                             </c:if>
                                         </div>

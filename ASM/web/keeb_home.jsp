@@ -19,6 +19,7 @@
     <style>
         .banner{
             width: 100%;
+            height: 45rem;
         }
 
         .banner img{
@@ -98,11 +99,25 @@
             </div>
         </div>
         <!--END DESCRIPTION BANNER-->
+        <form class="col-sm-5" action="keeb" method="get">
+            <dl class="param param-inline">
+                <dd>
+                    <select name="filter" onchange="this.form.submit()" class="form-control form-control-sm"
+                            style="width:150px;">
+                        <option value=""> Featured </option>
+                        <option value="1"> Price: Low to High </option>
+                        <option value="2"> Price: High to Low </option>
+                        <option value="3"> Newest </option>
+                    </select>
+                </dd>
+            </dl> <!-- item-property .// -->
+            
+        </form> <!-- col.// -->
         <!--START COLLECTION-->
         <div class="page-content">
             <div class="container">
                 <div class="product-content row" style="display: flex; justify-content: left;">
-                    <c:forEach items="${requestScope.listKeeb}" var="product">
+                    <c:forEach items="${sessionScope.FilterList}" var="product">
                         <div class="col-lg-3 col-md-4 col-sm-6" style="position: relative">
                             <div class="item-product-content" style="padding: 10px;margin-bottom: 20px">
                                 <a href="detail?id=${product.product_id}" style="text-decoration: none; ">
@@ -111,7 +126,7 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
-                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                            <img width="100%" height="286px" style="object-fit: contain" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>
                                     <div class="box-text">
@@ -121,17 +136,20 @@
 
                                         <div class="price-wrapper">
                                             <c:if test="${product.sale_percent == 0}">
-                                                <span class="price">
-                                                    <h5 style="color: rgba(90, 90, 90, 1);"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                <span class="price" style="display: flex;">
+                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${product.price}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6></h5>
+
                                                 </span>
                                             </c:if>
                                             <c:if test="${product.sale_percent >     0}">
                                                 <div class="price" style="display: flex;">
-                                                    <h5 style="color: rgba(255, 60, 60, 1)"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" />&nbsp&nbsp</h5>
+                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
+
                                                     <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${product.price}" /></h5>
+                                                                      maxFractionDigits = "0" value = "${product.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5)"> đ</h6></h5>
+
                                                 </div>
                                             </c:if>
                                         </div>
@@ -148,7 +166,7 @@
             <%--For displaying Previous link except for the 1st page --%>
             <c:if test="${currentPage != 1}">
                 <td><a href="keeb?page=${currentPage - 1}"><i class="fa-solid fa-chevron-left" style="color: #000000;"></i></a></td>
-            </c:if>
+                    </c:if>
 
             <%--For displaying Page numbers. The when condition does not display
                         a link for the current page--%>
@@ -158,13 +176,11 @@
                     <c:forEach begin="1" end="${noOfPages}" var="i">
                         <c:choose>
                             <c:when test="${currentPage eq i}">
-                                <td style="margin: 10px 10px">${i}</td>
+                                <td style="margin: 10px 10px">${i}/${noOfPages}</td>
                             </c:when>
-                            <c:otherwise>
-                                <td style="background-color: #fffff"><a style="margin: 0px 10px; text-decoration: none;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; " href="keeb?page=${i}">${i}</a></td>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
+
+                        </c:choose>
+                    </c:forEach>
                 </tr>
             </table>
 
@@ -172,7 +188,7 @@
 
             <c:if test="${currentPage lt noOfPages}">
                 <td><a href="keeb?page=${currentPage + 1}"><i class="fa-solid fa-chevron-right" style="color: #000000;"></i></a></td>
-            </c:if>
+                    </c:if>
         </div>
     </body>
 

@@ -105,6 +105,51 @@
             justify-content: center;
         }
 
+
+        .dropdown_button {
+            /*background-color: #3498DB;*/
+            /*color: white;*/
+            /*padding: 16px;*/
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown_button:hover, .dropdown_button:focus {
+            background-color: #2980B9;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown_content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            /*            min-width: 160px;
+                        overflow: auto;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+            z-index: 1;
+            top: 100px;
+            left: 70px;
+        }
+
+        .dropdown_content a {
+            color: black;
+            /*padding: 12px 16px;*/
+            text-decoration: none;
+            display: block;
+            margin: 0;
+        }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+
     </style>
     <body>
         <div class="header">
@@ -130,20 +175,30 @@
                     </div>
                 </c:if>
                 <c:if test="${sessionScope.acc != null}">
-                    <div class="header_title_row" style="display: flex;">
+                    <div class="header_title_row dropdown" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
-                        <a href="info"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <a onclick="myFunction(this)" class="dropdown_button"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <div id="myDropdown" class="dropdown_content">
+                            <a href="info">Infomation</a>
+                            <a href="logout">Log out</a>
+                        </div>
                     </div>
                 </c:if>
                 <div class="header_title_row">
                     <a href="#"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
                 </div>
-                <c:if test="${sessionScope.acc != null}">
-                    <div class="header_title_row">
-                        <a href="logout"><i class="fa-solid fa-right-from-bracket fa-lg" style="color: #ffffff;"></i></a>
-                    </div>
-                </c:if>
             </div>
         </div>
+        <script>
+            function myFunction(element) {
+                element.classList.toggle("active");
+                var x = document.getElementById("myDropdown");
+                if (x.style.display === "block") {
+                    x.style.display = "none";
+                } else {
+                    x.style.display = "block";
+                }
+            }
+        </script>
     </body>
 </html>

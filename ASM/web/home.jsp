@@ -77,7 +77,7 @@
         <div class="cate_menu">
             <ul class="menuItems" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; position: unset;">
                 <li class="col-lg-2 col-md-5 menuItems_info">
-                    <a href="keeb">
+                    <a href="keeb?id=1">
                         <div>
                             <div class="menuItems_image">
                                 <img src="images/menu_icon_keeb.png" alt="alt" />
@@ -87,7 +87,7 @@
                     </a>
                 </li>
                 <li class="col-lg-2 col-md-5 menuItems_info">
-                    <a href="#">
+                    <a href="mouse">
                         <div>
                             <div class="menuItems_image">
                                 <img src="images/menu_icon_mouse.png" alt="alt" />
@@ -131,7 +131,7 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
-                                            <img width="100%" height="auto" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>
                                     <div class="box-text">

@@ -15,18 +15,27 @@
               id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
     </head>
+    <style>
+
+    </style>
     <body>
+        <div class="header_home" >
+            <%@include file="header.jsp" %>
+        </div>
         <div class="row">
 
-            <div class="col-sm-9">
-                <div class="container">
+            <div class="">
+                <div class="container" style="margin-top: 12px;margin-bottom: 12px;max-width: 100%;">
                     <div class="card">
                         <div class="row">
                             <aside class="col-sm-5 border-right">
                                 <article class="gallery-wrap">
                                     <div class="img-big-wrap">
-                                        <div> <a href="#"><img src="${detail.img}"></a></div>
+                                        <div><img style="width: 100%;height: 607px;object-fit: cover;" src="${detail.img}"></div>
                                     </div> <!-- slider-product.// -->
                                     <div class="img-small-wrap">
                                     </div> <!-- slider-nav.// -->
@@ -37,10 +46,24 @@
                                     <h3 class="title mb-3">${detail.product_name}</h3>
 
                                     <p class="price-detail-wrap">
-                                        <span class="price h3 text-warning">
-                                            <span class="num">${detail.price}</span>
-                                            <span class="currency">đ</span>
-                                            
+                                        <span class=" h3 text-warning">
+                                            <c:if test="${detail.sale_percent == 0}">
+                                                <div  style="display: flex;">
+                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${detail.price}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6></h5>
+
+                                                </div>
+                                            </c:if>
+                                            <c:if test="${detail.sale_percent > 0}">
+                                                <div class="price" style="display: flex;">
+                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${(detail.price * (100 - detail.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
+
+                                                    <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
+                                                                      maxFractionDigits = "0" value = "${detail.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5)"> đ</h6></h5>
+
+                                                </div>
+                                            </c:if>
                                         </span>
                                     </p> <!-- price-detail-wrap .// -->
                                     <dl class="item-property">

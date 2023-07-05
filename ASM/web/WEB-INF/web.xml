@@ -47,6 +47,10 @@
         <servlet-name>AccounInfoServlet</servlet-name>
         <servlet-class>controller.AccounInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilterServlet</servlet-name>
+        <servlet-class>controller.FilterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -90,6 +94,10 @@
     <servlet-mapping>
         <servlet-name>AccounInfoServlet</servlet-name>
         <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterServlet</servlet-name>
+        <url-pattern>/filter</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

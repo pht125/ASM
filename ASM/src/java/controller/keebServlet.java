@@ -12,6 +12,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import model.product;
 
@@ -30,22 +32,37 @@ public class keebServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    String filter = "";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         ProductDAO pdao = new ProductDAO();
+        List<product> list = new ArrayList<>();
         int recordsPerPage = 8;
         int page = 1;
         if (request.getParameter("page") != null) {
             page = Integer.parseInt(request.getParameter("page"));
         }
-        List<product> list = pdao.pagingKeeb(page, recordsPerPage);
+        if(request.getParameter("id") != null){
+            filter = "none";
+        }
+        if (request.getParameter("filter") != null) {
+            filter = request.getParameter("filter");
+            list = pdao.pagingKeebByOrder(page, recordsPerPage, request.getParameter("filter"));
+        } else if(!filter.equals("") && !filter.equals("none")){
+            list = pdao.pagingKeebByOrder(page, recordsPerPage, filter);
+        }else{
+            list = pdao.pagingKeeb(page, recordsPerPage);
+        }
+
         if (list == null) {
             response.sendRedirect("index.html");
         } else {
             int noOfRecords = pdao.countKeeb();
             int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
             request.setAttribute("listKeeb", list);
+            session.setAttribute("FilterList", list);
             request.setAttribute("noOfPages", noOfPages);
             request.setAttribute("currentPage", page);
             request.getRequestDispatcher("keeb_home.jsp").forward(request, response);
