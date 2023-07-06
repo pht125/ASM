@@ -38,6 +38,7 @@ CREATE TABLE bill(
 	bill_id int PRIMARY KEY identity(1,1),
 	account_id int,
 	order_date datetime,
+	address nvarchar(255),
 	total_price int,
 	FOREIGN KEY(account_id) REFERENCES account(account_id)
 )
@@ -45,8 +46,7 @@ CREATE TABLE bill(
 CREATE TABLE bill_info(
 	bill_id int,
 	product_id varchar(50),
-	quantity int,
-	price int,
+	quantity_bill int,
 	PRIMARY KEY(bill_id,product_id),
 	FOREIGN KEY(product_id) REFERENCES product(product_id),
 	FOREIGN KEY(bill_id) REFERENCES bill(bill_id)

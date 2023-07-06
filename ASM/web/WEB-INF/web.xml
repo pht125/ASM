@@ -56,12 +56,28 @@
         <servlet-class>controller.ShoppingCartServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddCartServlet</servlet-name>
-        <servlet-class>controller.AddCartServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>RemoveCartServlet</servlet-name>
         <servlet-class>controller.RemoveCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <servlet-class>controller.AddToCartServlet</servlet-class>
+    </servlet>
+    <!--    <servlet>
+        <servlet-name>DisplayCartServlet</servlet-name>
+        <servlet-class>controller.DisplayCartServlet</servlet-class>
+    </servlet>-->
+    <servlet>
+        <servlet-name>DeleteCartServlet</servlet-name>
+        <servlet-class>controller.DeleteCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <servlet-class>controller.UpdateCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCartServlet</servlet-name>
+        <servlet-class>controller.AddCartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
@@ -116,12 +132,28 @@
         <url-pattern>/cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddCartServlet</servlet-name>
-        <url-pattern>/addCart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>RemoveCartServlet</servlet-name>
         <url-pattern>/removecart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCartServlet</servlet-name>
+        <url-pattern>/addtocart</url-pattern>
+    </servlet-mapping>
+    <!--    <servlet-mapping>
+        <servlet-name>DisplayCartServlet</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>DeleteCartServlet</servlet-name>
+        <url-pattern>/deletecart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateCartServlet</servlet-name>
+        <url-pattern>/updatecart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCartServlet</servlet-name>
+        <url-pattern>/addCart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,17 +11,15 @@ package model;
 public class bill_info {
     private int bill_id;
     private int product_id;
-    private int quantity;
-    private int price;
+    private int quantity_bill;
 
     public bill_info() {
     }
 
-    public bill_info(int bill_id, int product_id, int quantity, int price) {
+    public bill_info(int bill_id, int product_id, int quantity_bill) {
         this.bill_id = bill_id;
         this.product_id = product_id;
-        this.quantity = quantity;
-        this.price = price;
+        this.quantity_bill = quantity_bill;
     }
 
     public int getBill_id() {
@@ -40,25 +38,19 @@ public class bill_info {
         this.product_id = product_id;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getQuantity_bill() {
+        return quantity_bill;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity_bill(int quantity_bill) {
+        this.quantity_bill = quantity_bill;
     }
 
-    public int getPrice() {
-        return price;
-    }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     @Override
     public String toString() {
-        return "bill_info{" + "bill_id=" + bill_id + ", product_id=" + product_id + ", quantity=" + quantity + ", price=" + price + '}';
+        return "bill_info{" + "bill_id=" + bill_id + ", product_id=" + product_id + ", quantity=" + quantity_bill + '}';
     }
     
     

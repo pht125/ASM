@@ -11,19 +11,30 @@ import java.sql.Date;
  * @author Admin
  */
 public class bill {
+
     private int bill_id;
     private int account_id;
     private Date order_date;
+    private String address;
     private int total_price;
 
     public bill() {
     }
 
-    public bill(int bill_id, int account_id, Date order_date, int total_price) {
+    public bill(int bill_id, int account_id, Date order_date, String address, int total_price) {
         this.bill_id = bill_id;
         this.account_id = account_id;
         this.order_date = order_date;
+        this.address = address;
         this.total_price = total_price;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getBill_id() {
@@ -62,5 +73,5 @@ public class bill {
     public String toString() {
         return "bill{" + "bill_id=" + bill_id + ", account_id=" + account_id + ", order_date=" + order_date + ", total_price=" + total_price + '}';
     }
-    
+
 }
