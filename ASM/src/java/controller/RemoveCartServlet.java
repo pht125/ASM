@@ -38,13 +38,20 @@ public class RemoveCartServlet extends HttpServlet {
 
         if (session.getAttribute("list_cart") != null) {
             List<product> list = (List<product>) session.getAttribute("list_cart");
+            List<Integer> list_numb = (List<Integer>) session.getAttribute("list_numb");
             session.removeAttribute("list_cart");
+            session.removeAttribute("list_numb");
             String raw_id = request.getParameter("id");
             int id = Integer.parseInt(raw_id);
             list.remove(id);
+            list_numb.remove(id);
             String str = "";
+            String strnumb = "";
             for (product object : list) {
                 str = str + object.getProduct_id() + "|";
+            }
+            for (Integer i : list_numb) {
+                strnumb = strnumb + i + "|";
             }
             System.out.println(str);
             Cookie[] cookies = request.getCookies();
@@ -52,7 +59,10 @@ public class RemoveCartServlet extends HttpServlet {
                 if (cookie.getName().equals("cart")) {
                     cookie.setValue(str);
                     response.addCookie(cookie);
-                    break;
+                }
+                if (cookie.getName().equals("cartnumb")) {
+                    cookie.setValue(strnumb);
+                    response.addCookie(cookie);
                 }
             }
             response.sendRedirect("cart");

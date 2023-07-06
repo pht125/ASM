@@ -66,24 +66,34 @@ public class ShoppingCartServlet extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         ProductDAO pdao = new ProductDAO();
         String[] products = null;
+        String[] numbs = null;
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("cart") && !cookie.getValue().equals("")) {
                 String list_cart = cookie.getValue();
                 System.out.println(list_cart);
                 products = list_cart.split("\\|");
-                break;
+            }
+            if (cookie.getName().equals("cartnumb") && !cookie.getValue().equals("")) {
+                String list_numb = cookie.getValue();
+                System.out.println(list_numb);
+                numbs = list_numb.split("\\|");
             }
         }
         List<product> list = new ArrayList<>();
-        if (products == null) {
+        List<Integer> list_numb = new ArrayList<>();
+        if (products == null || numbs == null) {
             list = null;
+            list_numb = null;
         } else {
-            for (String str : products) {
-                product p = pdao.getDetailById(str);
+            for (int i = 0; i < products.length; i++) {
+                product p = pdao.getDetailById(products[i]);
+                int n = Integer.parseInt(numbs[i]);
                 list.add(p);
+                list_numb.add(n);
             }
         }
         session.setAttribute("list_cart", list);
+        session.setAttribute("list_numb", list_numb);
 //        request.setAttribute("list_cart", list);
         request.getRequestDispatcher("cart.jsp").forward(request, response);
     }

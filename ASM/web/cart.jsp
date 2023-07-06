@@ -47,7 +47,7 @@
         }
     </style>
     <body>
-        
+
         <div class="header_home" >
             <%@include file="header.jsp" %>
         </div>
@@ -75,18 +75,21 @@
                             <tbody>
                                 <c:forEach var="p" items="${sessionScope.list_cart}" varStatus="loop">
                                     <tr>
+                                        <td class="id-product" style="display: none;">${p.product_id}</td>
                                         <td class="p-4">
                                             <div class="media align-items-center">
                                                 <img src="${p.img}" class="d-block ui-w-40 ui-bordered mr-4" alt="${p.product_name}">
                                                 <div class="media-body">
-                                                    <a href="#" class="d-block text-dark">${p.product_name}</a>
+                                                    <a href="#" class="d-block text-dark" id="product_name">${p.product_name}</a>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="text-right font-weight-semibold align-middle p-4" id="priceitem"><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${(p.price * (100 - p.sale_percent) / 100)}" /></td>
-                                        <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1" name="quantity"></td>
-                                        <td class="text-right font-weight-semibold align-middle p-4" id="pricesum"><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${((p.price * (100 - p.sale_percent) / 100)*p.quantity)}" /></td>
-                                            <td class="text-center align-middle px-0"><a href="removecart?id=${loop.index}" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove" style="text-decoration: none">×</a></td>
+                                        <td class="text-right font-weight-semibold align-middle p-4" id="priceitem">${p.price}</td>
+                                        <td class="align-middle p-4">
+                                            <input type="number" class="form-control text-center quantity" value="${sessionScope.list_numb.get(loop.index)}" name="quantity" id="quantity" min="1" onchange="changeQuantity(this)">
+                                        </td>
+                                        <td class="text-right font-weight-semibold align-middle p-4 pricesum">${p.price*sessionScope.list_numb.get(loop.index)}</td>
+                                        <td class="text-center align-middle px-0" ><a href="removecart?id=${loop.index}" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove" style="text-decoration: none">×</a></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
@@ -99,13 +102,13 @@
                         <div class="d-flex" >
                             <div class="text-right mt-4">
                                 <label class="text-muted font-weight-normal m-0">Total price</label>
-                                <div class="text-large" id="totalprice"><strong>$1164.65</strong></div>
+                                <div class="text-large" id="totalprice" onload="changeQuantity(this)"><strong></strong></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="float-right">
-                        <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Back to shopping</button>
+                        <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3"><a href="home">Back to shopping</a></button>
                         <button type="button" class="btn btn-lg btn-primary mt-2">Checkout</button>
                     </div>
 
@@ -116,8 +119,61 @@
             <%@include file="footer.jsp" %>
         </div>
         <script>
-            
+            function loadPrice(element){
+                let n = document.getElementsByClassName("pricesum").length;
+                var totalPrice = 0;
+                for (i = 0; i < n; ++i) {
+                    totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
+                }
+                document.getElementById("totalprice").innerHTML = totalPrice;
+            }
+            function changeQuantity(element) {
+                var parent = element.parentElement;
+//                var quantity = document.getElementById("quantity").value;
+//                var priceitem = document.getElementById("priceitem").innerHTML;
+//                var price = parseInt(quantity) * priceitem;
+                var priceItem = parent.previousElementSibling.innerHTML;
+                var quantity = element.value;
+                var total = priceItem * quantity;
+                parent.nextElementSibling.innerHTML = total;
+
+
+//                document.getElementById('pricesum').innerHTML = price;
+
+//                var nextquantity = quantity.nextElementSibling;
+//                var nextpriceitem = priceitem.nextElementSibling;
+//                var nextprice = nextquantity * nextpriceitem;
+//                document.getElementById('pricesum').innerHTML = nextprice;
+                let n = document.getElementsByClassName("pricesum").length;
+                var totalPrice = 0;
+                for (i = 0; i < n; ++i) {
+                    totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
+                }
+                document.getElementById("totalprice").innerHTML = totalPrice;
+                document.cookie = "cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = "cartnumb=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+
+                let n1 = document.getElementsByClassName("quantity").length;
+                var cartnumb = '';
+                for (i = 0; i < n1; ++i) {
+                    cartnumb = cartnumb + document.getElementsByClassName("quantity")[i].value + '|';
+                }
+                
+                let n2 = document.getElementsByClassName("id-product").length;
+                var cart = '';
+                for (i = 0; i < n2; ++i) {
+                    cart = cart + document.getElementsByClassName("id-product")[i].innerHTML + '|';
+                }
+                setCookie('cart', cart, 365);
+                setCookie('cartnumb', cartnumb, 365);
+            }
+
+            function setCookie(cname, cvalue, exdays) {
+                const d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                let expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/ASM";
+            }
         </script>
-        
     </body>
 </html>

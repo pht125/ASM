@@ -144,7 +144,7 @@
                                             </c:if>
                                             <c:if test="${product.sale_percent >     0}">
                                                 <div class="price" style="display: flex;">
-                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                    <h5 style="color: rgba(255, 70, 70, 1)" ><fmt:formatNumber type = "number" 
                                                                       maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
 
                                                     <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 

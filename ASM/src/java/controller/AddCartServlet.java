@@ -67,6 +67,7 @@ public class AddCartServlet extends HttpServlet {
             product p = pdao.getDetailById(id);
             Cookie[] cookies = request.getCookies();
             String list = null;
+            String listnumb = null;
             int flag = 0;
             for (Cookie cookie : cookies) {
                 if(cookie.getName().equals("cart")){
@@ -74,18 +75,25 @@ public class AddCartServlet extends HttpServlet {
                     list = list + id + "|";
                     cookie.setValue(list);
                     response.addCookie(cookie);
-                    System.out.println(list);
                     flag = 1;
-                    break;
+                }
+                if(cookie.getName().equals("cartnumb")){
+                    listnumb = cookie.getValue();
+                    listnumb = listnumb + "1" + "|";
+                    cookie.setValue(listnumb);
+                    response.addCookie(cookie);
+                    flag = 1;
                 }
             }
             if(flag != 1){
-                String val = "";
-                val += id + "|";
-                System.out.println(val);
+                String val = id + "|";
+                String valnumb = "1|";
                 Cookie cart = new Cookie("cart", val);
+                Cookie cartnumb = new Cookie("cartnumb", valnumb);
                 cart.setMaxAge(60*60*24*7);
+                cartnumb.setMaxAge(60*60*24*7);
                 response.addCookie(cart);
+                response.addCookie(cartnumb);
             }
             response.sendRedirect("detail?id="+id);
         }
