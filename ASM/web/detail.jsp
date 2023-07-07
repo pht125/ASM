@@ -21,6 +21,9 @@
         <link rel="stylesheet" href="css/detail.css?v=51"/>
     </head>
     <style>
+        body{
+            overflow-x: hidden;
+        }
         .card{
             border: none;
         }
@@ -124,7 +127,7 @@
 
                                     </div> <!-- row.// -->
                                     <hr style="margin-bottom: 30px">
-                                    <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
+                                    
 <!--                                    <input type="hidden" name="id" value="${detail.product_id}">-->
                                     <a href="addCart?id=${detail.product_id}" class="btn btn-lg btn-outline-primary text-uppercase"> <i
                                             class="fas fa-shopping-cart"></i> Add to cart </a>

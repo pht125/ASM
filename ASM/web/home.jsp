@@ -20,7 +20,9 @@
         /*        .cate_menu{
                     margin-bottom: 400px;
                 }*/
-
+        body{
+            overflow-x: hidden;
+        }
     </style>
     <body>
 
@@ -77,48 +79,50 @@
         <div class="cate_menu">
             <ul class="menuItems" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; position: unset;">
                 <li class="col-lg-2 col-md-5 menuItems_info">
-                    <a href="keeb?id=1">
+                    <a href="keeb?page=1">
                         <div>
                             <div class="menuItems_image">
                                 <img src="images/menu_icon_keeb.png" alt="alt" />
                             </div>
-                            <div class="menuItems_name" href='keeb' data-item='Bàn phím'>Bàn phím</div>
+                            <div class="menuItems_name" href='keeb'>Bàn phím</div>
                         </div>
                     </a>
                 </li>
                 <li class="col-lg-2 col-md-5 menuItems_info">
-                    <a href="mouse">
+                    <a href="mouse?page=1">
                         <div>
                             <div class="menuItems_image">
                                 <img src="images/menu_icon_mouse.png" alt="alt" />
                             </div>
-                            <div class="menuItems_name" href='#' data-item='Bàn phím'>Chuột</div>
+                            <div class="menuItems_name" href='mouse' data-item='Chuột'>Chuột</div>
                         </div>
                     </a>
                 </li>
                 <li class="col-lg-2 col-md-5 menuItems_info">
-                    <a href="#">
+                    <a href="pad?filter=0">
                         <div>
                             <div class="menuItems_image">
                                 <img src="images/menu_icon_pad.png" alt="alt" />
                             </div>
-                            <div class="menuItems_name" href='#' data-item='Bàn phím'>Lót chuột</div>
+                            <div class="menuItems_name" href='pad' data-item='Lót chuột'>Lót chuột</div>
                         </div>
                     </a>
                 </li>
                 <li class="col-lg-2 col-md-5 menuItems_info">
-                    <a class="underline_text" href="#">
+                    <a href="switch?filter=0">
                         <div>
                             <div class="menuItems_image">
                                 <img src="images/menu_icon_switch.png" alt="alt" />
                             </div>
-                            <div class="menuItems_name" href='#' data-item='Bàn phím'>Switch</div>
+                            <div class="menuItems_name" href='switch' data-item='Switch'>Switch</div>
                         </div>
                     </a>
                 </li>
             </ul>
         </div>
-
+        <div>
+            <h1 style="text-align: center;margin: 50px">Featured Products</h1>
+        </div>
         <div class="page-content">
             <div class="container">
                 <div class="product-content row" style="display: flex; justify-content: left;">
@@ -131,7 +135,7 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
-                                                <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px" style="object-fit: cover"/>
+                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px" style="object-fit: cover"/>
                                         </div>
                                     </div>
                                     <div class="box-text">

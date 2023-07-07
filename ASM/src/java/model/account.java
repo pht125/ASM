@@ -14,28 +14,25 @@ public class account {
     private String password;
     private String name;
     private String phone;
-    private String address;
     private int role;
 
     public account() {
     }
 
-    public account(int account_id, String email, String password, String name, String phone, String address, int role) {
+    public account(int account_id, String email, String password, String name, String phone, int role) {
         this.account_id = account_id;
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
-        this.address = address;
         this.role = role;
     }
 
-    public account(String email, String password, String name, String phone, String address, int role) {
+    public account(String email, String password, String name, String phone, int role) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.phone = phone;
-        this.address = address;
         this.role = role;
     }
     
@@ -81,13 +78,6 @@ public class account {
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public int getRole() {
         return role;
@@ -99,7 +89,7 @@ public class account {
 
     @Override
     public String toString() {
-        return "account{" + "account_id=" + account_id + ", email=" + email + ", password=" + password + ", name=" + name + ", phone=" + phone + ", address=" + address + ", role=" + role + '}';
+        return "account{" + "account_id=" + account_id + ", email=" + email + ", password=" + password + ", name=" + name + ", phone=" + phone + ", role=" + role + '}';
     }
     
     

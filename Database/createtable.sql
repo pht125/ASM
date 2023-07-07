@@ -29,7 +29,6 @@ CREATE TABLE account(
     password varchar(50) NOT NULL,
     name varchar(50) NOT NULL,
     phone varchar(12) NOT NULL,
-    address varchar(255),
     role int NOT NULL
 )
 

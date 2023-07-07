@@ -1,6 +1,6 @@
 <%-- 
     Document   : mouse_home
-    Created on : Jun 20, 2023, 5:11:29 PM
+    Created on : Jun 18, 2023, 10:05:00 PM
     Author     : Admin
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,9 +16,12 @@
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
     </head>
     <style>
+        body{
+            overflow-x: hidden;
+        }
         .banner{
             width: 100%;
-            height: 45rem;
+            height: 42rem;
         }
 
         .banner img{
@@ -75,30 +78,37 @@
         .product_image:hover{
             transform: scale(1.05);
         }
+
+        .filter_list{
+            margin-left: 80%;
+
+        }
     </style>
     <body>
+        <!--START HEADER-->
         <div>
             <%@include file="header.jsp" %>
         </div>
         <!--END HEADER-->
         <!--START DESCRIPTION BANNER-->
         <div class="banner">
-            <img class="banner_img" src="https://cdn.shopify.com/s/files/1/0636/9044/0949/collections/Ban-phim-co.png?v=1676875156&width=1000" alt="alt"/>
+            <img class="banner_img" src="https://www.phongcachxanh.vn/cdn/shop/collections/chuot.png?v=1685075433&width=1800" alt="alt"/>
             <div class="banner_desc_info">
                 <h1>
-                    Bàn Phím
+                    Chuột
                 </h1>
                 <p>
-                    Bàn phím thoải mái cho lập trình viên hoặc game thử giảm mệt mỏi khi sử dụng máy tính lâu dài.
+                    Chọn chuột tốt nhất cho bạn từ các thương hiệu nổi tiếng như Finalmouse, Glorious, Pulsar, Lamzu, Ninjutso, Logitech và Razer.
                 </p>
                 <p>
-                    Bàn phím là thiết bị không thể thiếu giúp bạn sử dụng máy tính hàng giờ liền tại văn phòng, tại nhà mà không cảm thấy mệt mỏi. Không chỉ làm việc, bàn phím còn là công cụ giúp bạn tự tin chiến thằng đối thủ trong các trò chơi.
+                    Chuột gaming, chuột văn phòng hay những chú chuột không dây, có dây mới nhất bạn có thể tìm thấy tại đây.
                 </p>
             </div>
         </div>
         <!--END DESCRIPTION BANNER-->
-        <form class="col-sm-5" action="mouse" method="get">
-            <dl class="param param-inline">
+        <form class="col-sm-5 filter_list" action="mouse" method="get">
+            <dl class="param param-inline" style="display: flex;">
+                <p style="margin-right: 10px">Sort by</p>
                 <dd>
                     <select name="filter" onchange="this.form.submit()" class="form-control form-control-sm"
                             style="width:150px;">
@@ -109,13 +119,13 @@
                     </select>
                 </dd>
             </dl> <!-- item-property .// -->
-            
+
         </form> <!-- col.// -->
         <!--START COLLECTION-->
         <div class="page-content">
             <div class="container">
                 <div class="product-content row" style="display: flex; justify-content: left;">
-                    <c:forEach items="${requestScope.listMouse}" var="product">
+                    <c:forEach items="${sessionScope.FilterListMS}" var="product">
                         <div class="col-lg-3 col-md-4 col-sm-6" style="position: relative">
                             <div class="item-product-content" style="padding: 10px;margin-bottom: 20px">
                                 <a href="detail?id=${product.product_id}" style="text-decoration: none; ">
@@ -142,7 +152,7 @@
                                             </c:if>
                                             <c:if test="${product.sale_percent >     0}">
                                                 <div class="price" style="display: flex;">
-                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
+                                                    <h5 style="color: rgba(255, 70, 70, 1)" ><fmt:formatNumber type = "number" 
                                                                       maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
 
                                                     <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
@@ -188,5 +198,9 @@
                 <td><a href="mouse?page=${currentPage + 1}"><i class="fa-solid fa-chevron-right" style="color: #000000;"></i></a></td>
                     </c:if>
         </div>
+        <div class="header_home" >
+            <%@include file="footer.jsp" %>
+        </div>
     </body>
+
 </html>

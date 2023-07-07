@@ -45,8 +45,22 @@
             box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
             vertical-align: middle;
         }
+
+        #product_name:focus{
+            outline: none;
+        }
+
+        #totalprice:focus{
+            outline: none;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     </style>
-    <body>
+    <body onload="total()">
 
         <div class="header_home" >
             <%@include file="header.jsp" %>
@@ -80,7 +94,7 @@
                                             <div class="media align-items-center">
                                                 <img src="${p.img}" class="d-block ui-w-40 ui-bordered mr-4" alt="${p.product_name}">
                                                 <div class="media-body">
-                                                    <a href="#" class="d-block text-dark" id="product_name">${p.product_name}</a>
+                                                    <input readonly="" style="border: none;width: 100%;" class="d-block text-dark" id="product_name" value="${p.product_name}" />
                                                 </div>
                                             </div>
                                         </td>
@@ -101,15 +115,15 @@
 
                         <div class="d-flex" >
                             <div class="text-right mt-4">
-                                <label class="text-muted font-weight-normal m-0">Total price</label>
-                                <div class="text-large" id="totalprice" onload="changeQuantity(this)"><strong></strong></div>
+                                <label class="text-muted font-weight-normal m-0">Total price</label><br/>
+                                <!--                                <div class="text-large" id="totalprice""></div>-->
+                                <input readonly="" style="border: none;text-align: right" class="text-large" id="totalprice" value=""/>
                             </div>
                         </div>
                     </div>
-
                     <div class="float-right">
                         <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3"><a href="home">Back to shopping</a></button>
-                        <button type="button" class="btn btn-lg btn-primary mt-2">Checkout</button>
+                        <button type="button" class="btn btn-lg btn-primary mt-2" ><a href="checkout.jsp">Checkout</a></button>
                     </div>
 
                 </div>
@@ -119,13 +133,13 @@
             <%@include file="footer.jsp" %>
         </div>
         <script>
-            function loadPrice(element){
+            function loadPrice(element) {
                 let n = document.getElementsByClassName("pricesum").length;
                 var totalPrice = 0;
                 for (i = 0; i < n; ++i) {
                     totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
                 }
-                document.getElementById("totalprice").innerHTML = totalPrice;
+                document.getElementById("totalprice").value = totalPrice;
             }
             function changeQuantity(element) {
                 var parent = element.parentElement;
@@ -149,7 +163,7 @@
                 for (i = 0; i < n; ++i) {
                     totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
                 }
-                document.getElementById("totalprice").innerHTML = totalPrice;
+                document.getElementById("totalprice").value = totalPrice;
                 document.cookie = "cart=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
                 document.cookie = "cartnumb=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 
@@ -158,7 +172,7 @@
                 for (i = 0; i < n1; ++i) {
                     cartnumb = cartnumb + document.getElementsByClassName("quantity")[i].value + '|';
                 }
-                
+
                 let n2 = document.getElementsByClassName("id-product").length;
                 var cart = '';
                 for (i = 0; i < n2; ++i) {
@@ -173,6 +187,15 @@
                 d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
                 let expires = "expires=" + d.toUTCString();
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/ASM";
+            }
+
+            function total() {
+                let n = document.getElementsByClassName("pricesum").length;
+                var totalPrice = 0;
+                for (i = 0; i < n; ++i) {
+                    totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
+                }
+                document.getElementById("totalprice").value = totalPrice;
             }
         </script>
     </body>

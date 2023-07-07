@@ -39,6 +39,7 @@ public class HomeServlet extends HttpServlet {
         if (list != null) {
             request.setAttribute("listFeatured", list);
             request.getRequestDispatcher("home.jsp").forward(request, response);
+
         } else {
             response.sendRedirect("home.jsp");
         }

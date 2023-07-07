@@ -79,6 +79,10 @@
         <servlet-name>AddCartServlet</servlet-name>
         <servlet-class>controller.AddCartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckOutServlet</servlet-name>
+        <servlet-class>controller.CheckOutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -154,6 +158,10 @@
     <servlet-mapping>
         <servlet-name>AddCartServlet</servlet-name>
         <url-pattern>/addCart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckOutServlet</servlet-name>
+        <url-pattern>/checkout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

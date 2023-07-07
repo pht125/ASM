@@ -1,7 +1,7 @@
 ﻿INSERT INTO account
 VALUES
-('admin@gmail.com','123','admin','0123456789','Viet Nam',1),
-('thai125@gmail.com','123','thsi','0123456789','Viet Nam',2)
+('admin@gmail.com','123','admin','0123456789',1),
+('thai125@gmail.com','123','thsi','0123456789',2)
 
 
 INSERT INTO category

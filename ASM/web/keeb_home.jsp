@@ -17,9 +17,12 @@
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
     </head>
     <style>
+        body{
+            overflow-x: hidden;
+        }
         .banner{
             width: 100%;
-            height: 45rem;
+            height: 42rem;
         }
 
         .banner img{
@@ -76,6 +79,11 @@
         .product_image:hover{
             transform: scale(1.05);
         }
+
+        .filter_list{
+            margin-left: 80%;
+
+        }
     </style>
     <body>
         <!--START HEADER-->
@@ -99,8 +107,9 @@
             </div>
         </div>
         <!--END DESCRIPTION BANNER-->
-        <form class="col-sm-5" action="keeb" method="get">
-            <dl class="param param-inline">
+        <form class="col-sm-5 filter_list" action="keeb" method="get">
+            <dl class="param param-inline" style="display: flex;">
+                <p style="margin-right: 10px">Sort by</p>
                 <dd>
                     <select name="filter" onchange="this.form.submit()" class="form-control form-control-sm"
                             style="width:150px;">
@@ -111,7 +120,7 @@
                     </select>
                 </dd>
             </dl> <!-- item-property .// -->
-            
+
         </form> <!-- col.// -->
         <!--START COLLECTION-->
         <div class="page-content">
@@ -189,6 +198,9 @@
             <c:if test="${currentPage lt noOfPages}">
                 <td><a href="keeb?page=${currentPage + 1}"><i class="fa-solid fa-chevron-right" style="color: #000000;"></i></a></td>
                     </c:if>
+        </div>
+        <div class="header_home" >
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 

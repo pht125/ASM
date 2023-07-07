@@ -145,28 +145,25 @@
 
 
                     <div class="signup_form_input">
-                        <div class="inputBox" style="display: flex;">
-                            <div class="inputName_half" style="margin-right: 10%">
-                                <input name="firstname" type="text" placeholder="First name" required autofocus>
-                            </div>
-                            <div class="inputName_half">
-                                <input name="lastname" type="text" placeholder="Last name" required >
-                            </div>
-                        </div>
+                        
+                        
                         <div class="inputBox">
-                            <input name="email" type="text" placeholder="Email" required autofocus>
+                            <input name="email" type="text" placeholder="Email" required autofocus="">
                         </div>
                         <div class="inputBox">
                             <input name="phone" type="text" placeholder="Phone number" required >
                         </div>
-                        <div class="inputBox">
+<!--                        <div class="inputBox">
                             <input name="address" type="text" placeholder="Address" required >
-                        </div>
+                        </div>-->
                         <div class="inputBox">
                             <input name="password" type="password" placeholder="Password" required>
                         </div>
                         <div class="inputBox">
                             <input name="repassword" type="password" placeholder="Re-Password" required>
+                        </div>
+<div class="inputBox">
+                            <input name="name" type="text" placeholder="Name" required >
                         </div>
                     </div>
                     <button class="signup_button" type="submit">Sign up</button>

@@ -5,12 +5,16 @@
 
 package controller;
 
+import DAL.ProductDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+import model.product;
 
 /**
  *
@@ -25,20 +29,40 @@ public class padServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    String filter = "";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet padServlet</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet padServlet at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();
+        ProductDAO pdao = new ProductDAO();
+        List<product> list;
+        int recordsPerPage = 8;
+        int page = 1;
+        if (request.getParameter("page") != null) {
+            page = Integer.parseInt(request.getParameter("page"));
+        }
+        if(request.getParameter("id") != null){
+            filter = "none";
+        }
+        if (request.getParameter("filter") != null) {
+            filter = request.getParameter("filter");
+            list = pdao.pagingPadByOrder(page, recordsPerPage, request.getParameter("filter"));
+        } else if(!filter.equals("") && !filter.equals("none")){
+            list = pdao.pagingPadByOrder(page, recordsPerPage, filter);
+        }else{
+            list = pdao.pagingPad(page, recordsPerPage);
+        }
+
+        if (list == null) {
+            response.sendRedirect("index.html");
+        } else {
+            int noOfRecords = pdao.countPad();
+            int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+            request.setAttribute("listPad", list);
+            session.setAttribute("FilterListPD", list);
+            request.setAttribute("noOfPages", noOfPages);
+            request.setAttribute("currentPage", page);
+            request.getRequestDispatcher("pad_home.jsp").forward(request, response);
         }
     } 
 

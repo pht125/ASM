@@ -41,7 +41,6 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("password"));
                 a.setName(rs.getString("name"));
                 a.setPhone(rs.getString("phone"));
-                a.setAddress(rs.getString("address"));
                 a.setRole(rs.getInt("role"));
                 return a;
             }
@@ -54,9 +53,9 @@ public class AccountDAO extends BaseDAO {
 
     public account getAccountByEmail(String mail) {
         try {
-            String sql = "select * from account where email = ?";
+            String sql = "select * from account where email like ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, mail);
+            statement.setString(1, "%" + mail + "%");
 
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
@@ -66,7 +65,6 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("password"));
                 a.setName(rs.getString("name"));
                 a.setPhone(rs.getString("phone"));
-                a.setAddress(rs.getString("address"));
                 a.setRole(rs.getInt("role"));
                 return a;
             }
@@ -78,15 +76,14 @@ public class AccountDAO extends BaseDAO {
     }
 
     public void createAccount(account account) {
-        String sql = "INSERT INTO ACCOUNT(email, password, name, phone, address, role) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO ACCOUNT(email, password, name, phone, role) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, account.getEmail());
             ps.setString(2, account.getPassword());
             ps.setString(3, account.getName());
             ps.setString(4, account.getPhone());
-            ps.setString(5, account.getAddress());
-            ps.setInt(6, account.getRole());
+            ps.setInt(5, account.getRole());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
