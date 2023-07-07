@@ -65,9 +65,9 @@
             border-bottom: 1px solid rgba(150, 150, 150, 1);
             margin-bottom: 10px;
             display: flex;
-            
+
         }
-        
+
         .feature-chart__heading{
             width: 25%;
             padding-right: 20px;
@@ -77,68 +77,81 @@
         <div class="header_home" >
             <%@include file="header.jsp" %>
         </div>
-        <div class="row">
+        <form name="f" action="" method="post">
+            <div class="row">
 
-            <div class="">
-                <div class="container" style="margin-top: 12px;margin-bottom: 12px;max-width: 100%;">
-                    <div class="card">
-                        <div class="row">
-                            <aside class="col-sm-5 ">
-                                <article class="gallery-wrap">
-                                    <div class="img-big-wrap">
-                                        <div><img style="width: 100%;height: 607px;object-fit: cover;" src="${detail.img}"></div>
-                                    </div> <!-- slider-product.// -->
-                                    <div class="img-small-wrap">
-                                    </div> <!-- slider-nav.// -->
-                                </article> <!-- gallery-wrap .end// -->
-                            </aside>
-                            <aside class="col-sm-7">
-                                <article class="card-body p-5">
-                                    <h3 class="title mb-3 product_name">${detail.product_name}</h3>
+                <div class="">
+                    <div class="container" style="margin-top: 12px;margin-bottom: 12px;max-width: 100%;">
+                        <div class="card">
+                            <div class="row">
+                                <aside class="col-sm-5 ">
+                                    <article class="gallery-wrap">
+                                        <div class="img-big-wrap">
+                                            <div><img style="width: 100%;height: 607px;object-fit: cover;" src="${detail.img}"></div>
+                                        </div> <!-- slider-product.// -->
+                                        <div class="img-small-wrap">
+                                        </div> <!-- slider-nav.// -->
+                                    </article> <!-- gallery-wrap .end// -->
+                                </aside>
+                                <aside class="col-sm-7">
+                                    <c:set var="id" value="${detail.product_id}"/>
+                                    <article class="card-body p-5">
+                                        <h3 class="title mb-3 product_name">${detail.product_name}</h3>
 
-                                    <p class="price-detail-wrap">
-                                        <span class=" h3 text-warning">
-                                            <c:if test="${detail.sale_percent == 0}">
-                                                <div  style="display: flex;">
-                                                    <h5 style="color: rgba(255, 70, 70, 1);font-size: larger"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${detail.price}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1);font-size: larger"> đ</h6></h5>
+                                        <p class="price-detail-wrap">
+                                            <span class=" h3 text-warning">
+                                                <c:if test="${detail.sale_percent == 0}">
+                                                    <div  style="display: flex;">
+                                                        <h5 style="color: rgba(255, 70, 70, 1);font-size: larger"><fmt:formatNumber type = "number" 
+                                                                          maxFractionDigits = "0" value = "${detail.price}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1);font-size: larger"> đ</h6></h5>
 
-                                                </div>
-                                            </c:if>
-                                            <c:if test="${detail.sale_percent > 0}">
-                                                <div class="price" style="display: flex;">
-                                                    <h5 style="color: rgba(255, 70, 70, 1);font-size: larger"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${(detail.price * (100 - detail.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
+                                                    </div>
+                                                </c:if>
+                                                <c:if test="${detail.sale_percent > 0}">
+                                                    <div class="price" style="display: flex;">
+                                                        <h5 style="color: rgba(255, 70, 70, 1);font-size: larger"><fmt:formatNumber type = "number" 
+                                                                          maxFractionDigits = "0" value = "${(detail.price * (100 - detail.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
 
-                                                    <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);font-size: larger"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${detail.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5);font-size: larger"> đ</h6></h5>
+                                                        <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);font-size: larger"><fmt:formatNumber type = "number" 
+                                                                          maxFractionDigits = "0" value = "${detail.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5);font-size: larger"> đ</h6></h5>
 
-                                                </div>
-                                            </c:if>
-                                        </span>
-                                    </p> <!-- price-detail-wrap .// -->
+                                                    </div>
+                                                </c:if>
+                                            </span>
+                                        </p> <!-- price-detail-wrap .// -->
 
 
 
-                                    <div class="row">
-                                        <div class="col-sm-5">
+                                        <div class="row">
+                                            <div class="col-sm-5">
 
-                                        </div> <!-- col.// -->
+                                            </div> <!-- col.// -->
 
-                                    </div> <!-- row.// -->
-                                    <hr style="margin-bottom: 30px">
-                                    
+                                        </div> <!-- row.// -->
+                                        <hr style="margin-bottom: 30px">
+
 <!--                                    <input type="hidden" name="id" value="${detail.product_id}">-->
-                                    <a href="addCart?id=${detail.product_id}" class="btn btn-lg btn-outline-primary text-uppercase"> <i
-                                            class="fas fa-shopping-cart"></i> Add to cart </a>
-                                </article> <!-- card-body.// -->
-                            </aside> <!-- col.// -->
-                        </div> <!-- row.// -->
-                    </div> <!-- card.// -->
+                                        <a href="addCart?id=${detail.product_id}" class="btn btn-lg btn-outline-primary text-uppercase"> <i
+                                                class="fas fa-shopping-cart"></i> Add to cart </a>
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <dl class="param param-inline">
+                                                    <dt>Quantity: </dt>
+                                                    <input type="number" name="num" value="1">
+                                                </dl> <!-- item-property .// -->
+                                            </div> <!-- col.// -->
 
+                                        </div>
+                                        <input type="button" onclick="buy('id')" value="Add to cart">
+                                    </article> <!-- card-body.// -->
+                                </aside> <!-- col.// -->
+                            </div> <!-- row.// -->
+                        </div> <!-- card.// -->
+
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div style="margin-top: 50px">
             ${detail.description}
@@ -147,5 +160,12 @@
         <div class="header_home" >
             <%@include file="footer.jsp" %>
         </div>
+        <script type="text/javascript">
+            function buy(id) {
+                var m = document.f.num.value;
+                document.f.action = "buy?id"+id+"&num="+m;
+                document.f.submit();
+            }
+        </script>
     </body>
 </html>

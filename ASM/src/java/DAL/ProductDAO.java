@@ -20,6 +20,31 @@ public class ProductDAO extends BaseDAO {
 
     public ProductDAO() {
     }
+    
+        public List<product> getAllProduct() {
+        List<product> list = new ArrayList();
+        String sql = "select * from product";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                product p = new product();
+                p.setCate_id(rs.getInt("cate_id"));
+                p.setProduct_id(rs.getString("product_id"));
+                p.setProduct_name(rs.getString("product_name"));
+                p.setBrand(rs.getString("brand"));
+                p.setPrice(rs.getInt("price"));
+                p.setSale_percent(rs.getInt("sale_percent"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setImg(rs.getString("img"));
+                p.setDescription(rs.getString("description"));
+                list.add(p);
+            }
+        } catch (SQLException e) {
+
+        }
+        return list;
+    }
 
     public List<product> getFeaturedProduct() {
         List<product> list = new ArrayList();

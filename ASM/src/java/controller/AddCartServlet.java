@@ -12,7 +12,10 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import static java.util.Collections.list;
 import java.util.List;
+import model.cart;
+import model.item;
 import model.product;
 
 /**
@@ -60,43 +63,64 @@ public class AddCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductDAO pdao = new ProductDAO();
-        if (request.getParameter("id") == null) {
-            response.sendRedirect("cart.jsp");
-        }else{
-            String id = request.getParameter("id");
-            product p = pdao.getDetailById(id);
-            Cookie[] cookies = request.getCookies();
-            String list = null;
-            String listnumb = null;
-            int flag = 0;
-            for (Cookie cookie : cookies) {
-                if(cookie.getName().equals("cart")){
-                    list = cookie.getValue();
-                    list = list + id + "|";
-                    cookie.setValue(list);
-                    response.addCookie(cookie);
-                    flag = 1;
-                }
-                if(cookie.getName().equals("cartnumb")){
-                    listnumb = cookie.getValue();
-                    listnumb = listnumb + "1" + "|";
-                    cookie.setValue(listnumb);
-                    response.addCookie(cookie);
-                    flag = 1;
+//        if (request.getParameter("id") == null) {
+//            response.sendRedirect("cart.jsp");
+//        }else{
+//            String id = request.getParameter("id");
+//            product p = pdao.getDetailById(id);
+//            Cookie[] cookies = request.getCookies();
+//            String list = null;
+//            String listnumb = null;
+//            int flag = 0;
+//            for (Cookie cookie : cookies) {
+//                if(cookie.getName().equals("cart")){
+//                    list = cookie.getValue();
+//                    list = list + id + "|";
+//                    cookie.setValue(list);
+//                    response.addCookie(cookie);
+//                    flag = 1;
+//                }
+//                if(cookie.getName().equals("cartnumb")){
+//                    listnumb = cookie.getValue();
+//                    listnumb = listnumb + "1" + "|";
+//                    cookie.setValue(listnumb);
+//                    response.addCookie(cookie);
+//                    flag = 1;
+//                }
+//            }
+//            if(flag != 1){
+//                String val = id + "|";
+//                String valnumb = "1|";
+//                Cookie cart = new Cookie("cart", val);
+//                Cookie cartnumb = new Cookie("cartnumb", valnumb);
+//                cart.setMaxAge(60*60*24*7);
+//                cartnumb.setMaxAge(60*60*24*7);
+//                response.addCookie(cart);
+//                response.addCookie(cartnumb);
+//            }
+//            response.sendRedirect("detail?id="+id);
+        String id = request.getParameter("id");
+        List<product> list = pdao.getAllProduct();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cart")) {
+                    txt += o.getValue();
                 }
             }
-            if(flag != 1){
-                String val = id + "|";
-                String valnumb = "1|";
-                Cookie cart = new Cookie("cart", val);
-                Cookie cartnumb = new Cookie("cartnumb", valnumb);
-                cart.setMaxAge(60*60*24*7);
-                cartnumb.setMaxAge(60*60*24*7);
-                response.addCookie(cart);
-                response.addCookie(cartnumb);
-            }
-            response.sendRedirect("detail?id="+id);
         }
+        cart cart = new cart(txt, list);
+        List<item> listItem = cart.getItems();
+        int n;
+        if (listItem != null) {
+            n = listItem.size();
+        } else {
+            n = 0;
+        }
+        request.setAttribute("size", n);
+        request.setAttribute("data", list);
+        request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 
     /**

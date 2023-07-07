@@ -197,7 +197,7 @@
                         
                     
                     
-                    <a href="cart"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
+                        <a href="cart"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>(${requestScope.size})</a>
                 </div>
             </div>
         </div>
