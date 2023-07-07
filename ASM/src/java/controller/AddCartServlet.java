@@ -12,6 +12,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import static java.util.Collections.list;
 import java.util.List;
 import model.cart;
@@ -36,18 +37,35 @@ public class AddCartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddCartServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddCartServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        HttpSession session = request.getSession();
+        ProductDAO pdao = new ProductDAO();
+        List<product> list = pdao.getAllProduct();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cart")) {
+                    txt = txt+ o.getValue();
+                }
+            }
         }
+        cart cart = new cart(txt, list);
+        List<item> listItem = cart.getItems();
+        product p = new product();
+        if(session.getAttribute("currentid")==null){
+            response.sendRedirect("index.html");
+        }else{
+            p = (product) session.getAttribute("currentid");
+        }
+        int n;
+        if (listItem != null) {
+            n = listItem.size();
+        } else {
+            n = 0;
+        }
+        request.setAttribute("size", n);
+        request.setAttribute("detail", p);
+        request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,7 +80,7 @@ public class AddCartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductDAO pdao = new ProductDAO();
+        
 //        if (request.getParameter("id") == null) {
 //            response.sendRedirect("cart.jsp");
 //        }else{
@@ -99,28 +117,8 @@ public class AddCartServlet extends HttpServlet {
 //                response.addCookie(cartnumb);
 //            }
 //            response.sendRedirect("detail?id="+id);
-        String id = request.getParameter("id");
-        List<product> list = pdao.getAllProduct();
-        Cookie[] arr = request.getCookies();
-        String txt = "";
-        if (arr != null) {
-            for (Cookie o : arr) {
-                if (o.getName().equals("cart")) {
-                    txt += o.getValue();
-                }
-            }
-        }
-        cart cart = new cart(txt, list);
-        List<item> listItem = cart.getItems();
-        int n;
-        if (listItem != null) {
-            n = listItem.size();
-        } else {
-            n = 0;
-        }
-        request.setAttribute("size", n);
-        request.setAttribute("data", list);
-        request.getRequestDispatcher("detail.jsp").forward(request, response);
+//        String id = request.getParameter("id");
+        processRequest(request, response);
     }
 
     /**

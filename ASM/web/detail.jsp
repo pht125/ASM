@@ -95,6 +95,7 @@
                                 </aside>
                                 <aside class="col-sm-7">
                                     <c:set var="id" value="${detail.product_id}"/>
+                                    <input hidden="" value="${detail.product_id}" name="id"/>
                                     <article class="card-body p-5">
                                         <h3 class="title mb-3 product_name">${detail.product_name}</h3>
 
@@ -130,7 +131,7 @@
                                         </div> <!-- row.// -->
                                         <hr style="margin-bottom: 30px">
 
-<!--                                    <input type="hidden" name="id" value="${detail.product_id}">-->
+                                       
                                         <a href="addCart?id=${detail.product_id}" class="btn btn-lg btn-outline-primary text-uppercase"> <i
                                                 class="fas fa-shopping-cart"></i> Add to cart </a>
                                         <div class="row">
@@ -142,7 +143,7 @@
                                             </div> <!-- col.// -->
 
                                         </div>
-                                        <input type="button" onclick="buy('id')" value="Add to cart">
+                                        <input type="button" onclick="buy('${detail.product_id}')" value="Add to cart">
                                     </article> <!-- card-body.// -->
                                 </aside> <!-- col.// -->
                             </div> <!-- row.// -->
@@ -163,7 +164,7 @@
         <script type="text/javascript">
             function buy(id) {
                 var m = document.f.num.value;
-                document.f.action = "buy?id"+id+"&num="+m;
+                document.f.action = "buy?id="+id+"&num="+m;
                 document.f.submit();
             }
         </script>

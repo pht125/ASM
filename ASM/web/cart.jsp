@@ -132,7 +132,7 @@
         <div class="header_home" >
             <%@include file="footer.jsp" %>
         </div>
-        <script>
+<!--        <script>
             function loadPrice(element) {
                 let n = document.getElementsByClassName("pricesum").length;
                 var totalPrice = 0;
@@ -197,6 +197,6 @@
                 }
                 document.getElementById("totalprice").value = totalPrice;
             }
-        </script>
+        </script>-->
     </body>
 </html>

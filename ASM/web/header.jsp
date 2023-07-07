@@ -191,13 +191,7 @@
                     </div>
                 </c:if>
                 <div class="header_title_row" style="position: relative">
-                    <c:if test="${val!=''}">
-                        <h6 style="color: #fff;position: absolute ;top: 35px; left: 75px; padding: 3px 5px 4px;background-color: rgba(255, 70, 70, 1);border-radius: 50%;">${fn:length(fn:split(val,"|"))}</h6>
-                    </c:if>
-                        
-                    
-                    
-                        <a href="cart"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>(${requestScope.size})</a>
+                        <a href="show"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>(${requestScope.size})</a>
                 </div>
             </div>
         </div>
