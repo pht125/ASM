@@ -21,5 +21,8 @@
         <div>
             ${sessionScope.acc.name}
         </div>
+        <div>
+            ${sessionScope.acc.address}
+        </div>
     </body>
 </html>

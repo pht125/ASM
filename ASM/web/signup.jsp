@@ -145,39 +145,39 @@
 
 
                     <div class="signup_form_input">
-                        
-                        
+
                         <div class="inputBox">
-                            <input name="email" type="text" placeholder="Email" required autofocus="">
+                            <input name="name" type="text" placeholder="Name" required autofocus="">
+                        </div>
+                        <div class="inputBox">
+                            <input name="email" type="text" placeholder="Email" required >
                         </div>
                         <div class="inputBox">
                             <input name="phone" type="text" placeholder="Phone number" required >
                         </div>
-<!--                        <div class="inputBox">
+                        <div class="inputBox">
                             <input name="address" type="text" placeholder="Address" required >
-                        </div>-->
+                        </div>
                         <div class="inputBox">
                             <input name="password" type="password" placeholder="Password" required>
                         </div>
                         <div class="inputBox">
                             <input name="repassword" type="password" placeholder="Re-Password" required>
                         </div>
-<div class="inputBox">
-                            <input name="name" type="text" placeholder="Name" required >
-                        </div>
+
                     </div>
                     <button class="signup_button" type="submit">Sign up</button>
                     <h3 style="color: red; text-align: center;">${error}</h3>
                     <div>
                         <a href="login.jsp" class="signup">Already have account</a>
                     </div>
-                    <div class="d-flex mb-5 align-items-center" style="color: white;">
-                        <label class="control control--checkbox mb-0">
-                            <span class="caption">I agree all statements in <a href="#!">Terms of service</a></span>
-                            <input type="checkbox" name="checkbox" value="1"></input>
-                            <div class="control__indicator"></div>
-                        </label>
-                    </div>
+                    <!--                    <div class="d-flex mb-5 align-items-center" style="color: white;">
+                                            <label class="control control--checkbox mb-0">
+                                                <span class="caption">I agree all statements in <a href="#!">Terms of service</a></span>
+                                                <input type="checkbox" name="checkbox" value="1"></input>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                        </div>-->
                     <p class="mt-5 mb-3 text-muted">&copy; 2022-2023</p>
                 </form>
             </div>

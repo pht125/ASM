@@ -59,7 +59,6 @@ public class ShowCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         ProductDAO pdao = new ProductDAO();
-//        String id = request.getParameter("id");
         List<product> list = pdao.getAllProduct();
         Cookie[] arr = request.getCookies();
         String txt = "";

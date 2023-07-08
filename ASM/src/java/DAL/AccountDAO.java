@@ -41,6 +41,7 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("password"));
                 a.setName(rs.getString("name"));
                 a.setPhone(rs.getString("phone"));
+                a.setAddress(rs.getString("address"));
                 a.setRole(rs.getInt("role"));
                 return a;
             }
@@ -65,6 +66,7 @@ public class AccountDAO extends BaseDAO {
                 a.setPassword(rs.getString("password"));
                 a.setName(rs.getString("name"));
                 a.setPhone(rs.getString("phone"));
+                a.setAddress(rs.getString("address"));
                 a.setRole(rs.getInt("role"));
                 return a;
             }
@@ -76,25 +78,25 @@ public class AccountDAO extends BaseDAO {
     }
 
     public void createAccount(account account) {
-        String sql = "INSERT INTO ACCOUNT(email, password, name, phone, role) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO ACCOUNT(email, password, name, phone,address, role) VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, account.getEmail());
             ps.setString(2, account.getPassword());
             ps.setString(3, account.getName());
-            ps.setString(4, account.getPhone());
-            ps.setInt(5, account.getRole());
+            ps.setString(4, account.getAddress());
+            ps.setString(5, account.getPhone());
+            ps.setInt(6, account.getRole());
             ps.executeUpdate();
 
         } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
-    
+
 //    public void updateAccount(account account){
 //        String sql = 
 //    }
-
     public static void main(String[] args) {
 
         System.out.println(new AccountDAO().checkAccount("admin", "123"));

@@ -13,30 +13,39 @@ public class account {
     private String email;
     private String password;
     private String name;
+    private String address;
     private String phone;
     private int role;
 
     public account() {
     }
 
-    public account(int account_id, String email, String password, String name, String phone, int role) {
+    public account(int account_id, String email, String password, String name, String address, String phone, int role) {
         this.account_id = account_id;
         this.email = email;
         this.password = password;
         this.name = name;
+        this.address = address;
         this.phone = phone;
         this.role = role;
     }
 
-    public account(String email, String password, String name, String phone, int role) {
+    public account(String email, String password, String name, String address, String phone, int role) {
         this.email = email;
         this.password = password;
         this.name = name;
+        this.address = address;
         this.phone = phone;
         this.role = role;
     }
-    
-    
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     public int getAccount_id() {
         return account_id;
@@ -89,8 +98,10 @@ public class account {
 
     @Override
     public String toString() {
-        return "account{" + "account_id=" + account_id + ", email=" + email + ", password=" + password + ", name=" + name + ", phone=" + phone + ", role=" + role + '}';
+        return "account{" + "account_id=" + account_id + ", email=" + email + ", password=" + password + ", name=" + name + ", address=" + address + ", phone=" + phone + ", role=" + role + '}';
     }
+
+   
     
     
 }

@@ -4,22 +4,26 @@
  */
 package controller;
 
+import DAL.BillDAO;
 import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.account;
+import model.cart;
 import model.product;
 
 /**
  *
  * @author Admin
  */
-public class HomeServlet extends HttpServlet {
+public class PurchaseServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +36,24 @@ public class HomeServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         ProductDAO pdao = new ProductDAO();
-        List<product> list = pdao.getFeaturedProduct();
-//        HttpSession session = request.getSession();
-//        session.removeAttribute("FilterList");
-        if (list != null) {
-            request.setAttribute("listFeatured", list);
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-
-        } else {
-            response.sendRedirect("home.jsp");
+        List<product> list = pdao.getAllProduct();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cart")) {
+                    txt += o.getValue();
+                }
+            }
         }
+        cart cart = new cart(txt, list);
+        Cookie c = new Cookie("cart", txt);
+        c.setMaxAge(0);
+        response.addCookie(c);
+        response.sendRedirect("home");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

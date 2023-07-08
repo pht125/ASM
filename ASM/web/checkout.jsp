@@ -21,7 +21,7 @@
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
         <<link rel="stylesheet" href="css/checkout.css?v=51"/>
     </head>
-    <body onload="total()">
+    <body>
         <main class="page payment-page">
             <section class="payment-form dark">
                 <div class="container">
@@ -32,26 +32,33 @@
                     <form>
                         <div class="products">
                             <h3 class="title">Checkout</h3>
-                            <c:forEach var="p" items="${sessionScope.list_cart}" varStatus="loop">
+                            <c:set var="o" value="${requestScope.cart}"/>
+                            <c:forEach var="p" items="${o.items}" varStatus="loop">
+
                                 <div class="item">
-                                    <td class="text-right font-weight-semibold align-middle p-4 pricesum">${p.price*sessionScope.list_numb.get(loop.index)}</td>
-                                    <input readonly="" style="border: none;width: 100%;" class="d-block text-dark item-name" id="product_name" value="${p.product_name}" />
-                                    <input style="border: none;background-color: #f6f6f6" type="number" class="form-control text-center quantity item-description" value="${sessionScope.list_numb.get(loop.index)}" name="quantity" id="quantity" min="1" readonly="" >
+                                    <td class="text-right font-weight-semibold align-middle p-4 pricesum"><fmt:formatNumber type = "number" 
+                                                      maxFractionDigits = "0" value = "${(p.price*p.quantity)}" /></td>
+                                    <input readonly="" style="border: none;width: 100%;" class="d-block text-dark item-name" id="product_name" value="${p.product.product_name}" />
+                                    <input style="border: none;background-color: #f6f6f6" type="number" class="form-control text-center quantity item-description" value="${p.quantity}" name="quantity" id="quantity" min="1" readonly="" >
                                 </div>
                             </c:forEach>
-                            <input type="number" readonly="" style="border: none;text-align: right" class="text-large total" id="totalprice" value=""/>
+                            <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1" value="<fmt:formatNumber type = "number" 
+                                              maxFractionDigits = "0" value = "${o.totalPrice}" />">
                         </div>
+
+
+
                         <div class="card-details">
                             <h3 class="title">Credit Card Details</h3>
                             <div class="row">
                                 <div class="form-group col-sm-7">
                                     <label for="card-holder">Card Holder</label>
-                                    <input id="card-holder" type="text" class="form-control" placeholder="Card Holder" aria-label="Card Holder" aria-describedby="basic-addon1">
+                                    <input value="${sessionScope.acc.address}" id="card-holder" type="text" class="form-control" placeholder="Card Holder" aria-label="Card Holder" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="form-group col-sm-5">
                                     <label for="">Expiration Date</label>
                                     <div class="input-group expiration-date">
-                                        <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1">
+
                                         <span class="date-separator">/</span>
                                         <input type="text" class="form-control" placeholder="YY" aria-label="YY" aria-describedby="basic-addon1">
                                     </div>
@@ -65,7 +72,7 @@
                                     <input id="cvc" type="text" class="form-control" placeholder="CVC" aria-label="Card Holder" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="form-group col-sm-12">
-                                    <button type="button" class="btn btn-primary btn-block">Proceed</button>
+                                    <a href="purchase" class="btn btn-primary btn-block">purchase</a>
                                 </div>
                             </div>
                         </div>
@@ -74,39 +81,6 @@
             </section>
         </main>
 
-        <script>
-            function loadPrice(element) {
-                let n = document.getElementsByClassName("pricesum").length;
-                var totalPrice = 0;
-                for (i = 0; i < n; ++i) {
-                    totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
-                }
-                document.getElementById("totalprice").value = totalPrice;
-            }
-            function changeQuantity() {
-                var parent = element.parentElement;
-                var priceItem = parent.previousElementSibling.innerHTML;
-                var quantity = element.value;
-                var total = priceItem * quantity;
-                parent.nextElementSibling.innerHTML = total;
-                let n = document.getElementsByClassName("pricesum").length;
-                var totalPrice = 0;
-                for (i = 0; i < n; ++i) {
-                    totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
-                }
-                document.getElementById("totalprice").value = totalPrice;
-            }
-
-
-
-            function total() {
-                let n = document.getElementsByClassName("pricesum").length;
-                var totalPrice = 0;
-                for (i = 0; i < n; ++i) {
-                    totalPrice = totalPrice + parseInt(document.getElementsByClassName("pricesum")[i].innerHTML);
-                }
-                document.getElementById("totalprice").value = totalPrice;
-            }
-        </script>
+        
     </body>
 </html>

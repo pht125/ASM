@@ -79,6 +79,7 @@ public class SignUpServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
         String password = request.getParameter("password");
         String repassword = request.getParameter("repassword");
         String checkbox = request.getParameter("checkbox");
@@ -89,14 +90,15 @@ public class SignUpServlet extends HttpServlet {
 //            request.getRequestDispatcher("signup.jsp").forward(request, response);
 //        }
 //        else 
-        if (checkbox == null) {
-            request.setAttribute("error", "You have to accept the Terms of service.");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else if (!password.equals(repassword)) {
+//        if (checkbox == null) {
+//            request.setAttribute("error", "You have to accept the Terms of service.");
+//            request.getRequestDispatcher("signup.jsp").forward(request, response);
+//        } else 
+            if (!password.equals(repassword)) {
             request.setAttribute("error", "Password and Re-Password must be same.");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
         } else {
-            account account = new account(email, password, name, phone, UserRole.USER.getValue());
+            account account = new account(email, password, name,phone, address ,UserRole.USER.getValue());
             AccountDAO accountDAO = new AccountDAO();
             if (accountDAO.getAccountByEmail(email) != null) {
                 request.setAttribute("error", "Email already exists!");

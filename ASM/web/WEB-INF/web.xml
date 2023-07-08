@@ -71,6 +71,10 @@
         <servlet-name>ProcessServlet</servlet-name>
         <servlet-class>controller.ProcessServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PurchaseServlet</servlet-name>
+        <servlet-class>controller.PurchaseServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -138,6 +142,10 @@
     <servlet-mapping>
         <servlet-name>ProcessServlet</servlet-name>
         <url-pattern>/process</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PurchaseServlet</servlet-name>
+        <url-pattern>/purchase</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

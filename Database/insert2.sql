@@ -1,7 +1,7 @@
 ﻿INSERT INTO account
 VALUES
-('admin@gmail.com','123','admin','0123456789',1),
-('thai125@gmail.com','123','thsi','0123456789',2)
+('admin@gmail.com','123','admin','','0123456789',1),
+('thai125@gmail.com','123','thsi','','0123456789',2)
 
 
 INSERT INTO category
@@ -672,4 +672,6 @@ VALUES
 
 INSERT INTO bill_info
 VALUES
-(1,'MS002',1)
+(1,'MS002',3,7500000),
+(1,'MS003',2,5000000),
+(1,'SW002',3,45000)
