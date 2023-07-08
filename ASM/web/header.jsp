@@ -191,7 +191,7 @@
                     </div>
                 </c:if>
                 <div class="header_title_row" style="position: relative">
-                        <a href="show"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>(${requestScope.size})</a>
+                    <a href="show"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
                 </div>
             </div>
         </div>

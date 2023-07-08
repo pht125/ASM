@@ -94,20 +94,19 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <button><a href="process?num=-1&id="${p.product.product_id}>-</a></button>
+
+                                            <button><a href="process?num=-1&id=${p.product.product_id}">-</a></button> 
+
                                             ${p.quantity}
-                                            <button><a href="process?num=+1&id="${p.product.product_id}>+</a></button>
+                                            <button><a href="process?num=1&id=${p.product.product_id}">+</a></button>
                                         </td>
-                                        <td class="text-right font-weight-semibold align-middle p-4" id="priceitem">$<fmt:formatNumber type = "number" 
+                                        <td class="text-right font-weight-semibold align-middle p-4" id="priceitem"><fmt:formatNumber type = "number" 
                                                           maxFractionDigits = "0" value = "${p.price}" /></td>
 
-                                        <td class="text-right font-weight-semibold align-middle p-4 pricesum">$<fmt:formatNumber type = "number" 
+                                        <td class="text-right font-weight-semibold align-middle p-4 pricesum"><fmt:formatNumber type = "number" 
                                                           maxFractionDigits = "0" value = "${(p.price*p.quantity)}" /></td>
                                         <td class="text-center align-middle px-0" >
-                                            <form action="process" method="post">
-                                                <input type="hidden" name="id" value="${p.product.product_id}"/>
-                                                <input type="submit" value="Delete"/>
-                                            </form>
+                                            <button><a href="process?num=-${p.quantity}&id=${p.product.product_id}">-</a></button> 
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -122,7 +121,8 @@
                             <div class="text-right mt-4">
                                 <label class="text-muted font-weight-normal m-0">Total price</label><br/>
 
-                                <input readonly="" style="border: none;text-align: right" class="text-large" id="totalprice" value="${o.totalPrice}"/>
+                                <input readonly="" style="border: none;text-align: right" class="text-large" id="totalprice" value="<fmt:formatNumber type = "number" 
+                                                  maxFractionDigits = "0" value = "${o.totalPrice}" />"/>
                             </div>
                         </div>
                     </div>

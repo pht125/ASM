@@ -13,16 +13,16 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.net.HttpCookie;
-import java.util.ArrayList;
 import java.util.List;
+import model.cart;
+import model.item;
 import model.product;
 
 /**
  *
  * @author Admin
  */
-public class ShoppingCartServlet extends HttpServlet {
+public class ProcessServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +41,10 @@ public class ShoppingCartServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ShoppingCartServlet</title>");
+            out.println("<title>Servlet ProcessServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ShoppingCartServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProcessServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,39 +63,55 @@ public class ShoppingCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Cookie[] cookies = request.getCookies();
         ProductDAO pdao = new ProductDAO();
-        String[] products = null;
-        String[] numbs = null;
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("cart") && !cookie.getValue().equals("")) {
-                String list_cart = cookie.getValue();
-                System.out.println(list_cart);
-                products = list_cart.split("\\|");
-            }
-            if (cookie.getName().equals("cartnumb") && !cookie.getValue().equals("")) {
-                String list_numb = cookie.getValue();
-                System.out.println(list_numb);
-                numbs = list_numb.split("\\|");
+        List<product> list = pdao.getAllProduct();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cart")) {
+                    txt += o.getValue();
+                    o.setMaxAge(0);
+                    response.addCookie(o);
+                }
             }
         }
-        List<product> list = new ArrayList<>();
-        List<Integer> list_numb = new ArrayList<>();
-        if (products == null || numbs == null) {
-            list = null;
-            list_numb = null;
-        } else {
-            for (int i = 0; i < products.length; i++) {
-                product p = pdao.getDetailById(products[i]);
-                int n = Integer.parseInt(numbs[i]);
-                list.add(p);
-                list_numb.add(n);
+        cart cart = new cart(txt, list);
+        String raw_num = request.getParameter("num");
+        String id = request.getParameter("id");
+        int num;
+        try {
+
+            product p = pdao.getDetailById(id);
+            int numStore = p.getQuantity();
+            num = Integer.parseInt(raw_num);
+            if (num == -(cart.getQuantityById(id))) {
+                cart.removeItem(id);
+            } else if (num == -1 && (cart.getQuantityById(id)) <= 1) {
+                cart.removeItem(id);
+            } else {
+                if (num == 1 && (cart.getQuantityById(id)) >= numStore) {
+                    num = 0;
+                }
+                int price = p.getPrice();
+                item t = new item(p, num, price);
+                cart.addItem(t);
+            }
+        } catch (NumberFormatException e) {
+        }
+        List<item> items = cart.getItems();
+        txt = "";
+        if (items.size() > 0) {
+            txt = items.get(0).getProduct().getProduct_id() + "-" + items.get(0).getQuantity();
+            for (int i = 1; i < items.size(); i++) {
+                txt = txt + "|" + items.get(i).getProduct().getProduct_id() + "-" + items.get(i).getQuantity();
             }
         }
-        session.setAttribute("list_cart", list);
-        session.setAttribute("list_numb", list_numb);
-//        request.setAttribute("list_cart", list);
-        request.getRequestDispatcher("cart.jsp").forward(request, response);
+        Cookie c = new Cookie("cart", txt);
+        c.setMaxAge(60 * 60 * 24 * 7);
+        response.addCookie(c);
+        request.setAttribute("cart", cart);
+        request.getRequestDispatcher("mycart.jsp").forward(request, response);
     }
 
     /**

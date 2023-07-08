@@ -56,14 +56,6 @@
         <servlet-class>controller.AddCartServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ShoppingCartServlet</servlet-name>
-        <servlet-class>controller.ShoppingCartServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>RemoveCartServlet</servlet-name>
-        <servlet-class>controller.RemoveCartServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CheckOutServlet</servlet-name>
         <servlet-class>controller.CheckOutServlet</servlet-class>
     </servlet>
@@ -74,6 +66,10 @@
     <servlet>
         <servlet-name>ShowCartServlet</servlet-name>
         <servlet-class>controller.ShowCartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessServlet</servlet-name>
+        <servlet-class>controller.ProcessServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
@@ -128,14 +124,6 @@
         <url-pattern>/addCart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ShoppingCartServlet</servlet-name>
-        <url-pattern>/cart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RemoveCartServlet</servlet-name>
-        <url-pattern>/removecart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CheckOutServlet</servlet-name>
         <url-pattern>/checkout</url-pattern>
     </servlet-mapping>
@@ -146,6 +134,10 @@
     <servlet-mapping>
         <servlet-name>ShowCartServlet</servlet-name>
         <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessServlet</servlet-name>
+        <url-pattern>/process</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

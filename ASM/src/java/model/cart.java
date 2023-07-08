@@ -27,9 +27,9 @@ public class cart {
         return items;
     }
 
-//    public int getQuantityById(String id){
-//        return getItemById(id).getQuantity();
-//    }
+    public int getQuantityById(String id){
+        return getItemById(id).getQuantity();
+    }
     private item getItemById(String id) {
         for (item i : items) {
             if (i.getProduct().getProduct_id().equals(id)) {
@@ -83,7 +83,7 @@ public class cart {
                     String id = n[0];
                     int quantity = Integer.parseInt(n[1]);
                     product p = getProductById(id, list);
-                    item t = new item(p, quantity, p.getPrice());
+                    item t = new item(p, quantity, (p.getPrice()*(100-p.getSale_percent())/100));
                     addItem(t);
                     
                 }
