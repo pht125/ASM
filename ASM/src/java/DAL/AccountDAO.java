@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.account;
 import model.product;
 
@@ -51,7 +53,31 @@ public class AccountDAO extends BaseDAO {
         }
         return null;
     }
+    
+    public account getAccountById(int id) {
+        try {
+            String sql = "select * from account where account_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                account a = new account();
+                a.setAccount_id(rs.getInt("account_id"));
+                a.setEmail(rs.getString("email"));
+                a.setPassword(rs.getString("password"));
+                a.setName(rs.getString("name"));
+                a.setPhone(rs.getString("phone"));
+                a.setAddress(rs.getString("address"));
+                a.setRole(rs.getInt("role"));
+                return a;
+            }
 
+        } catch (SQLException ex) {
+            
+        }
+        return null;
+    }
+    
     public account getAccountByEmail(String mail) {
         try {
             String sql = "select * from account where email like ?";
@@ -88,7 +114,21 @@ public class AccountDAO extends BaseDAO {
             ps.setString(5, account.getPhone());
             ps.setInt(6, account.getRole());
             ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+    
+        public void updateAccount(account account) {
+        String sql = "update account set name =?, phone =?,address = ? where account_id =?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
 
+            ps.setString(1, account.getName());
+            ps.setString(2, account.getPhone());
+            ps.setString(3, account.getAddress());
+            ps.setInt(4, account.getAccount_id());
+            ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
         }

@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Keyboard</title>
         <link rel="stylesheet" href="css/keeb_homestyle.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -107,6 +107,9 @@
             </div>
         </div>
         <!--END DESCRIPTION BANNER-->
+        <c:if test="${sessionScope.acc.role == 1}">
+            <button ><a>Add product</a></button>
+                </c:if>
         <form class="col-sm-5 filter_list" action="keeb" method="get">
             <dl class="param param-inline" style="display: flex;">
                 <p style="margin-right: 10px">Sort by</p>
@@ -135,9 +138,14 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
+                                            <c:if test="${product.quantity == 0}">
+                                                <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(50, 50, 50, 1);">Sold out</div>
+                                            </c:if>
+
                                             <img width="100%" height="286px" style="object-fit: contain" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>
+
                                     <div class="box-text">
                                         <div style="height: 50px;margin-bottom: 25px">
                                             <h5 class="product_name" style="color:rgba(21, 21, 21, 1);" >${product.product_name}</h5>
@@ -164,6 +172,10 @@
                                         </div>
                                     </div>
                                 </a>
+                                <c:if test="${sessionScope.acc.role == 1}">
+                                    <button type="submit" class="button-34">Update</button>
+                                    <button type="submit" class="button-34">Delete</button>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>

@@ -9,20 +9,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Account</title>
     </head>
     <body>
+        <a href="home">Back to home</a>
         <div>
-            ${sessionScope.acc.email}
+            <input readonly="" type="email" value="${sessionScope.acc.name}"/>
+           
         </div>
         <div>
-            ${sessionScope.acc.password}
+            <input readonly="" type="email" value="${sessionScope.acc.address}"/>
         </div>
         <div>
-            ${sessionScope.acc.name}
+            <input readonly="" type="email" value="${sessionScope.acc.account_id}"/>
         </div>
-        <div>
-            ${sessionScope.acc.address}
-        </div>
+        <button type="submit" class="button-34">
+            <a href="updateAcc?id=${sessionScope.acc.account_id}" style="text-decoration: none; ">update</a>
+        </button>
     </body>
 </html>

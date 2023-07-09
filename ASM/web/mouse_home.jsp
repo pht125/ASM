@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Mouse</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
@@ -133,6 +133,9 @@
                                         <div class="product_image">
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
+                                            </c:if>
+                                            <c:if test="${product.quantity == 0}">
+                                                <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(50, 50, 50, 1);">Sold out</div>
                                             </c:if>
                                             <img width="100%" height="286px" style="object-fit: contain" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>

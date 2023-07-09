@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Sign up</title>
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
         <style>
 

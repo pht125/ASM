@@ -27,7 +27,8 @@ CREATE TABLE account(
 	account_id int PRIMARY KEY IDENTITY(1,1),
     email varchar(50) NOT NULL UNIQUE,
     password varchar(50) NOT NULL,
-    name varchar(50) NOT NULL,
+    name nvarchar(50) NOT NULL,
+	address nvarchar(255),
     phone varchar(12) NOT NULL,
     role int NOT NULL
 )
@@ -45,9 +46,9 @@ CREATE TABLE bill(
 CREATE TABLE bill_info(
 	bill_id int,
 	product_id varchar(50),
-	quantity_bill int,
+	quantity int,
+	price int,
 	PRIMARY KEY(bill_id,product_id),
-	FOREIGN KEY(product_id) REFERENCES product(product_id),
-	FOREIGN KEY(bill_id) REFERENCES bill(bill_id)
+	FOREIGN KEY(product_id) REFERENCES product(product_id)
 )
 

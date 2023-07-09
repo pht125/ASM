@@ -134,6 +134,9 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
+                                            <c:if test="${product.quantity == 0}">
+                                                <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(50, 50, 50, 1);">Sold out</div>
+                                            </c:if>
                                             <img width="100%" height="286px" style="object-fit: contain" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>

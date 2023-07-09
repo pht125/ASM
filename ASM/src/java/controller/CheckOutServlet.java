@@ -38,8 +38,6 @@ public class CheckOutServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Cookie[] cookies = request.getCookies();
-        String raw_price = request.getParameter("product_name");
 
     }
 
@@ -86,8 +84,6 @@ public class CheckOutServlet extends HttpServlet {
         if (acc1 == null) {
             response.sendRedirect("login");
         } else {
-            BillDAO bdao = new BillDAO();
-            bdao.addBill(acc1, cart);
             Cookie c = new Cookie("cart", txt);
 //            c.setMaxAge(0);
 //            response.addCookie(c);

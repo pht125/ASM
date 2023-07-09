@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login</title>
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
 
         <style>
@@ -86,13 +86,13 @@
                 text-align: center;
                 white-space: nowrap;
                 cursor: pointer;
-                background-color: black;
+                background-color: rgba(60, 60, 60, 1);
                 color: white;
                 font-weight: bold;
             }
 
             .form-login button:hover{
-                background-color: white;
+                background-color: rgba(250, 250, 250, 1);
                 color: black;
 
             }
@@ -132,7 +132,7 @@
                             <input name="check" type="checkbox" value="remember-me"> Remember me
                         </div>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+                    <button class="" type="submit" style="height: 48px; width: 250px">Log in</button>
                     <div>
                         <a href="signup.jsp" class="signup">Sign up</a>
                     </div>

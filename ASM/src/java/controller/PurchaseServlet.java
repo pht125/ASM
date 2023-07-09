@@ -37,9 +37,11 @@ public class PurchaseServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         ProductDAO pdao = new ProductDAO();
         List<product> list = pdao.getAllProduct();
         Cookie[] arr = request.getCookies();
+        account acc1 = (account) session.getAttribute("acc");
         String txt = "";
         if (arr != null) {
             for (Cookie o : arr) {
@@ -50,6 +52,8 @@ public class PurchaseServlet extends HttpServlet {
         }
         cart cart = new cart(txt, list);
         Cookie c = new Cookie("cart", txt);
+        BillDAO bdao = new BillDAO();
+            bdao.addBill(acc1, cart);
         c.setMaxAge(0);
         response.addCookie(c);
         response.sendRedirect("home");

@@ -13,13 +13,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.account;
-import utils.NumberToEnum.UserRole;
 
 /**
  *
  * @author Admin
  */
-public class SignUpServlet extends HttpServlet {
+public class UpdateAccountServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class SignUpServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignUpServlet</title>");
+            out.println("<title>Servlet UpdateAccountServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SignUpServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateAccountServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,10 +55,19 @@ public class SignUpServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    int id;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String raw_id = request.getParameter("id");
+        AccountDAO adao = new AccountDAO();
+        try {
+            id = Integer.parseInt(raw_id);
+            account acc = adao.getAccountById(id);
+            request.getRequestDispatcher("updateaccount.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -74,40 +82,25 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-
-        // get data from form
+        
         String name = request.getParameter("name");
-        String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String address = request.getParameter("address");
-        String password = request.getParameter("password");
-        String repassword = request.getParameter("repassword");
-        String checkbox = request.getParameter("checkbox");
-
-        // validate data
-//        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || repassword.isEmpty()) {
-//            request.setAttribute("error", "Please fill all the fields.");
-//            request.getRequestDispatcher("signup.jsp").forward(request, response);
-//        }
-//        else 
-//        if (checkbox == null) {
-//            request.setAttribute("error", "You have to accept the Terms of service.");
-//            request.getRequestDispatcher("signup.jsp").forward(request, response);
-//        } else 
-        if (!password.equals(repassword)) {
-            request.setAttribute("error", "Password and Re-Password must be same.");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
-        } else {
-            account account = new account(email, password, name, phone, address, UserRole.USER.getValue());
-            AccountDAO accountDAO = new AccountDAO();
-            if (accountDAO.getAccountByEmail(email) != null) {
-                request.setAttribute("error", "Email already exists!");
-                request.getRequestDispatcher("signup.jsp").forward(request, response);
-            } else {
-                accountDAO.createAccount(account);
-                session.setAttribute("role", "user");
-                request.getRequestDispatcher("login").forward(request, response);
-            }
+        try {
+            AccountDAO adao = new AccountDAO();
+            account acc = new account();
+            acc.setName(name);
+            acc.setPhone(phone);
+            acc.setAddress(address);
+            acc.setAccount_id(id);
+            adao.updateAccount(acc);
+            System.out.println(id);
+            session.removeAttribute("acc");
+            session.setAttribute("acc", acc);
+            session.setAttribute("name", acc.getName());
+            response.sendRedirect("home");
+            
+        } catch (Exception e) {
         }
     }
 

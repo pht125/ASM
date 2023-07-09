@@ -11,7 +11,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
     </head>
     <style>
         .header{
@@ -157,7 +159,7 @@
             <c:if test="${cookies.key == 'cart'}">
                 <c:set var="val" value="${cookies.value.value}"></c:set>
             </c:if>
-            
+
         </c:forEach>
         <div class="header">
             <div class="header_logo">
@@ -177,21 +179,21 @@
                 <c:if test="${sessionScope.acc == null}">
                     <div class="header_title_row" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
-                        <a href="login"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <a href="login">info<i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                     </div>
                 </c:if>
                 <c:if test="${sessionScope.acc != null}">
                     <div class="header_title_row dropdown" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
-                        <a onclick="myFunction(this)" class="dropdown_button"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <a onclick="myFunction(this)" class="dropdown_button" style="text-decoration: none">info<i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                         <div id="myDropdown" class="dropdown_content">
-                            <a href="info">Infomation</a>
+                            <a href="info?id=${sessionScope.acc.account_id}">Infomation</a>
                             <a href="logout">Log out</a>
                         </div>
                     </div>
                 </c:if>
                 <div class="header_title_row" style="position: relative">
-                    <a href="show"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i></a>
+                    <a href="show">cart<i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;text-decoration: none;"></i></a>
                 </div>
             </div>
         </div>

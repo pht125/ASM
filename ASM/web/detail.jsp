@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>${detail.product_name}</title>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
               id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -72,6 +72,69 @@
             width: 25%;
             padding-right: 20px;
         }
+
+        .button-34 {
+            align-items: center;
+            background-color: rgba(255, 57, 57, 0.8);
+            border: 0;
+            border-radius: 100px;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            justify-content: center;
+            line-height: 20px;
+            max-width: 480px;
+            min-height: 50px;
+            min-width: 0px;
+            overflow: hidden;
+            padding: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            touch-action: manipulation;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+        }
+        .button-34-out {
+            align-items: center;
+            background-color: rgba(50, 50, 50, 1);
+            border: 0;
+            border-radius: 100px;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            justify-content: center;
+            line-height: 20px;
+            max-width: 480px;
+            min-height: 50px;
+            min-width: 0px;
+            overflow: hidden;
+            padding: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            touch-action: manipulation;
+            transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+        }
+
+        .button-34:hover,
+        .button-34:focus {
+            background-color: rgba(255, 57, 57, 0.8);
+            color: #ffffff;
+        }
     </style>
     <body>
         <div class="header_home" >
@@ -124,26 +187,22 @@
 
 
                                         <div class="row">
-                                            <div class="col-sm-5">
-
-                                            </div> <!-- col.// -->
-
                                         </div> <!-- row.// -->
                                         <hr style="margin-bottom: 30px">
-
-                                       
-                                        <a href="addCart?id=${detail.product_id}" class="btn btn-lg btn-outline-primary text-uppercase"> <i
-                                                class="fas fa-shopping-cart"></i> Add to cart </a>
                                         <div class="row">
                                             <div class="col-sm-5">
                                                 <dl class="param param-inline">
-                                                    <dt>Quantity: </dt>
-                                                    <input type="number" name="num" value="1">
+                                                    Quantity: <input type="number" name="num" value="1" min="1" max="${detail.quantity}">
                                                 </dl> <!-- item-property .// -->
                                             </div> <!-- col.// -->
 
                                         </div>
-                                        <input type="button" onclick="buy('${detail.product_id}')" value="Add to cart">
+                                        <c:if test="${detail.quantity >= 1}">
+                                            <button onclick="buy('${detail.product_id}')" type="submit" class="button-34">Add to cart</button>
+                                        </c:if>
+                                        <c:if test="${detail.quantity == 0}">
+                                            <button class="button-34-out">Out of stock</button>
+                                        </c:if>   
                                     </article> <!-- card-body.// -->
                                 </aside> <!-- col.// -->
                             </div> <!-- row.// -->
@@ -164,7 +223,7 @@
         <script type="text/javascript">
             function buy(id) {
                 var m = document.f.num.value;
-                document.f.action = "buy?id="+id+"&num="+m;
+                document.f.action = "buy?id=" + id + "&num=" + m;
                 document.f.submit();
             }
         </script>
