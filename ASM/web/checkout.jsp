@@ -142,17 +142,18 @@
                         <div class="card-details">
                             <h3 class="title">Delivery Information</h3>
                             <div class="row" style="display: flex;justify-content: space-evenly">
-                                <div class="form-group col-sm-10">
+                                <div class="form-group col-sm-12" style="position: relative;background-color: rgba(233, 233, 233, 1);border-radius: 20px;padding: 10px 30px 20px">
+                                    <a style="position: absolute;right: 20px" href="updateAcc?id=${sessionScope.acc.account_id}"><i class="fa-solid fa-edit" style="color: #d12323;"></i></a>
                                     <label for="card-holder"></label>
                                     <div>
-                                        <h5>${sessionScope.acc.name}</h5>
-                                        <h5>${sessionScope.acc.phone}</h5>
-                                        <h5>${sessionScope.acc.address}</h5>
+                                        <h6>Name: ${sessionScope.acc.name}</h6>
+                                        <h6>Phone: ${sessionScope.acc.phone}</h6>
+                                        <h6>Address: ${sessionScope.acc.address}</h6>
                                     </div>
                                 </div>
-                                <div>
-                                    <a href="updateAcc?id=${sessionScope.acc.account_id}"><i class="fa-solid fa-edit" style="color: #d12323;"></i>Change</a>
-                                </div>
+                                
+                                    
+                                
 
                                 <div class="col-sm-12" style="display: flex;justify-content: space-between; margin-top: 20px">
                                     <div class="form-group col-sm-6" >

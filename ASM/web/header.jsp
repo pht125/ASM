@@ -156,9 +156,12 @@
             text-align: center;
             padding: 10px 20px ;
         }
-
+        
+        .account_icon:hover{
+            text-decoration: none;
+        }
     </style>
-    <body onload="sizeCart()">
+    <body>
 
         <div class="header">
             <div class="header_logo">
@@ -178,13 +181,13 @@
                 <c:if test="${sessionScope.acc == null}">
                     <div class="header_title_row" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
-                        <a href="login"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <a class="account_icon" href="login"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                     </div>
                 </c:if>
                 <c:if test="${sessionScope.acc != null}">
                     <div class="header_title_row dropdown" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
-                        <a onclick="myFunction(this)" class="dropdown_button" style="text-decoration: none"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <a onclick="myFunction(this)" class="dropdown_button account_icon" style="text-decoration: none"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                         <div id="myDropdown" class="dropdown_content" style="border-radius: 30px">
                             <a class="dropdown_menu_content" href="info?id=${sessionScope.acc.account_id}">Infomation</a>
                             <a class="dropdown_menu_content" href="logout">Log out</a>

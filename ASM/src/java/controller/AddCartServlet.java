@@ -51,6 +51,8 @@ public class AddCartServlet extends HttpServlet {
         }
         cart cart = new cart(txt, list);
         List<item> listItem = cart.getItems();
+        List<product> listDetail = pdao.getFeaturedProduct();
+        request.setAttribute("listFeatured", listDetail);
         product p = new product();
         if(session.getAttribute("currentid")==null){
             response.sendRedirect("index.html");

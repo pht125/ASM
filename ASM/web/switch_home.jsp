@@ -101,7 +101,7 @@
                     Custom bàn phím cơ chưa bao giờ dễ hơn!
                 </p>
                 <p>
-                    Đây là toàn bộ loại switch và các dụng cụ lube switch mà bạn cần để custom bàn phím cơ của bạn.
+                    Đây là toàn bộ loại switch mà bạn cần để custom bàn phím cơ của bạn.
                 </p>
             </div>
         </div>

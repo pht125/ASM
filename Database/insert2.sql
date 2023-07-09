@@ -625,7 +625,7 @@ Made in Taiwan</span></p></div></div></div></feature-chart>
   </div>
 </div>'),
 (3,'MP013',N'Lót chuột Razer Strider Hybrid Mat', 'Razer',750000,0,300,'https://cdn.shopify.com/s/files/1/0636/9044/0949/files/lot-chu-t-razer-strider-hybrid-mat-large-d-n-xxl-39068925591797.jpg?v=1686381289&width=700',N''),
-(3,'MP014',N'Lót chuột kính Razer Atlas', 'Pulsar',2700000,0,300,'https://cdn.shopify.com/s/files/1/0636/9044/0949/products/lot-chu-t-kinh-c-ng-l-c-razer-atlas-38977105002741.jpg?v=1679198219&width=700',N'<div class="section   section-blends section-full">
+(3,'MP014',N'Lót chuột kính Razer Atlas', 'Razer',2700000,0,300,'https://cdn.shopify.com/s/files/1/0636/9044/0949/products/lot-chu-t-kinh-c-ng-l-c-razer-atlas-38977105002741.jpg?v=1679198219&width=700',N'<div class="section   section-blends section-full">
   <div class="section-stack section-stack--horizontal "><div class="section-stack__intro">
         <div class="prose "><p class="bold">Lót chuột kính cường lực Razer Atlas</p><h2 class="h2"><span class="text-gradient " style="--gradient: linear-gradient(90deg, rgba(1, 12, 70, 1), rgba(24, 63, 149, 1) 100%)">Nguyên chất - Được đánh bóng - Chính xác</span></h2><div class="metafield-rich_text_field"><p>Vẩy chuột chuẩn xác với lót chuột kính đầu tiên từ Razer - được hoàn thiện hướng đến độ bền bằng vật liệu kính cường lực. Tối ưu cho cảm biến quang học và xử lý bề mặt đặc biệt giảm tiếng ồn, siêu mượt để di chuột với không lực cản.</p></div></div>
       </div><div class="section-stack__main"><feature-chart max-rows="6" class="feature-chart bg-custom text-custom" style="--background: 244 244 244; --text-color: 39 39 39;"><div class="feature-chart__table   divide-y scroll-area"><div class="feature-chart__table-row"><div class="feature-chart__heading bold">Chất liệu bề mặt</div><div class="feature-chart__value prose text-subdued"><p><span class="metafield-multi_line_text_field">Kính cường lực</span></p></div></div><div class="feature-chart__table-row"><div class="feature-chart__heading bold">Chất liệu đế</div><div class="feature-chart__value prose text-subdued"><p><span class="metafield-multi_line_text_field">Cao su chống trượt</span></p></div></div><div class="feature-chart__table-row"><div class="feature-chart__heading bold">Kích thước</div><div class="feature-chart__value prose text-subdued"><p><span class="metafield-multi_line_text_field">450 x 400 x 5mm</span></p></div></div><div class="feature-chart__table-row"><div class="feature-chart__heading bold">Tương thích feet</div><div class="feature-chart__value prose text-subdued"><p><span class="metafield-multi_line_text_field">Feet mềm (PTFE)</span></p></div></div><div class="feature-chart__table-row"><div class="feature-chart__heading bold">Thương hiệu</div><div class="feature-chart__value prose text-subdued"><p><span class="metafield-multi_line_text_field">Razer</span></p></div></div></div></feature-chart>
@@ -670,6 +670,8 @@ INSERT INTO bill
 VALUES
 (2,'2023-5-10',N'183-Cầu Giấy- Hà Nội',2500000)
 
-INSERT INTO bill_info VALUES (1,'MS002',3,7500000),
+INSERT INTO bill_info 
+VALUES 
+(1,'MS002',3,7500000),
 (1,'MS003',2,5000000),
 (1,'SW002',3,45000)

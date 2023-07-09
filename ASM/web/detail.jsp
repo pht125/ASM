@@ -137,10 +137,10 @@
         }
     </style>
     <body>
-        <div class="header_home" >
+        <div class="header_home" style="z-index: 20">
             <%@include file="header.jsp" %>
         </div>
-        <form name="f" action="" method="post">
+        <form name="f" action="" method="post" style="margin-top: 50px">
             <div class="row">
 
                 <div class="">
@@ -161,7 +161,7 @@
                                     <input hidden="" value="${detail.product_id}" name="id"/>
                                     <article class="card-body p-5">
                                         <h3 class="title mb-3 product_name">${detail.product_name}</h3>
-
+                                        <h6 style="color: rgba(80, 80, 80, 1)">Brand: ${detail.brand}</h6>
                                         <p class="price-detail-wrap">
                                             <span class=" h3 text-warning">
                                                 <c:if test="${detail.sale_percent == 0}">
@@ -178,10 +178,10 @@
 
                                                         <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);font-size: larger"><fmt:formatNumber type = "number" 
                                                                           maxFractionDigits = "0" value = "${detail.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5);font-size: larger"> đ</h6></h5>
-
                                                     </div>
                                                 </c:if>
                                             </span>
+                                        <h6 style="margin-top: 20px;margin-bottom: -10px;color:rgba(132, 128, 255, 1)">Instock: ${detail.quantity}</h6>
                                         </p> <!-- price-detail-wrap .// -->
 
 
