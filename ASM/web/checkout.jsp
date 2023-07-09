@@ -95,6 +95,13 @@
             background-color: rgba(50, 50, 50, 1);
             color: #ffffff;
         }
+        
+        input{
+            border: none;
+        }
+        input:active{
+            border: none;
+        }
     </style>
     <body>
         <main class="page payment-page" style="margin-top: 50px">
@@ -106,15 +113,28 @@
                             <c:set var="o" value="${requestScope.cart}"/>
                             <c:forEach var="p" items="${o.items}" varStatus="loop">
 
-                                <div class="item">
-                                    <td class="text-right font-weight-semibold align-middle p-4 pricesum"><fmt:formatNumber type = "number" 
-                                                      maxFractionDigits = "0" value = "${(p.price*p.quantity)}" /></td>
-                                    <input readonly="" style="border: none;width: 100%;" class="d-block text-dark item-name" id="product_name" value="${p.product.product_name}" />
-                                    <input style="border: none;background-color: #f6f6f6" type="number" class="form-control text-center quantity item-description" value="${p.quantity}" name="quantity" id="quantity" min="1" readonly="" >
+                                <div class="item" style="display: flex;justify-content: space-between">
+                                    <div style="width: 70%">
+                                        <!--<input readonly="" style="border: none;width: 100%;background-color: #f7fbff" class="d-block text-dark item-name" id="product_name" value="" />-->
+                                        <p style="font-weight: bolder;">${p.product.product_name}</p>
+                                        <h6>x${p.quantity}</h6>
+                                    </div>
+                                    <div>
+                                        <td class="text-right font-weight-semibold align-middle p-4 pricesum"><fmt:formatNumber type = "number" 
+                                                          maxFractionDigits = "0" value = "${(p.price*p.quantity)}" /></td>
+                                    </div>
+
                                 </div>
+                                <hr>
                             </c:forEach>
-                            <input type="text" class="form-control" placeholder="MM" aria-label="MM" aria-describedby="basic-addon1" value="<fmt:formatNumber type = "number" 
-                                              maxFractionDigits = "0" value = "${o.totalPrice}" />">
+                            <div style="text-align: right">
+                                <h4 class="title" style="margin-right: 30px; border-bottom: none;">Total</h4>
+                                <div style="display: flex;justify-content: right">
+                                    <h5 style="margin-right: 3px"><fmt:formatNumber type = "number" 
+                                                  maxFractionDigits = "0" value = "${o.totalPrice}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5);font-size: larger"> đ</h6></h5>
+                                </div>
+                                
+                            </div>
                         </div>
 
 

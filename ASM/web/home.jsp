@@ -75,7 +75,9 @@
         <!--image slider end-->
 
         <!----------------------------------------------------------------------------------------------->
-
+        <c:if test="${sessionScope.acc.role == 1}">
+            <button ><a href="manage">Manage Product</a></button>
+        </c:if>
         <div class="cate_menu">
             <ul class="menuItems" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; position: unset;">
                 <li class="col-lg-2 col-md-5 menuItems_info">

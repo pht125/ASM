@@ -90,6 +90,23 @@ public class cart {
             }
         } catch (NumberFormatException e) {
         }
-
     }
+//    public int size(String txt, List<product> list) {
+//        items = new ArrayList<>();
+//        int size = 0;
+//        try {
+//            if (txt != null && txt.length() != 0) {
+//                String[] s = txt.split("\\|");
+//                for (String i : s) {
+//                    String[] n = i.split("-");
+//                    int quantity = Integer.parseInt(n[1]);
+//                    size = size + quantity;
+//                }
+//                System.out.println(size);
+//                return size;
+//            }
+//        } catch (NumberFormatException e) {
+//        }
+//        return 0;
+//    }
 }

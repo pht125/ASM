@@ -145,22 +145,21 @@
             text-decoration: none;
             display: block;
             margin: 0;
+            border-radius: 30px
         }
 
         .dropdown a:hover {
             background-color: #ddd;
         }
 
-
+        .dropdown_menu_content{
+            text-align: center;
+            padding: 10px 20px ;
+        }
+        
     </style>
-    <body>
-        <c:set var="val" value=""></c:set>
-        <c:forEach var="cookies" items="${cookie}">
-            <c:if test="${cookies.key == 'cart'}">
-                <c:set var="val" value="${cookies.value.value}"></c:set>
-            </c:if>
+    <body onload="sizeCart()">
 
-        </c:forEach>
         <div class="header">
             <div class="header_logo">
                 <a href="home">
@@ -186,14 +185,18 @@
                     <div class="header_title_row dropdown" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
                         <a onclick="myFunction(this)" class="dropdown_button" style="text-decoration: none">info<i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
-                        <div id="myDropdown" class="dropdown_content">
-                            <a href="info?id=${sessionScope.acc.account_id}">Infomation</a>
-                            <a href="logout">Log out</a>
+                        <div id="myDropdown" class="dropdown_content" style="border-radius: 30px">
+                            <a class="dropdown_menu_content" href="info?id=${sessionScope.acc.account_id}">Infomation</a>
+                            <a class="dropdown_menu_content" href="logout">Log out</a>
                         </div>
                     </div>
                 </c:if>
                 <div class="header_title_row" style="position: relative">
-                    <a href="show">cart<i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;text-decoration: none;"></i></a>
+                    <a href="show">cart<i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;text-decoration: none;"></i>
+                        ${requestScope.size}
+                       
+                    </a>
+<!--                    <input readonly="" type="text" value="" id="sizeCart">-->
                 </div>
             </div>
         </div>
@@ -207,6 +210,8 @@
                     x.style.display = "block";
                 }
             }
+
+            
         </script>
     </body>
 </html>

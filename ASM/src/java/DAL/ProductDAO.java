@@ -20,8 +20,8 @@ public class ProductDAO extends BaseDAO {
 
     public ProductDAO() {
     }
-    
-        public List<product> getAllProduct() {
+
+    public List<product> getAllProduct() {
         List<product> list = new ArrayList();
         String sql = "select * from product";
         try {
@@ -44,6 +44,65 @@ public class ProductDAO extends BaseDAO {
 
         }
         return list;
+    }
+
+    public void deleteProduct(String id) {
+        String sql = "delete from product where product_id =?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, id);
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void insertProduct(int cate_id, String product_id, String product_name, String brand,
+            int price, int sale_percent, int quantity, String img, String description) {
+        String sql = "INSERT INTO product VALUES (?,?,?,?,?,?,?,?,?)";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, cate_id);
+            statement.setString(2, product_id);
+            statement.setString(3, product_name);
+            statement.setString(4, brand);
+            statement.setInt(5, price);
+            statement.setInt(6, sale_percent);
+            statement.setInt(7, quantity);
+            statement.setString(8, img);
+            statement.setString(9, description);
+            statement.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void updateProduct(String product_id, String product_name, String brand,
+            int price, int sale_percent, int quantity, String img, String description) {
+        String sql = "UPDATE product\n"
+                + "   SET \n"
+                + "      product_name = ?\n"
+                + "      ,brand = ?\n"
+                + "      ,price = ?\n"
+                + "      ,sale_percent = ?\n"
+                + "      ,quantity = ?\n"
+                + "      ,img = ?\n"
+                + "      ,description = ?\n"
+                + " WHERE product_id = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            
+            statement.setString(1, product_name);
+            statement.setString(2, brand);
+            statement.setInt(3, price);
+            statement.setInt(4, sale_percent);
+            statement.setInt(5, quantity);
+            statement.setString(6, img);
+            statement.setString(7, description);
+            statement.setString(8, product_id);
+            statement.executeUpdate();
+        } catch (Exception e) {
+        }
     }
 
     public List<product> getFeaturedProduct() {
@@ -359,7 +418,7 @@ public class ProductDAO extends BaseDAO {
         }
         return list;
     }
-    
+
     public List<product> pagingPadByOrder(int page, int recordsPerPage, String type) {
         List<product> list = new ArrayList();
         try {
@@ -411,7 +470,7 @@ public class ProductDAO extends BaseDAO {
         }
         return list;
     }
-    
+
     public List<product> pagingSwitchByOrder(int page, int recordsPerPage, String type) {
         List<product> list = new ArrayList();
         try {
@@ -493,7 +552,7 @@ public class ProductDAO extends BaseDAO {
         }
         return 0;
     }
-    
+
     public int countPad() {
         String sql = "SELECT COUNT(*) as totalrow FROM product where cate_id = 3";
         PreparedStatement statement;
@@ -508,7 +567,7 @@ public class ProductDAO extends BaseDAO {
         }
         return 0;
     }
-    
+
     public int countSwitch() {
         String sql = "SELECT COUNT(*) as totalrow FROM product where cate_id = 4";
         PreparedStatement statement;
@@ -524,8 +583,12 @@ public class ProductDAO extends BaseDAO {
         return 0;
     }
 
-
-
-
+    public static void main(String[] args) {
+        ProductDAO pdao = new ProductDAO();
+        List<product> list = pdao.getProductByName("");
+        for (product object : list) {
+            System.out.println(object);
+        }
+    }
 
 }

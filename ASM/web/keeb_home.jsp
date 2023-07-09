@@ -107,9 +107,7 @@
             </div>
         </div>
         <!--END DESCRIPTION BANNER-->
-        <c:if test="${sessionScope.acc.role == 1}">
-            <button ><a>Add product</a></button>
-                </c:if>
+        
         <form class="col-sm-5 filter_list" action="keeb" method="get">
             <dl class="param param-inline" style="display: flex;">
                 <p style="margin-right: 10px">Sort by</p>
@@ -172,10 +170,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                <c:if test="${sessionScope.acc.role == 1}">
-                                    <button type="submit" class="button-34">Update</button>
-                                    <button type="submit" class="button-34">Delete</button>
-                                </c:if>
+                                
                             </div>
                         </div>
                     </c:forEach>

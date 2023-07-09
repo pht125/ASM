@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Seach for:${requestScope.nameSearch}</title>
+        <title>Manage Product</title>
         <link rel="stylesheet" href="css/keeb_homestyle.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -83,10 +83,13 @@
         <div>
             <%@include file="header.jsp" %>
         </div>
+        <c:if test="${sessionScope.acc.role == 1}">
+            <button ><a href="addProduct.jsp">Add product</a></button>
+        </c:if>
         <div class="page-content">
             <div class="container">
                 <div class="product-content row" style="display: flex; justify-content: left;">
-                    <c:forEach items="${requestScope.listSearch}" var="product">
+                    <c:forEach items="${requestScope.listAll}" var="product">
                         <div class="col-lg-3 col-md-4 col-sm-6" style="position: relative">
                             <div class="item-product-content" style="padding: 10px;margin-bottom: 20px">
                                 <a href="detail?id=${product.product_id}" style="text-decoration: none; ">
@@ -121,11 +124,16 @@
 
                                                     <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
                                                                       maxFractionDigits = "0" value = "${product.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5)"> đ</h6></h5>
+
                                                 </div>
                                             </c:if>
                                         </div>
                                     </div>
                                 </a>
+                                <c:if test="${sessionScope.acc.role == 1}">
+                                    <button type="submit" class="button-34"><a href="updateProduct?id=${product.product_id}">Update</a></button>
+                                    <a href="#" onclick="showMess('${product.product_id}')">Delete</a>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>
@@ -136,4 +144,12 @@
             <%@include file="footer.jsp" %>
         </div>
     </body>
+        <script type="text/javascript">
+        function showMess(id) {
+            if (confirm("are u sure")) {
+                window.location = "deleteProduct?id=" + id;
+            }
+        }
+
+    </script>
 </html>

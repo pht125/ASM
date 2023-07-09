@@ -8,21 +8,16 @@ import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import java.util.List;
-import model.cart;
-import model.item;
 import model.product;
 
 /**
  *
  * @author Admin
  */
-public class BuyServlet extends HttpServlet {
+public class UpdateProductServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +36,10 @@ public class BuyServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuyServlet</title>");            
+            out.println("<title>Servlet UpdateProductServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet BuyServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateProductServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,7 +57,11 @@ public class BuyServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String id = request.getParameter("id");
+        ProductDAO pdao = new ProductDAO();
+        product p = pdao.getDetailById(id);
+        request.setAttribute("productDetail", p);
+        request.getRequestDispatcher("updateProduct.jsp").forward(request, response);
     }
 
     /**
@@ -76,46 +75,23 @@ public class BuyServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        String product_id = request.getParameter("id");
+        String product_name = request.getParameter("name");
+        String brand = request.getParameter("brand");
+        String raw_price = request.getParameter("price");
+        String raw_sale = request.getParameter("sale");
+        String raw_quantity = request.getParameter("quantity");
+        String image = request.getParameter("image");
+        String description = request.getParameter("description");
         ProductDAO pdao = new ProductDAO();
-        List<product> list = pdao.getAllProduct();
-        Cookie[] arr = request.getCookies();
-        String txt = "";
-        if (arr != null) {
-            for (Cookie o : arr) {
-                if (o.getName().equals("cart")) {
-                    txt += o.getValue();
-                    o.setMaxAge(0);
-                    response.addCookie(o);
-                }
-            }
+        try {
+            int price = Integer.parseInt(raw_price);
+            int sale = Integer.parseInt(raw_sale);
+            int quantity = Integer.parseInt(raw_quantity);
+            pdao.updateProduct(product_id, product_name, brand, price, sale, quantity, image, description);
+            response.sendRedirect("manage");
+        } catch (IOException e) {
         }
-        String num = request.getParameter("num");
-        String id = request.getParameter("id");
-        session.removeAttribute("currentid");
-        session.setAttribute("currentid", pdao.getDetailById(id));
-        if (txt.equals("")) {
-            txt = id + "-" + num;
-        } else {
-            txt = txt + "|" + id + "-" + num;
-        }
-        Cookie c = new Cookie("cart", txt);
-        c.setMaxAge(60 * 60 * 24 * 7);
-        response.addCookie(c);
-        cart cart = new cart(txt, list);
-         List<item> listItem = cart.getItems();
-        int n;
-        if (listItem != null) {
-            n = listItem.size();
-        } else {
-            n = 0;
-        }
-        System.out.println(n);
-//        cart size = new cart(txt, list);
-//        int n = cart.size(txt, list);
-        session.setAttribute("size", n);
-        request.setAttribute("size", n);
-        request.getRequestDispatcher("addCart").forward(request, response);
     }
 
     /**

@@ -57,13 +57,7 @@ public class AddCartServlet extends HttpServlet {
         }else{
             p = (product) session.getAttribute("currentid");
         }
-        int n;
-        if (listItem != null) {
-            n = listItem.size();
-        } else {
-            n = 0;
-        }
-        request.setAttribute("size", n);
+        
         request.setAttribute("detail", p);
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
