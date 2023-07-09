@@ -35,6 +35,8 @@ public class DetailServlet extends HttpServlet {
         String raw_id = request.getParameter("id");
         ProductDAO pdao = new ProductDAO();
         product p = pdao.getDetailById(raw_id);
+        List<product> list = pdao.getFeaturedProduct();
+        request.setAttribute("listFeatured", list);
         request.setAttribute("detail", p);
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }

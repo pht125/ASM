@@ -132,7 +132,7 @@
                             <input name="check" type="checkbox" value="remember-me"> Remember me
                         </div>
                     </div>
-                    <button class="" type="submit" style="height: 48px; width: 250px">Log in</button>
+                    <button class="" type="submit" style="height: 48px; width: calc((100%/12)*10)">Log in</button>
                     <div>
                         <a href="signup.jsp" class="signup">Sign up</a>
                     </div>

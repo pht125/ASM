@@ -156,7 +156,7 @@
             text-align: center;
             padding: 10px 20px ;
         }
-        
+
     </style>
     <body onload="sizeCart()">
 
@@ -178,13 +178,13 @@
                 <c:if test="${sessionScope.acc == null}">
                     <div class="header_title_row" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
-                        <a href="login">info<i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <a href="login"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                     </div>
                 </c:if>
                 <c:if test="${sessionScope.acc != null}">
                     <div class="header_title_row dropdown" style="display: flex;">
                         <h5>${sessionScope.acc.name}</h5>
-                        <a onclick="myFunction(this)" class="dropdown_button" style="text-decoration: none">info<i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
+                        <a onclick="myFunction(this)" class="dropdown_button" style="text-decoration: none"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                         <div id="myDropdown" class="dropdown_content" style="border-radius: 30px">
                             <a class="dropdown_menu_content" href="info?id=${sessionScope.acc.account_id}">Infomation</a>
                             <a class="dropdown_menu_content" href="logout">Log out</a>
@@ -192,11 +192,17 @@
                     </div>
                 </c:if>
                 <div class="header_title_row" style="position: relative">
-                    <a href="show">cart<i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;text-decoration: none;"></i>
-                        ${requestScope.size}
-                       
+                    <a href="show"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;text-decoration: none;"></i>
+
                     </a>
-<!--                    <input readonly="" type="text" value="" id="sizeCart">-->
+                    <c:if test="${requestScope.size != null}">
+                        <div style="position: absolute;background-color: red;width: 25px;height: 25px;left: 55%;border-radius: 30px;text-align: center">
+                            <p style="color:white">${requestScope.size}</p>
+                        </div>
+                    </c:if>
+
+
+                    <!--                    <input readonly="" type="text" value="" id="sizeCart">-->
                 </div>
             </div>
         </div>
@@ -211,7 +217,7 @@
                 }
             }
 
-            
+
         </script>
     </body>
 </html>

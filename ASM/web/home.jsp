@@ -23,6 +23,39 @@
         body{
             overflow-x: hidden;
         }
+        .button-add {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-add:focus:not(:focus-visible):not(.focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .button-add:hover {
+            background-color: #2c974b;
+        }
     </style>
     <body>
 
@@ -76,7 +109,7 @@
 
         <!----------------------------------------------------------------------------------------------->
         <c:if test="${sessionScope.acc.role == 1}">
-            <button ><a href="manage">Manage Product</a></button>
+            <button class="button-add"><a style="text-decoration: none; color:white;" href="manage">Manage Product</a></button>
         </c:if>
         <div class="cate_menu">
             <ul class="menuItems" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; position: unset;">
@@ -137,7 +170,7 @@
                                             <c:if test="${product.sale_percent > 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
                                             </c:if>
-                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px" style="object-fit: cover"/>
+                                                <img style="object-fit: contain" width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>
                                     <div class="box-text">

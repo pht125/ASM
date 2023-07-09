@@ -62,7 +62,7 @@ pre {
     margin: 0;
 }
 
-@media screen and (min-width: 1150px) {
+/*@media screen and (min-width: 1150px) {
     .prose *+:is(.h2, .h3, .h4, h2, h3, h4) {
         margin-block-start: var(--spacing-6);
     }
@@ -76,7 +76,7 @@ pre {
 
 .prose *+:is(.h0, .h1, .h2, h1, h2) {
     margin-block-start: var(--spacing-4);
-}
+}*/
 
 .heading,
 .h0,
@@ -95,11 +95,11 @@ pre {
     overflow-wrap: anywhere;
 }
 
-.h2,
+/*.h2,
 .prose h2:not(.h0, .h1, .h2, .h3, .h4, .h5, .h6) {
     font-size: var(--text-h2);
     line-height: 1.1;
-}
+}*/
 
 blockquote,
 dl,
@@ -136,7 +136,7 @@ h6 {
     background-clip: text;
 }
 
-@media screen and (min-width: 1150px) {
+/*@media screen and (min-width: 1150px) {
     .prose :is(.h0, .h1, .h2, h1, h2)+* {
         margin-block-start: var(--spacing-8);
     }
@@ -152,7 +152,7 @@ h6 {
 
 .prose :is(.h0, .h1, .h2, .h3, .h4, h1, h2, h3, h4)+* {
     margin-block-start: var(--spacing-5);
-}
+}*/
 
 .prose>:last-child,
 .prose>:last-child :last-child {

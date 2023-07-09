@@ -78,15 +78,120 @@
         .product_image:hover{
             transform: scale(1.05);
         }
+
+        .button-add {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-add:focus:not(:focus-visible):not(.focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .button-add:hover {
+            background-color: #2c974b;
+        }
+
+        .button-update {
+            appearance: none;
+            background-color: #003EC4;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-update:focus:not(:focus-visible):not(.focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .button-update:hover {
+            background-color: #020A97;
+        }
+
+
+        .button-3 {
+            appearance: none;
+            background-color: #E00606;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-3:focus:not(:focus-visible):not(.focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .button-3:hover {
+            background-color: #971B1B;
+        }
+
+
     </style>
     <body>
-        <div>
+        <div >
             <%@include file="header.jsp" %>
         </div>
         <c:if test="${sessionScope.acc.role == 1}">
-            <button ><a href="addProduct.jsp">Add product</a></button>
+            <button class="button-add" style="position: absolute; top: 150px;left: 20px"><a style="text-decoration: none;color:white" href="addProduct.jsp">Add product</a></button>
         </c:if>
-        <div class="page-content">
+        <div class="page-content" style="margin-top: 50px">
             <div class="container">
                 <div class="product-content row" style="display: flex; justify-content: left;">
                     <c:forEach items="${requestScope.listAll}" var="product">
@@ -101,7 +206,7 @@
                                             <c:if test="${product.quantity == 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(50, 50, 50, 1);">Sold out</div>
                                             </c:if>
-                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                            <img style="object-fit: contain" width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
                                         </div>
                                     </div>
                                     <div class="box-text">
@@ -131,8 +236,10 @@
                                     </div>
                                 </a>
                                 <c:if test="${sessionScope.acc.role == 1}">
-                                    <button type="submit" class="button-34"><a href="updateProduct?id=${product.product_id}">Update</a></button>
-                                    <a href="#" onclick="showMess('${product.product_id}')">Delete</a>
+                                    <div style="display: flex; justify-content: space-between">
+                                        <button type="submit" class="button-update"><a style="text-decoration: none;color:white" href="updateProduct?id=${product.product_id}">Update</a></button>
+                                        <button type="submit" class="button-3" onclick="showMess('${product.product_id}')"><a style="text-decoration: none;color:white" href="#" >Delete</a></button>
+                                    </div>
                                 </c:if>
                             </div>
                         </div>
@@ -144,9 +251,9 @@
             <%@include file="footer.jsp" %>
         </div>
     </body>
-        <script type="text/javascript">
+    <script type="text/javascript">
         function showMess(id) {
-            if (confirm("are u sure")) {
+            if (confirm("Are you sure to delete?")) {
                 window.location = "deleteProduct?id=" + id;
             }
         }

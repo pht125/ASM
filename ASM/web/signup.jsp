@@ -11,6 +11,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sign up</title>
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <style>
 
 
@@ -127,6 +129,25 @@
             .signup:hover{
                 color: red;
             }
+            
+            .form-signup button {
+                width: 10rem;
+                height: 2rem;
+                border-radius: 30px;
+                margin-bottom: 20px;
+                text-align: center;
+                white-space: nowrap;
+                cursor: pointer;
+                background-color: rgba(60, 60, 60, 1);
+                color: white;
+                font-weight: bold;
+            }
+
+            .form-signup button:hover{
+                background-color: rgba(250, 250, 250, 1);
+                color: black;
+
+            }
         </style>
     </head>
     <body class="text-center">
@@ -166,7 +187,8 @@
                         </div>
 
                     </div>
-                    <button class="signup_button" type="submit">Sign up</button>
+                    <button class="" type="submit" style="height: 48px; width: calc((100%/12)*10);margin-top: 20px">Sign up</button>
+
                     <h3 style="color: red; text-align: center;">${error}</h3>
                     <div>
                         <a href="login.jsp" class="signup">Already have account</a>

@@ -83,7 +83,7 @@
         <div>
             <%@include file="header.jsp" %>
         </div>
-        <div class="page-content">
+        <div class="page-content" style="margin-top: 50px">
             <div class="container">
                 <div class="product-content row" style="display: flex; justify-content: left;">
                     <c:forEach items="${requestScope.listSearch}" var="product">
@@ -98,7 +98,7 @@
                                             <c:if test="${product.quantity == 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(50, 50, 50, 1);">Sold out</div>
                                             </c:if>
-                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                                <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px" style="object-fit: contain"/>
                                         </div>
                                     </div>
                                     <div class="box-text">

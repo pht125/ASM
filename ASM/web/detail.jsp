@@ -150,7 +150,7 @@
                                 <aside class="col-sm-5 ">
                                     <article class="gallery-wrap">
                                         <div class="img-big-wrap">
-                                            <div><img style="width: 100%;height: 607px;object-fit: cover;" src="${detail.img}"></div>
+                                            <div><img style="width: 100%;height: 607px;object-fit: contain;" src="${detail.img}"></div>
                                         </div> <!-- slider-product.// -->
                                         <div class="img-small-wrap">
                                         </div> <!-- slider-nav.// -->
@@ -213,8 +213,40 @@
             </div>
         </form>
 
-        <div style="margin-top: 50px">
+        <div style="margin-top: 50px;margin-bottom: 50px">
             ${detail.description}
+        </div>
+        <hr>
+        <div class="page-content">
+            <div class="container">
+                <div class="product-content row" style="display: flex; justify-content: left;">
+                    <c:forEach items="${requestScope.listFeatured}" var="product">
+                        <div class="col-lg-3 col-md-4 col-sm-6" style="position: relative">
+                            <div class="item-product-content" style="padding: 10px;margin-bottom: 20px">
+                                <a href="detail?id=${product.product_id}" style="text-decoration: none; ">
+                                    <div class="box_image">
+                                        <div class="product_image">
+                                            <c:if test="${product.sale_percent > 0}">
+                                                <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
+                                            </c:if>
+                                            <img style="object-fit: contain" width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
+                                        </div>
+                                    </div>
+                                    <div class="box-text">
+                                        <div style="height: 150px">
+                                            <h5 class="product_name" style="color:rgba(21, 21, 21, 1);" >${product.product_name}</h5>
+                                        </div>
+
+                                        <div class="price-wrapper">
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
         </div>
 
         <div class="header_home" >
