@@ -341,7 +341,6 @@ public class ProductDAO extends BaseDAO {
                             + "WHERE\n"
                             + "rownum >= ((?-1) * ?) + 1 AND rownum <= ? * ?";
                     break;
-
             }
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, page);

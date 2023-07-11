@@ -4,6 +4,7 @@
  */
 package controller;
 
+import DAL.AccountDAO;
 import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,15 +15,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.account;
 import model.cart;
-import model.item;
 import model.product;
 
 /**
  *
  * @author Admin
  */
-public class BuyServlet extends HttpServlet {
+public class UpdateAccountCheckoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +42,10 @@ public class BuyServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet BuyServlet</title>");            
+            out.println("<title>Servlet UpdateAccountCheckoutServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet BuyServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateAccountCheckoutServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -77,6 +78,10 @@ public class BuyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String raw_id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
         ProductDAO pdao = new ProductDAO();
         List<product> list = pdao.getAllProduct();
         Cookie[] arr = request.getCookies();
@@ -85,36 +90,40 @@ public class BuyServlet extends HttpServlet {
             for (Cookie o : arr) {
                 if (o.getName().equals("cart")) {
                     txt += o.getValue();
-                    o.setMaxAge(0);
-                    response.addCookie(o);
                 }
             }
         }
-        String num = request.getParameter("num");
-        String id = request.getParameter("id");
-        session.removeAttribute("currentid");
-        session.setAttribute("currentid", pdao.getDetailById(id));
-        if (txt.equals("")) {
-            txt = id + "-" + num;
-        } else {
-            txt = txt + "|" + id + "-" + num;
-        }
-        Cookie c = new Cookie("cart", txt);
-        c.setMaxAge(60 * 60 * 24 * 7);
-        response.addCookie(c);
         cart cart = new cart(txt, list);
-         List<item> listItem = cart.getItems();
-        int n;
-        if (listItem != null) {
-            n = listItem.size();
+
+        account acc1 = (account) session.getAttribute("acc");
+        if (acc1 == null) {
+            response.sendRedirect("login");
         } else {
-            n = 0;
+            Cookie c = new Cookie("cart", txt);
+//            c.setMaxAge(0);
+//            response.addCookie(c);
+//            List<product> checklist = (List<product>)cart;
+            request.setAttribute("cart", cart);
+
         }
-//        cart size = new cart(txt, list);
-//        int n = cart.size(txt, list);
-        session.setAttribute("size", n);
-        request.setAttribute("size", n);
-        request.getRequestDispatcher("addCart").forward(request, response);
+        try {
+            AccountDAO adao = new AccountDAO();
+            int id = Integer.parseInt(raw_id);
+            account acc = adao.getAccountById(id);
+            account account = new account();
+            account.setName(name);
+            account.setPhone(phone);
+            account.setAddress(address);
+            account.setAccount_id(id);
+            adao.updateAccount(account);
+            System.out.println(id);
+            session.removeAttribute("acc");
+            session.setAttribute("acc", account);
+            session.setAttribute("name", account.getName());
+
+            request.getRequestDispatcher("checkout.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     /**

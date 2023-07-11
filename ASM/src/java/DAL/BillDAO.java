@@ -20,45 +20,11 @@ import model.item;
  * @author Admin
  */
 public class BillDAO extends BaseDAO {
+    
+//    public List<bill> getBillByAccountId(String id){
+//        String sql = "INSERT INTO bill VALUES (?,?,?,?)";
+//    }
 
-//    public int insertOrder(bill bill) {
-//        String sql = "INSERT INTO bill VALUES(?,?,?,?)"; // (accountID, orderDate, address, totalPrice)
-//        try {
-//            PreparedStatement ps = connection.prepareStatement(sql);
-//            ps.setInt(1, bill.getAccount_id());
-//            ps.setDate(2, bill.getOrder_date());
-//            ps.setString(3, bill.getAddress());
-//            ps.setInt(4, bill.getTotal_price());
-//            
-//            ps.executeUpdate();
-//            // i want return orderID
-//            String sql2 = "SELECT MAX(bill_id) AS billID FROM bill";
-//            PreparedStatement ps2 = connection.prepareStatement(sql2);
-//            ResultSet rs = ps2.executeQuery();
-//            if (rs.next()) {
-//                return rs.getInt("bill_id");
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return -1;
-//    }
-//
-//    public List<Integer> getAllOrderIDByAccountID(int accountID) {
-//        String sql = "SELECT bill_id FROM bill WHERE account_id = ?";
-//        List<Integer> list = new ArrayList<>();
-//        try {
-//            PreparedStatement  = connection.prepareStatement(sql);
-//            ps.setInt(1, accountID);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                list.add(rs.getInt("bill_id"));
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return list;
-//    }
     public void addBill(account acc, cart cart) {
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();

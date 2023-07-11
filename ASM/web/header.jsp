@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="fontawesome/css/all.css"/>
     </head>
     <style>
         .header{
@@ -189,7 +190,7 @@
                         <h5>${sessionScope.acc.name}</h5>
                         <a onclick="myFunction(this)" class="dropdown_button account_icon" style="text-decoration: none"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                         <div id="myDropdown" class="dropdown_content" style="border-radius: 30px">
-                            <a class="dropdown_menu_content" href="info?id=${sessionScope.acc.account_id}">Infomation</a>
+                            <a class="dropdown_menu_content" href="info?id=${sessionScope.acc.account_id}">Information</a>
                             <a class="dropdown_menu_content" href="logout">Log out</a>
                         </div>
                     </div>

@@ -95,6 +95,10 @@
         <servlet-name>UpdateProductServlet</servlet-name>
         <servlet-class>controller.UpdateProductServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateAccountCheckoutServlet</servlet-name>
+        <servlet-class>controller.UpdateAccountCheckoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -186,6 +190,10 @@
     <servlet-mapping>
         <servlet-name>UpdateProductServlet</servlet-name>
         <url-pattern>/updateProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateAccountCheckoutServlet</servlet-name>
+        <url-pattern>/updatecheckout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

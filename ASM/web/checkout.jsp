@@ -95,19 +95,26 @@
             background-color: rgba(50, 50, 50, 1);
             color: #ffffff;
         }
-        
-        input{
+
+        #input_text{
             border: none;
+            background-color: rgba(245, 245, 245, 0.8);
         }
-        input:active{
+        #input_phone{
             border: none;
+            background-color: rgba(245, 245, 245, 0.8);
+        }
+        #input_add{
+            border: none;
+            background-color: rgba(245, 245, 245, 0.8);
+            resize: none;
         }
     </style>
     <body>
-        <main class="page payment-page" style="margin-top: 50px">
-            <section class="payment-form dark">
-                <div class="">
-                    <form>
+        <main class="" style="margin-top: 50px;display: flex;justify-content: center;margin-bottom: 50px;border-radius: 10px">
+            <section class="" style="background-color: rgba(225, 225, 225, 0.6);width: 500px;padding: 20px;border-top: 1px solid black">
+                <div style="position: relative">
+                    <form id="checkout_form" action="purchase">
                         <div class="products">
                             <h3 class="title">Checkout</h3>
                             <c:set var="o" value="${requestScope.cart}"/>
@@ -131,45 +138,70 @@
                                 <h4 class="title" style="margin-right: 30px; border-bottom: none;">Total</h4>
                                 <div style="display: flex;justify-content: right">
                                     <h5 style="margin-right: 3px"><fmt:formatNumber type = "number" 
-                                                  maxFractionDigits = "0" value = "${o.totalPrice}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5);font-size: larger"> đ</h6></h5>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-
-
-                        <div class="card-details">
-                            <h3 class="title">Delivery Information</h3>
-                            <div class="row" style="display: flex;justify-content: space-evenly">
-                                <div class="form-group col-sm-12" style="position: relative;background-color: rgba(233, 233, 233, 1);border-radius: 20px;padding: 10px 30px 20px">
-                                    <a style="position: absolute;right: 20px" href="updateAcc?id=${sessionScope.acc.account_id}"><i class="fa-solid fa-edit" style="color: #d12323;"></i></a>
-                                    <label for="card-holder"></label>
-                                    <div>
-                                        <h6>Name: ${sessionScope.acc.name}</h6>
-                                        <h6>Phone: ${sessionScope.acc.phone}</h6>
-                                        <h6>Address: ${sessionScope.acc.address}</h6>
-                                    </div>
-                                </div>
-                                
-                                    
-                                
-
-                                <div class="col-sm-12" style="display: flex;justify-content: space-between; margin-top: 20px">
-                                    <div class="form-group col-sm-6" >
-                                        <button type="submit" class="button-cancel" style="padding: 0 20px"><a href="home" style="text-decoration: none;color: white">Cancel</a></button>
-                                    </div>
-                                    <div class="form-group col-sm-6" style="text-align: right">
-                                        <button type="submit" class="button-34" style="padding: 0 20px"><a href="purchase" style="text-decoration: none;color: white">Purchase</a></button>
-                                    </div>
+                                                      maxFractionDigits = "0" value = "${o.totalPrice}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5);font-size: larger"> đ</h6></h5>
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <h3 class="title">Delivery Information</h3>
                     </form>
+                    <div style="width: 100%;display: flex;justify-content: space-around">
+                        <!--<button onclick="myFunction()">Edit</button>-->
+                        <form action="updatecheckout" method="post" id="update_form" style="width: 80%;background-color: rgba(245, 245, 245, 0.8);padding: 10px;border-radius: 15px">
+                            <input hidden="" name="id" type="text" value="${sessionScope.acc.account_id}" />
+                            <div style="width: 100%">
+                                <label style="width: 15%">Name</label>
+                                <input style="width: 85%" id="input_text" name="name" type="text" value="${sessionScope.acc.name}" readonly="readonly"/>
+                            </div>
+
+                            <div style="width: 100%">
+                                <label style="width: 15%">Phone</label>
+                                <input style="width: 85%" id="input_phone" name="phone" type="text" value="${sessionScope.acc.phone}" readonly="readonly"/>
+                            </div>
+
+                            <div style="width: 100%">
+                                <label style="width: 15%">Address</label>
+                                <textarea style="width: 85%" id="input_add" name="address" type="text" readonly="readonly">${sessionScope.acc.address}</textarea>
+                            </div>
+
+                        </form>
+                        <div style="width: 15%">
+                            <a style="margin-left: 40%"><i onclick="myFunction()" class="fa-solid fa-edit" style="color: #d12323;cursor: pointer"></i></a>
+                            <!--<input style="margin-top: 125px" type="submit" form="update_form" value="Save">-->
+                            <button id="save_update" hidden="hidden" form="update_form" type="submit" class="button-34" style="padding: 0 20px;margin-top: 125px"><a style="text-decoration: none;color: white">Save</a></button>
+                        </div>
+                    </div>
+                    <!--                    <div style="display: flex;justify-content: center;position: absolute">
+                    
+                                            <div class="form-group col-sm-12" style="background-color: rgba(233, 233, 233, 1);border-radius: 20px;padding: 10px 30px 20px; bottom: -225.6px;left: auto;max-width: 544px " >
+                    
+                                                <a style="position: absolute;right: 20px"><i onclick="inputReadonly()" class="fa-solid fa-edit" style="color: #d12323;"></i></a>
+                    
+                                            </div>
+                                        </div>-->
+
+                    <div class="card-details">
+                        <div class="row" style="display: flex;justify-content: space-evenly">
+                            <div class="col-sm-12" style="display: flex;justify-content: space-between; margin-top: 20px">
+                                <div class="form-group col-sm-6" >
+                                    <button class="button-cancel" style="padding: 0 20px"><a href="show" style="text-decoration: none;color: white">Cancel</a></button>
+                                </div>
+                                <div class="form-group col-sm-6" style="text-align: right">
+                                    <button form="checkout_form" type="submit" class="button-34" style="padding: 0 20px"><a href="purchase" style="text-decoration: none;color: white">Purchase</a></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
-
-
     </body>
+    <script>
+        function myFunction() {
+            document.getElementById('input_text').removeAttribute('readonly');
+            document.getElementById('input_phone').removeAttribute('readonly');
+            document.getElementById('input_add').removeAttribute('readonly');
+            document.getElementById('save_update').removeAttribute('hidden');
+        }
+    </script>
 </html>

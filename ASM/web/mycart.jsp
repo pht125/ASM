@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cart</title>
-
+        <script src="https://kit.fontawesome.com/b2ffbe6d51.js" crossorigin="anonymous"></script>
     </head>
     <style>
         body{
@@ -76,7 +76,7 @@
         .button-34 {
             align-items: center;
             background-color: rgba(50, 50, 50, 1);
-            
+
             border: 0;
             border-radius: 100px;
             box-sizing: border-box;
@@ -184,11 +184,11 @@
                     </div>
                     <div class="" style="display: flex; justify-content: space-between;margin-top: 20px">
                         <a href="home" style="margin-left: 20px;text-decoration: none;color:rgba(50, 50, 50, 1)"><h6 style="font-size: larger">Back to shopping</h6></a>
-                        
-                            <form class="" action="checkout" method="post" style="margin-right: 20px;">
-                                <button type="submit" class="button-34">Checkout</button>
-                            </form>
-                        
+
+                        <form class="" action="checkout" method="post" style="margin-right: 20px;">
+                            <button type="submit" class="button-34">Checkout</button>
+                        </form>
+
 
                     </div>
                 </div>
