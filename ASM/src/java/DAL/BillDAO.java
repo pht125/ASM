@@ -20,10 +20,27 @@ import model.item;
  * @author Admin
  */
 public class BillDAO extends BaseDAO {
-    
-//    public List<bill> getBillByAccountId(String id){
-//        String sql = "INSERT INTO bill VALUES (?,?,?,?)";
-//    }
+
+    public List<bill> getBillByAccountId(int id) {
+        List<bill> list = new ArrayList<>();
+        try {
+            String sql = "select * from bill where account_id = ? order by bill_id desc";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                bill b = new bill();
+                b.setAccount_id(rs.getInt("account_id"));
+                b.setBill_id(rs.getInt("bill_id"));
+                b.setOrder_date(rs.getDate("order_date"));
+                b.setAddress(rs.getString("address"));
+                b.setTotal_price(rs.getInt("total_price"));
+                list.add(b);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
 
     public void addBill(account acc, cart cart) {
         LocalDate curDate = LocalDate.now();

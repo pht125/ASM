@@ -152,7 +152,6 @@ public class ProductDAO extends BaseDAO {
                 return p;
             }
         } catch (SQLException e) {
-
         }
         return null;
     }

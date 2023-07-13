@@ -185,7 +185,9 @@
         }
     </style>
     <body>
-
+        <div>
+            <%@include file="header.jsp" %>
+        </div>
         <div class="outline_login_form">
             <div class="outline_login">
                 <form action="updateAcc" method="post">
@@ -217,6 +219,9 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <div>
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>

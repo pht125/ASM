@@ -98,9 +98,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div style="color: red">
+                                <h5>${requestScope.mess}</h5>
+                            </div>
                             <div style="display: flex;justify-content: space-between;padding: 20px 0px">
                                 <div style="margin-left: 40px">
-                                    <button class="button-cancel" type="submit"><a style="color: white;text-decoration: none;" href="manage">Cancel</a></button>
+                                    <button class="button-cancel"><a style="color: white;text-decoration: none;" href="manage">Cancel</a></button>
                                 </div> 
                                 <div style="margin-right: 40px">
                                     <button class="button-34" type="submit">Save</button>

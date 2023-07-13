@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -151,7 +152,9 @@
         }
     </style>
     <body>
-
+        <div>
+            <%@include file="header.jsp" %>
+        </div>
         <div class="outline_login_form">
             <div class="outline_login">
                 <div class="login_form_input">
@@ -183,6 +186,35 @@
                     </div>
                 </div>
             </div>
+        </div>
+                        <div style="display: flex;justify-content: center;margin: 20px 0">
+                            <h3 >Order</h3>
+                        </div>
+                        
+        <div style="display: flex;justify-content: center">
+            <table class="table" style="width: 50%;">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 40px">#</th>
+                        <th scope="col" style="width: 200px">Order Date</th>
+                        <th scope="col" style="width: 200px">Address</th>
+                        <th scope="col" style="width: 200px">Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${listBill}" var="o">
+                        <tr>
+                            <td>${o.bill_id}</td>
+                            <td>${o.order_date}</td>
+                            <td>${o.address}</td>
+                            <td>${o.total_price}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <%@include file="footer.jsp" %>
         </div>
     </body>
 </html>

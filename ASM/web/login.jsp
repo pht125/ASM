@@ -136,6 +136,7 @@
                     <div>
                         <a href="signup.jsp" class="signup">Sign up</a>
                     </div>
+                    
                     <div style="color: red">
                         <h5>${error}</h5>
                     </div>

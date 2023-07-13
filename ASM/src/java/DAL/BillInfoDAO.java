@@ -25,6 +25,5 @@ public class BillInfoDAO extends BaseDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
     }
 }

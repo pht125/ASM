@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -66,11 +66,9 @@ public class LoginServlet extends HttpServlet {
         String mail = request.getParameter("email");
         String pass = request.getParameter("password");
         String check = request.getParameter("check");
-        
+
         HttpSession session = request.getSession();
 
-        
-        
         // set cookie for email and password
         Cookie cookie1 = new Cookie("email", mail);
         cookie1.setMaxAge(60 * 60 * 24);
@@ -90,19 +88,24 @@ public class LoginServlet extends HttpServlet {
         if (account != null) {
             if (account.getRole() == UserRole.ADMIN.getValue()) {
                 session.setAttribute("role", "admin");
+                session.setAttribute("acc", account);
+                session.setAttribute("name", account.getName());
+                response.sendRedirect("manage");
             }
             if (account.getRole() == UserRole.USER.getValue()) {
                 session.setAttribute("role", "user");
+                session.setAttribute("acc", account);
+                session.setAttribute("name", account.getName());
+                response.sendRedirect("home");
             }
-            session.setAttribute("acc", account);
-            session.setAttribute("name", account.getName());
-            response.sendRedirect("home");
+
         } else {
-            
+
 //            session.setAttribute("loginmessage", "Login failed");
             request.setAttribute("error", "Email or password is incorrect");
-            request.getRequestDispatcher("login.jsp").forward(request, response);            
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
+
     }
 
     /**

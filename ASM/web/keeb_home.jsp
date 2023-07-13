@@ -84,6 +84,40 @@
             margin-left: 80%;
 
         }
+        
+        .button-add {
+            appearance: none;
+            background-color: #2ea44f;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-add:focus:not(:focus-visible):not(.focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .button-add:hover {
+            background-color: #2c974b;
+        }
     </style>
     <body>
         <!--START HEADER-->
@@ -107,7 +141,9 @@
             </div>
         </div>
         <!--END DESCRIPTION BANNER-->
-        
+        <c:if test="${sessionScope.acc.role == 1}">
+            <button class="button-add" style="position: absolute; top: 150px;left: 20px"><a style="text-decoration: none;color:white" href="addProduct.jsp">Add product</a></button>
+        </c:if>
         <form class="col-sm-5 filter_list" action="keeb" method="get">
             <dl class="param param-inline" style="display: flex;">
                 <p style="margin-right: 10px">Sort by</p>
@@ -121,7 +157,6 @@
                     </select>
                 </dd>
             </dl> <!-- item-property .// -->
-
         </form> <!-- col.// -->
         <!--START COLLECTION-->
         <div class="page-content">

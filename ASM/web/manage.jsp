@@ -191,62 +191,39 @@
         <c:if test="${sessionScope.acc.role == 1}">
             <button class="button-add" style="position: absolute; top: 150px;left: 20px"><a style="text-decoration: none;color:white" href="addProduct.jsp">Add product</a></button>
         </c:if>
-        <div class="page-content" style="margin-top: 50px">
-            <div class="container">
-                <div class="product-content row" style="display: flex; justify-content: left;">
-                    <c:forEach items="${requestScope.listAll}" var="product">
-                        <div class="col-lg-3 col-md-4 col-sm-6" style="position: relative">
-                            <div class="item-product-content" style="padding: 10px;margin-bottom: 20px">
-                                <a href="detail?id=${product.product_id}" style="text-decoration: none; ">
-                                    <div class="box_image">
-                                        <div class="product_image">
-                                            <c:if test="${product.sale_percent > 0}">
-                                                <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(255, 60, 60, 1)">Sale</div>
-                                            </c:if>
-                                            <c:if test="${product.quantity == 0}">
-                                                <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(50, 50, 50, 1);">Sold out</div>
-                                            </c:if>
-                                            <img style="object-fit: contain" width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px"/>
-                                        </div>
-                                    </div>
-                                    <div class="box-text">
-                                        <div style="height: 50px;margin-bottom: 25px">
-                                            <h5 class="product_name" style="color:rgba(21, 21, 21, 1);" >${product.product_name}</h5>
-                                        </div>
-
-                                        <div class="price-wrapper">
-                                            <c:if test="${product.sale_percent == 0}">
-                                                <span class="price" style="display: flex;">
-                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${product.price}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6></h5>
-
-                                                </span>
-                                            </c:if>
-                                            <c:if test="${product.sale_percent >     0}">
-                                                <div class="price" style="display: flex;">
-                                                    <h5 style="color: rgba(255, 70, 70, 1)"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${(product.price * (100 - product.sale_percent) / 100)}" /><h6 style="margin-left:3px;color: rgba(255, 70, 70, 1)"> đ</h6>&nbsp&nbsp</h5>
-
-                                                    <h5 style="text-decoration: line-through; color: rgba(90, 90, 90, 0.5);"><fmt:formatNumber type = "number" 
-                                                                      maxFractionDigits = "0" value = "${product.price}" /><h6 style="margin-left:3px; color: rgba(90, 90, 90, 0.5)"> đ</h6></h5>
-
-                                                </div>
-                                            </c:if>
-                                        </div>
-                                    </div>
-                                </a>
-                                <c:if test="${sessionScope.acc.role == 1}">
-                                    <div style="display: flex; justify-content: space-between">
-                                        <button type="submit" class="button-update"><a style="text-decoration: none;color:white" href="updateProduct?id=${product.product_id}">Update</a></button>
-                                        <button type="submit" class="button-3" onclick="showMess('${product.product_id}')"><a style="text-decoration: none;color:white" href="#" >Delete</a></button>
-                                    </div>
-                                </c:if>
-                            </div>
-                        </div>
+        <div style="display: flex;justify-content: center">
+            <table class="table" style="width: 80%;">
+                <thead>
+                    <tr style="height: 200px">
+                        <th scope="col" style="width: 40px">CategoryID</th>
+                        <th scope="col" style="width: 40px">ProductID</th>
+                        <th scope="col" style="width: 200px">Name</th>
+                        <th scope="col" style="width: 200px">Brand</th>
+                        <th scope="col" style="width: 200px">Price</th>
+                        <th scope="col" style="width: 200px">Sale</th>
+                        <th scope="col" style="width: 200px">Quantity</th>
+                     
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${requestScope.listAll}" var="o">
+                        <tr>
+                            <td>${o.cate_id}</td>
+                            <td>${o.product_id}</td>
+                            <td>${o.product_name}</td>
+                            <td>${o.brand}</td>
+                            <td>${o.price}</td>
+                            <td>${o.sale_percent}</td>
+                            <td>${o.quantity}</td>
+                            
+                            <td><button type="submit" class="button-update"><a style="text-decoration: none;color:white" href="updateProduct?id=${o.product_id}">Update</a></button></td>
+                            <td><button type="submit" class="button-3" onclick="showMess('${o.product_id}')"><a style="text-decoration: none;color:white" href="#" >Delete</a></button></td>
+                        </tr>
                     </c:forEach>
-                </div>
-            </div>
+                </tbody>
+            </table>
         </div>
+        
         <div>
             <%@include file="footer.jsp" %>
         </div>

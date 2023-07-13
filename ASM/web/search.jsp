@@ -78,6 +78,75 @@
         .product_image:hover{
             transform: scale(1.05);
         }
+        
+        .button-update {
+            appearance: none;
+            background-color: #003EC4;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-update:focus:not(:focus-visible):not(.focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .button-update:hover {
+            background-color: #020A97;
+        }
+
+
+        .button-3 {
+            appearance: none;
+            background-color: #E00606;
+            border: 1px solid rgba(27, 31, 35, .15);
+            border-radius: 6px;
+            box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 20px;
+            padding: 6px 16px;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .button-3:focus:not(:focus-visible):not(.focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        .button-3:hover {
+            background-color: #971B1B;
+        }
     </style>
     <body>
         <div>
@@ -85,6 +154,7 @@
         </div>
         <div class="page-content" style="margin-top: 50px">
             <div class="container">
+                <div>${noSearch}</div>
                 <div class="product-content row" style="display: flex; justify-content: left;">
                     <c:forEach items="${requestScope.listSearch}" var="product">
                         <div class="col-lg-3 col-md-4 col-sm-6" style="position: relative">
@@ -98,7 +168,7 @@
                                             <c:if test="${product.quantity == 0}">
                                                 <div class="badge text-white " style="position: absolute; top: 0.5rem; right: 0.5rem ;margin-left: 1rem;background-color: rgba(50, 50, 50, 1);">Sold out</div>
                                             </c:if>
-                                                <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px" style="object-fit: contain"/>
+                                            <img width="100%" height="286px" src="${product.img}" alt="${product.product_name}" sizes="(max-width: 300px) 100vw, 300px" style="object-fit: contain"/>
                                         </div>
                                     </div>
                                     <div class="box-text">
@@ -126,6 +196,12 @@
                                         </div>
                                     </div>
                                 </a>
+                                <c:if test="${sessionScope.acc.role == 1}">
+                                    <div style="display: flex; justify-content: space-between">
+                                        <button type="submit" class="button-update"><a style="text-decoration: none;color:white" href="updateProduct?id=${product.product_id}">Update</a></button>
+                                        <button type="submit" class="button-3" onclick="showMess('${product.product_id}')"><a style="text-decoration: none;color:white" href="#" >Delete</a></button>
+                                    </div>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>
@@ -136,4 +212,12 @@
             <%@include file="footer.jsp" %>
         </div>
     </body>
+    <script type="text/javascript">
+        function showMess(id) {
+            if (confirm("Are you sure to delete?")) {
+                window.location = "deleteProduct?id=" + id;
+            }
+        }
+
+    </script>
 </html>
