@@ -170,7 +170,6 @@
                     <div class="inputBox" style="text-align: center;">
                         <input readonly="" type="email" value="${sessionScope.acc.phone}"/>
                     </div>
-
                 </div>
 
                 <div class="col-sm-12" style="display: flex;justify-content: space-between; margin-top: 20px">
@@ -199,6 +198,7 @@
                         <th scope="col" style="width: 200px">Order Date</th>
                         <th scope="col" style="width: 200px">Address</th>
                         <th scope="col" style="width: 200px">Total Price</th>
+                        <th scope="col" style="width: 200px">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -208,6 +208,20 @@
                             <td>${o.order_date}</td>
                             <td>${o.address}</td>
                             <td>${o.total_price}</td>
+                            <c:if test="${o.status == 1}">
+                                <td>Processing<input name="status" value="${o.status}"/></td>
+                                <td><a href="cancelBill?id=${sessionScope.acc.account_id}&bill_id=${o.bill_id}">Cancel</a></td>
+                            </c:if>
+                            <c:if test="${o.status == 2}">
+                                <td>Delivering<input name="status" value="${o.status}"/></td>
+                                <td><a href="completeBill?id=${sessionScope.acc.account_id}&bill_id=${o.bill_id}">Complete</a></td>
+                            </c:if>
+                            <c:if test="${o.status == 3}">
+                                <td>Canceled<input name="status" value="${o.status}"/></td>
+                            </c:if>
+                            <c:if test="${o.status == 4}">
+                                <td>Delivered<input name="status" value="${o.status}"/></td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                 </tbody>

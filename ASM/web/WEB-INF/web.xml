@@ -99,6 +99,18 @@
         <servlet-name>UpdateAccountCheckoutServlet</servlet-name>
         <servlet-class>controller.UpdateAccountCheckoutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageBilllServlet</servlet-name>
+        <servlet-class>controller.ManageBilllServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelBillServlet</servlet-name>
+        <servlet-class>controller.CancelBillServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CompleteBillServlet</servlet-name>
+        <servlet-class>controller.CompleteBillServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -194,6 +206,18 @@
     <servlet-mapping>
         <servlet-name>UpdateAccountCheckoutServlet</servlet-name>
         <url-pattern>/updatecheckout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageBilllServlet</servlet-name>
+        <url-pattern>/manageBill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelBillServlet</servlet-name>
+        <url-pattern>/cancelBill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CompleteBillServlet</servlet-name>
+        <url-pattern>/completeBill</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

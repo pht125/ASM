@@ -17,16 +17,26 @@ public class bill {
     private Date order_date;
     private String address;
     private int total_price;
+    private int status;
 
     public bill() {
     }
 
-    public bill(int bill_id, int account_id, Date order_date, String address, int total_price) {
+    public bill(int bill_id, int account_id, Date order_date, String address, int total_price, int status) {
         this.bill_id = bill_id;
         this.account_id = account_id;
         this.order_date = order_date;
         this.address = address;
         this.total_price = total_price;
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getAddress() {

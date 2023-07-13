@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.account;
+import model.bill;
 import model.cart;
 import model.product;
 
@@ -50,10 +51,11 @@ public class PurchaseServlet extends HttpServlet {
                 }
             }
         }
+        int status = 1;
         cart cart = new cart(txt, list);
         Cookie c = new Cookie("cart", txt);
         BillDAO bdao = new BillDAO();
-            bdao.addBill(acc1, cart);
+        bdao.addBill(acc1, cart, status);
 //            session.removeAttribute("size");
         c.setMaxAge(0);
         response.addCookie(c);

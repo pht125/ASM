@@ -204,8 +204,6 @@
                             <p style="color:white">${requestScope.size}</p>
                         </div>
                     </c:if>
-
-
                     <!--                    <input readonly="" type="text" value="" id="sizeCart">-->
                 </div>
             </div>

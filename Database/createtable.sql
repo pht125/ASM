@@ -40,6 +40,7 @@ CREATE TABLE bill(
 	order_date datetime,
 	address nvarchar(255),
 	total_price int,
+	status int, --1 processing, 2 delivering, 3 canceled, 4 delivered
 	FOREIGN KEY(account_id) REFERENCES account(account_id)
 )
 

@@ -35,6 +35,7 @@ public class BillDAO extends BaseDAO {
                 b.setOrder_date(rs.getDate("order_date"));
                 b.setAddress(rs.getString("address"));
                 b.setTotal_price(rs.getInt("total_price"));
+                b.setStatus(rs.getInt("status"));
                 list.add(b);
             }
         } catch (SQLException e) {
@@ -42,17 +43,43 @@ public class BillDAO extends BaseDAO {
         return list;
     }
 
-    public void addBill(account acc, cart cart) {
+    public void cancelBill(int bill_id, int account_id) {
+        try {
+            String sql = "update bill\n"
+                    + "set status = 3\n"
+                    + "where bill_id = ? and account_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, bill_id);
+            statement.setInt(2, account_id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    public void completeBill(int bill_id, int account_id) {
+        try {
+            String sql = "update bill\n"
+                    + "set status = 4\n"
+                    + "where bill_id = ? and account_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, bill_id);
+            statement.setInt(2, account_id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+
+    public void addBill(account acc, cart cart, int status) {
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();
         try {
             //add new bill
-            String sql = "INSERT INTO bill VALUES (?,?,?,?)";
+            String sql = "INSERT INTO bill VALUES (?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, acc.getAccount_id());
             statement.setString(2, date);
             statement.setString(3, acc.getAddress());
             statement.setInt(4, cart.getTotalPrice());
+            statement.setInt(5, status);
             statement.executeUpdate();
             //get id of newest bill
             String sql1 = "select top 1 bill_id from bill order by bill_id desc";

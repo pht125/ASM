@@ -668,7 +668,7 @@ Feet cứng (thủy tinh, sapphire)</span></p></div></div><div class="feature-ch
 
 INSERT INTO bill
 VALUES
-(2,'2023-5-10',N'183-Cầu Giấy- Hà Nội',2500000)
+(2,'2023-5-10',N'183-Cầu Giấy- Hà Nội',2500000,1)
 
 INSERT INTO bill_info 
 VALUES 
