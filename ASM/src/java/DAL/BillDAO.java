@@ -21,6 +21,65 @@ import model.item;
  */
 public class BillDAO extends BaseDAO {
 
+    public List<bill> getAllBill() {
+        List<bill> list = new ArrayList<>();
+        try {
+            String sql = "select * from bill";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                bill b = new bill();
+                b.setAccount_id(rs.getInt("account_id"));
+                b.setBill_id(rs.getInt("bill_id"));
+                b.setOrder_date(rs.getDate("order_date"));
+                b.setAddress(rs.getString("address"));
+                b.setTotal_price(rs.getInt("total_price"));
+                b.setStatus(rs.getInt("status"));
+                list.add(b);
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
+    public List<bill> manageBill(int type) {
+        List<bill> list = new ArrayList<>();
+        try {
+            String sql = null;
+            switch (type) {
+                case 0:
+                    sql = "select * from bill";
+                    break;
+                case 1:
+                    sql = "select * from bill where status = 1 order by order_date desc";
+                    break;
+                case 2:
+                    sql = "select * from bill where status = 2 order by order_date desc";
+                    break;
+                case 3:
+                    sql = "select * from bill where status = 3 order by order_date desc";
+                    break;
+                case 4:
+                    sql = "select * from bill where status = 4 order by order_date desc";
+                    break;
+            }
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                bill b = new bill();
+                b.setAccount_id(rs.getInt("account_id"));
+                b.setBill_id(rs.getInt("bill_id"));
+                b.setOrder_date(rs.getDate("order_date"));
+                b.setAddress(rs.getString("address"));
+                b.setTotal_price(rs.getInt("total_price"));
+                b.setStatus(rs.getInt("status"));
+                list.add(b);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
     public List<bill> getBillByAccountId(int id) {
         List<bill> list = new ArrayList<>();
         try {
@@ -43,6 +102,18 @@ public class BillDAO extends BaseDAO {
         return list;
     }
 
+    public void proceedBill(int bill_id, int account_id) {
+        try {
+            String sql = "update bill\n"
+                    + "set status = 2\n"
+                    + "where bill_id = ? and account_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, bill_id);
+            statement.setInt(2, account_id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
     public void cancelBill(int bill_id, int account_id) {
         try {
             String sql = "update bill\n"
@@ -55,6 +126,7 @@ public class BillDAO extends BaseDAO {
         } catch (SQLException e) {
         }
     }
+
     public void completeBill(int bill_id, int account_id) {
         try {
             String sql = "update bill\n"
@@ -106,6 +178,14 @@ public class BillDAO extends BaseDAO {
                 statement3.executeUpdate();
             }
         } catch (SQLException e) {
+        }
+    }
+    
+     public static void main(String[] args) {
+        BillDAO bdao = new BillDAO();
+        List<bill> list = bdao.manageBill(0);
+        for (bill object : list) {
+            System.out.println(object);
         }
     }
 }

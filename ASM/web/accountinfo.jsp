@@ -194,7 +194,7 @@
             <table class="table" style="width: 50%;">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: 40px">#</th>
+                        
                         <th scope="col" style="width: 200px">Order Date</th>
                         <th scope="col" style="width: 200px">Address</th>
                         <th scope="col" style="width: 200px">Total Price</th>
@@ -204,23 +204,23 @@
                 <tbody>
                     <c:forEach items="${listBill}" var="o">
                         <tr>
-                            <td>${o.bill_id}</td>
+                            
                             <td>${o.order_date}</td>
                             <td>${o.address}</td>
                             <td>${o.total_price}</td>
                             <c:if test="${o.status == 1}">
-                                <td>Processing<input name="status" value="${o.status}"/></td>
-                                <td><a href="cancelBill?id=${sessionScope.acc.account_id}&bill_id=${o.bill_id}">Cancel</a></td>
+                                <td style="color: rgba(255, 170, 0, 0.8)">Processing</td>
+                                <td><a style="text-decoration: none;color:rgba(245, 39, 39, 0.8)" href="cancelBill?id=${sessionScope.acc.account_id}&bill_id=${o.bill_id}">Cancel</a></td>
                             </c:if>
                             <c:if test="${o.status == 2}">
-                                <td>Delivering<input name="status" value="${o.status}"/></td>
-                                <td><a href="completeBill?id=${sessionScope.acc.account_id}&bill_id=${o.bill_id}">Complete</a></td>
+                                <td style="color: rgba(23, 59, 255, 0.8)">Delivering</td>
+                                <td><a style="text-decoration: none;color:rgba(10, 208, 0, 0.8)" href="completeBill?id=${sessionScope.acc.account_id}&bill_id=${o.bill_id}">Complete</a></td>
                             </c:if>
                             <c:if test="${o.status == 3}">
-                                <td>Canceled<input name="status" value="${o.status}"/></td>
+                                <td style="color:rgba(255, 23, 23, 0.8)">Canceled</td>
                             </c:if>
                             <c:if test="${o.status == 4}">
-                                <td>Delivered<input name="status" value="${o.status}"/></td>
+                                <td style="color: rgba(10, 208, 0, 0.8)">Delivered</td>
                             </c:if>
                         </tr>
                     </c:forEach>

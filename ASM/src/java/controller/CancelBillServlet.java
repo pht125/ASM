@@ -63,7 +63,6 @@ public class CancelBillServlet extends HttpServlet {
         String raw_id = request.getParameter("id");
         String raw_bill_id = request.getParameter("bill_id");
         BillDAO bdao = new BillDAO();
-        
         try {
             int id = Integer.parseInt(raw_id);
             int bill_id = Integer.parseInt(raw_bill_id);

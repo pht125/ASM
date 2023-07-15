@@ -91,7 +91,6 @@ public class ProductDAO extends BaseDAO {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            
             statement.setString(1, product_name);
             statement.setString(2, brand);
             statement.setInt(3, price);
@@ -581,9 +580,51 @@ public class ProductDAO extends BaseDAO {
         return 0;
     }
 
+    public List<product> manageProduct(int type) {
+        List<product> list = new ArrayList<>();
+        try {
+            String sql = null;
+            switch (type) {
+                case 0:
+                    sql = "select * from product";
+                    break;
+                case 1:
+                    sql = "select * from product where cate_id = 1 order by product_id desc";
+                    break;
+                case 2:
+                    sql = "select * from product where cate_id = 2 order by product_id desc";
+                    break;
+                case 3:
+                    sql = "select * from product where cate_id = 3 order by product_id desc";
+                    break;
+                default:
+                    sql = "select * from product where cate_id = 4 order by product_id desc";
+                    break;
+            }
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                product p = new product();
+                p.setCate_id(rs.getInt("cate_id"));
+                p.setProduct_id(rs.getString("product_id"));
+                p.setProduct_name(rs.getString("product_name"));
+                p.setBrand(rs.getString("brand"));
+                p.setPrice(rs.getInt("price"));
+                p.setSale_percent(rs.getInt("sale_percent"));
+                p.setQuantity(rs.getInt("quantity"));
+                p.setImg(rs.getString("img"));
+                p.setDescription(rs.getString("description"));
+                list.add(p);
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
         ProductDAO pdao = new ProductDAO();
-        List<product> list = pdao.getProductByName("");
+        List<product> list = pdao.manageProduct(2);
         for (product object : list) {
             System.out.println(object);
         }

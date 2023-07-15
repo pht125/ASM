@@ -90,7 +90,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("role", "admin");
                 session.setAttribute("acc", account);
                 session.setAttribute("name", account.getName());
-                response.sendRedirect("manage");
+                response.sendRedirect("manage?id=0");
             }
             if (account.getRole() == UserRole.USER.getValue()) {
                 session.setAttribute("role", "user");

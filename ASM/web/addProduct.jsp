@@ -25,8 +25,10 @@
         }
     </style>
     <body>
-        <a href="manage">Back</a>
         <div class="page-wrapper bg-dark p-t-100 p-b-50">
+            <div style="width: 8%;display: flex; justify-content: center; background-color: rgb(50,50,50); align-items:  center;padding: 5px;border-radius: 30px;margin-left: 10px">
+                <a style="color:white;text-decoration: none;" class="dropdown_menu_content" href="manage?id=0">Back</a>
+            </div>
             <div class="wrapper wrapper--w900">
                 <div class="card card-6">
                     <div class="card-heading">
@@ -103,7 +105,7 @@
                             </div>
                             <div style="display: flex;justify-content: space-between;padding: 20px 0px">
                                 <div style="margin-left: 40px">
-                                    <button class="button-cancel"><a style="color: white;text-decoration: none;" href="manage">Cancel</a></button>
+                                    <button class="button-cancel"><a style="color: white;text-decoration: none;" href="manage?id=0">Cancel</a></button>
                                 </div> 
                                 <div style="margin-right: 40px">
                                     <button class="button-34" type="submit">Save</button>

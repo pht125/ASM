@@ -100,16 +100,24 @@
         <servlet-class>controller.UpdateAccountCheckoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ManageBilllServlet</servlet-name>
-        <servlet-class>controller.ManageBilllServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CancelBillServlet</servlet-name>
         <servlet-class>controller.CancelBillServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CompleteBillServlet</servlet-name>
         <servlet-class>controller.CompleteBillServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageBillServlet</servlet-name>
+        <servlet-class>controller.ManageBillServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProceedBillServlet</servlet-name>
+        <servlet-class>controller.ProceedBillServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CancelBillAdminServlet</servlet-name>
+        <servlet-class>controller.CancelBillAdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
@@ -208,16 +216,24 @@
         <url-pattern>/updatecheckout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ManageBilllServlet</servlet-name>
-        <url-pattern>/manageBill</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CancelBillServlet</servlet-name>
         <url-pattern>/cancelBill</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CompleteBillServlet</servlet-name>
         <url-pattern>/completeBill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageBillServlet</servlet-name>
+        <url-pattern>/manageBill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProceedBillServlet</servlet-name>
+        <url-pattern>/proceedBill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CancelBillAdminServlet</servlet-name>
+        <url-pattern>/cancelBillAd</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

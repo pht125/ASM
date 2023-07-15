@@ -157,7 +157,7 @@
             text-align: center;
             padding: 10px 20px ;
         }
-        
+
         .account_icon:hover{
             text-decoration: none;
         }
@@ -166,9 +166,11 @@
 
         <div class="header">
             <div class="header_logo">
+
                 <a href="home">
                     <img src="images/web_logo_white.png">
                 </a>
+
             </div>
             <div class="header_search">
                 <form action="search" method="post">
@@ -190,18 +192,24 @@
                         <h5>${sessionScope.acc.name}</h5>
                         <a onclick="myFunction(this)" class="dropdown_button account_icon" style="text-decoration: none"><i class="fa-solid fa-user fa-lg" style="color: #ffffff;"></i></a>
                         <div id="myDropdown" class="dropdown_content" style="border-radius: 30px">
+
                             <a class="dropdown_menu_content" href="info?id=${sessionScope.acc.account_id}">Information</a>
+
                             <a class="dropdown_menu_content" href="logout">Log out</a>
                         </div>
                     </div>
                 </c:if>
                 <div class="header_title_row" style="position: relative">
-                    <a href="show"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;text-decoration: none;"></i>
 
+                    <a href="show"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;text-decoration: none;"></i>
                     </a>
+
                     <c:if test="${requestScope.size != null}">
+
                         <div style="position: absolute;background-color: red;width: 25px;height: 25px;left: 55%;border-radius: 30px;text-align: center">
+
                             <p style="color:white">${requestScope.size}</p>
+
                         </div>
                     </c:if>
                     <!--                    <input readonly="" type="text" value="" id="sizeCart">-->
@@ -218,8 +226,6 @@
                     x.style.display = "block";
                 }
             }
-
-
         </script>
     </body>
 </html>

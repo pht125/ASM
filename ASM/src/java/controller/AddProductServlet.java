@@ -92,7 +92,7 @@ public class AddProductServlet extends HttpServlet {
             int sale = Integer.parseInt(raw_sale);
             int quantity = Integer.parseInt(raw_quantity);
             pdao.insertProduct(cate_id, product_id, product_name, brand, price, sale, quantity, image, description);
-            response.sendRedirect("manage");
+            response.sendRedirect("manage?id=0");
         } catch (IOException e) {
         }
 
